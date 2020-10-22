@@ -20,8 +20,12 @@ services:
       - db
     ports:
       - "3000:3000"
+    environment:
+      - BUNDLE_PATH=/bundle
     volumes:
-      - .:/app_name
+      - .:/saunars-circle
       - ~/.ssh:/root/.ssh
+      - bundle_path:/bundle
 volumes:
+  bundle_path:
   mysql_data:
