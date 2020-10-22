@@ -15,11 +15,12 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password:
+  host: db
 
 development:
   <<: *default
   database: saunars-circle_development
-  host: db
+  
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -27,6 +28,7 @@ development:
 test:
   <<: *default
   database: saunars-circle_test
+
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -53,6 +55,6 @@ production:
   database: saunars-circle_production
   username: root
   password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
-  host: umashika-rds.c1rjsxmicjem.ap-northeast-1.rds.amazonaws.com
+  host: saunars-circle-rds.c1rjsxmicjem.ap-northeast-1.rds.amazonaws.com
   socket: /var/lib/mysql/mysql.sock
   port: 3306
