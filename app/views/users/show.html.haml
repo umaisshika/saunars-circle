@@ -1,2 +1,64 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+.container
+  .mypage
+    .mypage-wrapper
+      .mypage-header
+        .mypage-header__info
+          .mypage-header__info__date.text-left
+            2016.06.15登録
+          - if current_user == @user
+            .mypage-header__info__edit.text-right
+              = link_to root_path do
+                プロフィール編集
+        .mypage-header__contents
+          = image_tag "/images/top-background.jpg", size: "100x100", class: "img-circle"
+          .mypage-header__contents__main  
+            %h3.mypage-header__contents__main__name
+              テストユーザー
+            - unless current_user == @user
+              .mypage-header__contents__main__friend
+                サ友に追加する
+      .mypage-profile
+        %ul.mypage-profile__lists
+          %li.mypage-profile__lists__list
+            %span.mypage-profile__lists__list__key
+              サウナ歴
+            %span.mypage-profile__lists__list__value
+              ２年0ヶ月
+          %li.mypage-profile__lists__list
+            %span.mypage-profile__lists__list__key
+              ホーム
+            %span.mypage-profile__lists__list__value
+              タイムズスパレスタ
+          %li.mypage-profile__lists__list
+            %span.mypage-profile__lists__list__key
+              エリア
+            %span.mypage-profile__lists__list__value
+              東京都
+          %li.mypage-profile__lists__list
+            %span.mypage-profile__lists__list__key
+              好きなサウナ
+            %span.mypage-profile__lists__list__value
+              水風呂深め、テレビの無い暗めで静かなサウナ
+          %li.mypage-profile__lists__list
+            %span.mypage-profile__lists__list__key
+              プロフィール
+            %span.mypage-profile__lists__list__value
+              週末はサウナ施設のコワーキングスペースで勉強してます
+      .mypage-content
+        %ul.mypage-content__lists
+          %li.mypage-content__lists__list
+            = link_to root_path do
+              サ飯
+              0
+          %li.mypage-content__lists__list
+            = link_to root_path do
+              お気に入り
+              0
+          %li.mypage-content__lists__list
+            = link_to root_path do
+              お気に入られ
+              0
+          %li.mypage-content__lists__list
+            = link_to root_path do
+              いいね
+              0 
