@@ -51,6 +51,7 @@ GEM
     arel (9.0.0)
     autoprefixer-rails (10.0.1.0)
       execjs
+    bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.4.8)
       msgpack (~> 1.0)
@@ -85,6 +86,13 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    carrierwave (2.1.0)
+      activemodel (>= 5.0.0)
+      activesupport (>= 5.0.0)
+      addressable (~> 2.6)
+      image_processing (~> 1.1)
+      mimemagic (>= 0.3.0)
+      mini_mime (>= 0.1.3)
     childprocess (3.0.0)
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
@@ -99,12 +107,40 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
+    devise (4.7.3)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
+    devise-bootstrap-views (1.1.0)
+    devise-i18n (1.9.2)
+      devise (>= 4.7.1)
+    devise-i18n-views (0.3.7)
     erb2haml (0.1.5)
       html2haml
     erubi (1.9.0)
     erubis (2.7.0)
+    excon (0.78.0)
     execjs (2.7.0)
     ffi (1.13.1)
+    fog-aws (3.6.7)
+      fog-core (~> 2.1)
+      fog-json (~> 1.1)
+      fog-xml (~> 0.1)
+      ipaddress (~> 0.8)
+    fog-core (2.2.3)
+      builder
+      excon (~> 0.71)
+      formatador (~> 0.2)
+      mime-types
+    fog-json (1.2.0)
+      fog-core
+      multi_json (~> 1.10)
+    fog-xml (0.1.3)
+      fog-core
+      nokogiri (>= 1.5.11, < 2.0.0)
+    formatador (0.2.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.2.0)
@@ -123,7 +159,11 @@ GEM
       ruby_parser (~> 3.5)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
+    image_processing (1.12.0)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     io-like (0.3.1)
+    ipaddress (0.8.3)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
@@ -143,11 +183,16 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
+    mime-types (3.3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2020.0512)
     mimemagic (0.3.5)
+    mini_magick (4.10.1)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.2)
     msgpack (1.3.3)
+    multi_json (1.15.0)
     mysql2 (0.5.3)
     net-scp (3.0.0)
       net-ssh (>= 2.6.5, < 7.0.0)
@@ -155,6 +200,7 @@ GEM
     nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    orm_adapter (0.5.0)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -198,6 +244,11 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.8.2)
+    responders (3.0.1)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
+    ruby-vips (2.0.17)
+      ffi (~> 1.9)
     ruby_dep (1.5.0)
     ruby_parser (3.15.0)
       sexp_processor (~> 4.9)
@@ -249,6 +300,8 @@ GEM
     unicorn (5.7.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -274,13 +327,20 @@ DEPENDENCIES
   capistrano-rbenv
   capistrano3-unicorn
   capybara (>= 2.15)
+  carrierwave
   chromedriver-helper
   coffee-rails (~> 4.2)
+  devise
+  devise-bootstrap-views
+  devise-i18n
+  devise-i18n-views
   erb2haml
+  fog-aws
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
+  mini_magick
   mysql2 (>= 0.4.4, < 0.6.0)
   pry-rails
   puma (~> 3.11)

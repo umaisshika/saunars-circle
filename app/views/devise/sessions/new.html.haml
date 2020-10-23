@@ -1,0 +1,21 @@
+.container
+  .section-title
+    %h2 ログイン
+    %br
+    .row
+      .col-md-offset-4.col-md-4.col-xs-offset-4.col-xs-4
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form-group
+            = f.label :email
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
+          .form-group
+            = f.label :password
+            %br/
+            = f.password_field :password, autocomplete: "current-password", class: 'form-control'
+          - if devise_mapping.rememberable?
+            .form-group
+              = f.check_box :remember_me
+              = f.label :remember_me
+          .form-btn
+            = f.submit "ログイン",class: 'btn btn-success btn-block'

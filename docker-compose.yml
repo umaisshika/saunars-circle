@@ -10,9 +10,7 @@ services:
     ports:
       - "4306:3306"
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     tty: true
     stdin_open: true
@@ -23,7 +21,7 @@ services:
     environment:
       - BUNDLE_PATH=/bundle
     volumes:
-      - .:/saunars-circle
+      - .:/app_name
       - ~/.ssh:/root/.ssh
       - bundle_path:/bundle
 volumes:
