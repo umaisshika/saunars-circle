@@ -11,7 +11,8 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = render 'layouts/navbar'
-    = render 'layouts/flash_messages'
+    %nav
+      = render 'layouts/navbar'
+      = render 'layouts/flash_messages'
     = yield
     = render 'layouts/hooter'
