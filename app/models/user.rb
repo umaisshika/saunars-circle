@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   # emailを小文字に変換
   before_save { self.email = email.downcase }
-  VALID_PASSWORD_REGEX =              /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,100}\z/i
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,100}\z/i.freeze
   validates :password, :password_confirmation,       allow_blank: true, format: { with: VALID_PASSWORD_REGEX }
-  validates :name,                                   presence: true, length: {maximum: 50}
+  validates :name,                                   presence: true, length: { maximum: 50 }
 end
