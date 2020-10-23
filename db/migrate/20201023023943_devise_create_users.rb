@@ -10,7 +10,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.integer :gender
       t.date :sauna_career
       t.string :home_sauna
-      t.integer :prefecure_id
+      t.integer :prefecture_id
       t.text :description
       t.text :profile
       t.string :image

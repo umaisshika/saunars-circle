@@ -4,46 +4,62 @@
       .mypage-header
         .mypage-header__info
           .mypage-header__info__date.text-left
-            2016.06.15登録
+            #{@user.created_at.strftime('%Y年%m月%d日')}登録
           - if current_user == @user
             .mypage-header__info__edit.text-right
               = link_to root_path do
                 プロフィール編集
         .mypage-header__contents
-          = image_tag "/images/top-background.jpg", size: "100x100", class: "img-circle"
+          = image_tag @user.avatar.url, size: "100x100", class: "img-circle"
           .mypage-header__contents__main  
             %h3.mypage-header__contents__main__name
-              テストユーザー
-            - unless current_user == @user
-              .mypage-header__contents__main__friend
-                サ友に追加する
+              = @user.name
+            -if user_signed_in?
+              - unless current_user == @user
+                .mypage-header__contents__main__friend
+                  サ友に追加する
       .mypage-profile
         %ul.mypage-profile__lists
           %li.mypage-profile__lists__list
             %span.mypage-profile__lists__list__key
               サウナ歴
             %span.mypage-profile__lists__list__value
-              ２年0ヶ月
+              - if @user.sauna_career.present?
+                %time(datetime="#{@user.sauna_career}")= time_ago_in_words(@user.sauna_career)
+              - else
+                #{"-"}
           %li.mypage-profile__lists__list
             %span.mypage-profile__lists__list__key
               ホーム
             %span.mypage-profile__lists__list__value
-              タイムズスパレスタ
+              - if @user.home_sauna.present?
+                = @user.home_sauna
+              - else
+                #{"-"}
           %li.mypage-profile__lists__list
             %span.mypage-profile__lists__list__key
               エリア
             %span.mypage-profile__lists__list__value
-              東京都
+              - if @user.prefecture.present?
+                = @user.prefecture.name
+              - else
+                #{"-"}
           %li.mypage-profile__lists__list
             %span.mypage-profile__lists__list__key
               好きなサウナ
             %span.mypage-profile__lists__list__value
-              水風呂深め、テレビの無い暗めで静かなサウナ
+              - if @user.description.present?
+                = @user.description
+              - else
+                #{"-"}
           %li.mypage-profile__lists__list
             %span.mypage-profile__lists__list__key
               プロフィール
             %span.mypage-profile__lists__list__value
-              週末はサウナ施設のコワーキングスペースで勉強してます
+              - if @user.profile.present?
+                = @user.profile
+              - else
+                #{"-"}
       .mypage-content
         %ul.mypage-content__lists
           %li.mypage-content__lists__list
