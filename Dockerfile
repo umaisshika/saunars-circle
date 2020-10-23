@@ -13,6 +13,7 @@ WORKDIR $APP_ROOT
 ADD ./Gemfile $APP_ROOT/Gemfile
 ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
 
+ENV BUNDLER_VERSION 1.16.6
 RUN gem install bundler
 RUN bundle install
 ADD . $APP_ROOT
