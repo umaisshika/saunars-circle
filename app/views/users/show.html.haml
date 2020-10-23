@@ -7,7 +7,7 @@
             #{@user.created_at.strftime('%Y年%m月%d日')}登録
           - if current_user == @user
             .mypage-header__info__edit.text-right
-              = link_to root_path do
+              = link_to edit_user_registration_path(current_user.id) do
                 プロフィール編集
         .mypage-header__contents
           = image_tag @user.avatar.url, size: "100x100", class: "img-circle"
