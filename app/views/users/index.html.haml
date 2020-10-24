@@ -1,0 +1,46 @@
+.container
+  .section-title.text-center
+    %h2 ユーザー一覧
+    .row
+      - @users.each do |user|
+        .col-md-4.col-xs-12
+          .users-info
+            = link_to user_path(user) do
+              .users-info__upper  
+                = image_tag user.avatar.url, size: "100x100", class: "img-circle users-info__upper__icon"
+                .text-left.pt-20
+                  = user.name
+              .users-info__under
+                %ul.users-info__under__lists.text-left
+                  %li.users-info__under__lists__list
+                    %span.users-info__under__lists__list__key
+                      サウナ歴
+                    %span.users-info__under__lists__list__value
+                      - if user.sauna_career.present?
+                        %time(datetime="#{user.sauna_career}")= time_ago_in_words(user.sauna_career)
+                      - else
+                        #{"-"}
+                  %li.users-info__under__lists__list
+                    %span.users-info__under__lists__list__key
+                      性別
+                    %span.users-info__under__lists__list__value
+                      - if user.gender.present?
+                        = user.gender
+                      - else
+                        #{"-"}
+                  %li.users-info__under__lists__list
+                    %span.users-info__under__lists__list__key
+                      ホームサウナ
+                    %span.users-info__under__lists__list__value
+                      - if user.home_sauna.present?
+                        = user.home_sauna
+                      - else
+                        #{"-"}
+                  %li.users-info__under__lists__list
+                    %span.users-info__under__lists__list__key
+                      エリア
+                    %span.users-info__under__lists__list__value
+                      - if user.prefecture.present?
+                        = user.prefecture.name
+                      - else
+                        #{"-"}

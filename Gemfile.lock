@@ -126,6 +126,8 @@ GEM
     erubis (2.7.0)
     excon (0.78.0)
     execjs (2.7.0)
+    faker (2.13.0)
+      i18n (>= 1.6, < 2)
     ffi (1.13.1)
     fog-aws (3.6.7)
       fog-core (~> 2.1)
@@ -361,6 +363,7 @@ DEPENDENCIES
   devise-i18n
   devise-i18n-views
   erb2haml
+  faker
   fog-aws
   haml-rails
   jbuilder (~> 2.5)
