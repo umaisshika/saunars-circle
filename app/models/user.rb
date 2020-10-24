@@ -16,4 +16,5 @@ class User < ApplicationRecord
   enum gender: { 男性: 0, 女性: 1, 無回答: 2 }
 
   belongs_to_active_hash :prefecture
+  has_many :foods
 end
