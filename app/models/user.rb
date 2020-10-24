@@ -7,9 +7,8 @@ class User < ApplicationRecord
 
   # emailを小文字に変換
   before_save { self.email = email.downcase }
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,100}\z/i.freeze
-  validates :password, :password_confirmation,       allow_blank: true, format: { with: VALID_PASSWORD_REGEX }
-  validates :name,                                   presence: true, length: { maximum: 15 }
+
+  validates :name, presence: true, length: { maximum: 15 }
 
   mount_uploader :avatar, AvatarUploader
 
@@ -17,4 +16,11 @@ class User < ApplicationRecord
 
   belongs_to_active_hash :prefecture
   has_many :foods
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = 'ゲストユーザー'
+    end
+  end
 end
