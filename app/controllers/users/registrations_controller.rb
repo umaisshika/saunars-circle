@@ -4,6 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
   before_action :authenticate_user!
+  before_action :check_guest, only: [:update]
   # GET /resource/sign_up
   def new
     super
@@ -66,6 +67,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
                                       ])
   end
 
+  def check_guest
+    if resource.email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーの変更・削除できません。'
+    end
+  end
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
   #   super(resource)

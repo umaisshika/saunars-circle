@@ -19,3 +19,5 @@
               = f.label :remember_me
           .form-btn
             = f.submit "ログイン",class: 'btn btn-success btn-block'
+        %br
+        = link_to 'ゲストユーザーでログイン',users_guest_sign_in_path, method: :post, class: "btn btn-warning btn-block"
