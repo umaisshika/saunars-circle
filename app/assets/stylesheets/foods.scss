@@ -3,7 +3,6 @@
   background-color: #FFF;
   margin-bottom: 15px;
   border-radius: 12px;
- 
   &__upper{
     margin: 5px 0;
   }
@@ -16,3 +15,32 @@
   height: auto;
   width: 100%;
 }
+
+.food-detail{
+  padding: 10px;
+  background-color: #FFF;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 450px;
+  &__user-info{
+    margin-bottom: 5px;
+  }
+  &__lists{
+    margin-top: 10px;
+    margin-left: 10px;
+    &__list{
+      display: flex;
+      &__key{
+        width: 100px;
+        display: block;
+        font-weight: bold;
+      }
+
+    }
+  }
+}
+
+.edit-btn{
+  width: 100%;
+} 
