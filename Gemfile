@@ -84,6 +84,7 @@ gem 'faker'
 gem 'fog-aws'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'kaminari'
 gem 'mini_magick'
 gem 'rails-i18n'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
