@@ -2,7 +2,9 @@ class FoodsController < ApplicationController
   before_action :set_food, only: [:show, :update, :edit]
 
   def index
-    @foods = Food.all
+    @foods = Food.page(params[:page])
+                 .per(PER)
+                 .order(created_at: :desc)
   end
 
   def new
