@@ -1,4 +1,6 @@
 class FoodsController < ApplicationController
+  before_action :set_food, only: [:show, :update, :edit]
+
   def index
     @foods = Food.all
   end
@@ -19,13 +21,26 @@ class FoodsController < ApplicationController
     end
   end
 
-  def show
-    @food = Food.find(params[:id])
+  def show; end
+
+  def edit; end
+
+  def update
+    if @food.update(food_params)
+      flash[:success] = 'サ飯を更新しました'
+      redirect_to food_path(@food.id)
+    else
+      render 'edit', alert: '編集出来ません。入力必須項目を確認してください'
+    end
   end
 
   private
 
   def food_params
     params.require(:food).permit(:name, :visited_sauna, :prefecture_id, :description, :image)
+  end
+
+  def set_food
+    @food = Food.find(params[:id])
   end
 end

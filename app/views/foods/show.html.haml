@@ -31,4 +31,4 @@
           %span.food-detail__lists__list__value
             = @food.description
       - if user_signed_in? && current_user.id == @food.user_id
-        = link_to '編集する', '#', class: 'btn btn-primary btn-lg edit-btn' 
+        = link_to '編集する', edit_food_path(@food), class: 'btn btn-primary btn-lg edit-btn' 
