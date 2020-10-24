@@ -1,0 +1,34 @@
+.container
+  .section-title.text-center
+    %h2 サ飯詳細
+    %br
+    .food-detail.center-block
+      .food-detail__user-info.text-left
+        = image_tag @food.user.avatar.url, size: "30x30", class: "img-circle"
+        = @food.user.name
+        = @food.created_at.strftime("%Y/%m/%d %H:%M")
+      .food-detail__food-img
+        = image_tag @food.image.url, size: "400x400", class: "img-rounded food-img"
+      %ul.food-detail__lists.text-left
+        %li.food-detail__lists__list
+          %span.food-detail__lists__list__key
+            品名:
+          %span.food-detail__lists__list__value
+            = @food.name
+        %li.food-detail__lists__list
+          %span.food-detail__lists__list__key
+            サウナ:
+          %span.food-detail__lists__list__value
+            = @food.visited_sauna
+        %li.food-detail__lists__list
+          %span.food-detail__lists__list__key
+            エリア:
+          %span.food-detail__lists__list__value
+            = @food.prefecture.name
+        %li.food-detail__lists__list
+          %span.food-detail__lists__list__key
+            ひと言:
+          %span.food-detail__lists__list__value
+            = @food.description
+      - if user_signed_in? && current_user.id == @food.user_id
+        = link_to '編集する', edit_food_path(@food), class: 'btn btn-primary btn-lg edit-btn' 

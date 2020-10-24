@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "users";
+@import "foods";
 
 body {
   background: #f2f2f2;
@@ -197,8 +198,8 @@ a {
   background: #EA352D;
   text-align: center;
   border-radius: 20%;
-  bottom: 132px;
-  right: 32px;
+  bottom: 50px;
+  right: 50px;
   position: fixed;
   padding: 15px;
   z-index: 1;

@@ -1,0 +1,25 @@
+.container
+  .section-title.text-center
+    %h2 サ飯一覧
+    %br
+    /投稿ボタン
+    = render "foods/new-btn"
+    .row
+      - @foods.each do |food|
+        .col-md-4.col-xs-12
+          .cards
+            = link_to food_path(food) do
+              = image_tag food.image.url, size: "300x300", class: "img-rounded food-img"
+            .cards__upper.ml-10.text-left
+              = image_tag food.user.avatar.url, size: "30x30", class: "img-circle"
+              = food.user.name
+              = food.created_at.strftime("%Y/%m/%d %H:%M")
+            .cards__under.ml-10
+              %i.fas.fa-heart.like-btn
+              .ml-5
+                0
+              %i.far.fa-comment.comment-btn.ml-10
+              .ml-5
+                0
+    .text-center
+      = paginate @foods
