@@ -1,0 +1,74 @@
+inherit_from: .rubocop_todo.yml
+
+Metrics/AbcSize:
+  Enabled: true
+  Max: 20
+
+Metrics/MethodLength:
+  Enabled: true
+  Max: 20
+
+AllCops:
+  Exclude:
+    - 'config.ru'
+    - 'bin/**'
+    - 'lib/**'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'spec/**/*'
+  DisplayCopNames: true
+
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - app/controllers/users/*
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Style/BlockDelimiters:
+  AutoCorrect: false
+  Exclude:
+    - "spec/**/*"
+
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyElse:
+  EnforcedStyle: empty
+
+Style/ExtraSpacing:
+  Exclude:
+    - "db/migrate/*.rb"
+
+Style/EmptyMethod:
+  Exclude:
+    - 'app/controllers/home_controller.rb'
+
+Style/GuardClause:
+  MinBodyLength: 5
+
+Style/ExpandPathArguments:
+    Exclude:
+      - 'config/unicorn.rb'
+
+Style/PercentLiteralDelimiters:
+  Exclude:
+    - 'config/deploy.rb'
+    - 'config/deploy/production.rb'
+
+Style/SymbolArray:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 154
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
