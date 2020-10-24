@@ -14,6 +14,6 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   enum gender: { 男性: 0, 女性: 1, 無回答: 2 }
-  
+
   belongs_to_active_hash :prefecture
 end
