@@ -39,7 +39,7 @@ class FoodsController < ApplicationController
   def destroy
     if @food.user_id == current_user.id || current_user.admin?
       if @food.destroy
-        flash[:success] = "投稿を削除しました"
+        flash[:success] = '投稿を削除しました'
         redirect_to foods_path
       else
         flash.now[:danger] = '投稿の削除に失敗しました'
@@ -47,7 +47,7 @@ class FoodsController < ApplicationController
       end
     else
       render action: :show,
-      alert: "投稿削除する権限がありません"
+             alert: '投稿削除する権限がありません'
     end
   end
 
