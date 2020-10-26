@@ -1,5 +1,5 @@
 class FoodsController < ApplicationController
-  before_action :set_food, only: [:show, :update, :edit]
+  before_action :set_food, only: [:show, :update, :edit, :destroy]
 
   def index
     @foods = Food.page(params[:page])
@@ -33,6 +33,21 @@ class FoodsController < ApplicationController
       redirect_to food_path(@food.id)
     else
       render 'edit', alert: '編集出来ません。入力必須項目を確認してください'
+    end
+  end
+
+  def destroy
+    if @food.user_id == current_user.id || current_user.admin?
+      if @food.destroy
+        flash[:success] = "投稿を削除しました"
+        redirect_to foods_path
+      else
+        flash.now[:danger] = '投稿の削除に失敗しました'
+        render :show
+      end
+    else
+      render action: :show,
+      alert: "投稿削除する権限がありません"
     end
   end
 

@@ -30,5 +30,6 @@
             ひと言:
           %span.food-detail__lists__list__value
             = @food.description
-      - if user_signed_in? && current_user.id == @food.user_id
-        = link_to '編集する', edit_food_path(@food), class: 'btn btn-primary btn-lg edit-btn' 
+      - if user_signed_in? && current_user.id == @food.user_id || current_user.admin?
+        = link_to '編集する', edit_food_path(@food), class: 'btn btn-primary btn-lg edit-btn mb-10' 
+        = link_to '削除する', food_path(@food),method: :delete, data: { confirm: '削除しますか？' },class: 'btn btn-danger btn-lg edit-btn'
