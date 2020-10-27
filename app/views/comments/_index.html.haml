@@ -1,16 +1,18 @@
-.row
-  .comments.center-block
-    - comments.each do |comment|
-      %ul.comments__lists.text-left
-        %li.comments__lists__content.mb-10
-          = comment.content
-        %li.comments__lists__info
-          %span
-            = image_tag comment.user.avatar.url, size: "25x25", class: "img-circle"
-          %span.ml-10
-            = comment.user.name
-          %span.ml-10
-            #{time_ago_in_words(comment.created_at)}前
-          - if user_signed_in?
-            - if current_user.id == comment.user.id || current_user.admin?
-              = link_to 'コメント削除', food_comment_path(comment.food.id,comment.id),method: :delete, remote: true, class: 'btn btn-danger btn-sm ml-10'
+- if comments.present?
+  %h2 コメント一覧
+  .row
+    .comments.center-block
+      - comments.each do |comment|
+        %ul.comments__lists.text-left
+          %li.comments__lists__content.mb-10
+            = comment.content
+          %li.comments__lists__info
+            %span
+              = image_tag comment.user.avatar.url, size: "25x25", class: "img-circle"
+            %span.ml-10
+              = comment.user.name
+            %span.ml-10
+              #{time_ago_in_words(comment.created_at)}前
+            - if user_signed_in?
+              - if current_user.id == comment.user.id || current_user.admin?
+                = link_to 'コメント削除', food_comment_path(comment.food.id,comment.id),method: :delete, remote: true, class: 'btn btn-danger btn-sm ml-10'

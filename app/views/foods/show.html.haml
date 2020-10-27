@@ -40,7 +40,6 @@
           = f.hidden_field :food_id, value: @food.id
           = f.submit 'コメントする',class:"btn btn-success"
 
-    - if @comments.present?
-      %h2 コメント一覧
-      %div{:id => "comment-list"}
-        = render partial: 'comments/index', locals: { comments: @comments }
+    
+    %div{:id => "comment-list"}
+      = render partial: 'comments/index', locals: { comments: @comments }
