@@ -1,0 +1,24 @@
+.comment-form{
+  margin-top: 10px;
+  width: 90%;
+}
+
+.comments{
+  padding: 15px;
+  background-color: #FFF;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 450px;
+  &__lists{
+    margin-top: 10px;
+    margin-left: 10px;
+    border-bottom: 1px solid lightgray;
+    &__content{
+      min-height: 50px;
+    }
+    &__info{
+      display: flex;
+    }
+  }
+}
