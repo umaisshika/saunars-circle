@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   belongs_to_active_hash :prefecture
   has_many :foods
+  has_many :comments, dependent: :destroy
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|

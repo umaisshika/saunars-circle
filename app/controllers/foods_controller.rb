@@ -23,7 +23,10 @@ class FoodsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+    @comments = @food.comments.order(id: 'DESC')
+  end
 
   def edit; end
 

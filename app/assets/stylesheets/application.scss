@@ -2,6 +2,7 @@
 @import "bootstrap";
 @import "users";
 @import "foods";
+@import "comments";
 
 body {
   background: #f2f2f2;
@@ -259,3 +260,14 @@ a {
 .pagination>li>a:hover {        
   border-radius: 15px;    
 }
+
+.base-textarea {
+  border: 2px solid #20c997;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  background-color: snow;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1em;
+  line-height: 1.2;
+} 
