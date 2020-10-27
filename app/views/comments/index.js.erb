@@ -1,0 +1,2 @@
+$("#comment-list").html("<%= j(render 'index', { comments: @comment.food.comments.order(id: 'DESC') }) %>");
+$("comment-input").val('');

@@ -3,18 +3,15 @@ class CommentsController < ApplicationController
     @food = Food.find(params[:food_id])
     @comment = current_user.comments.new(comment_params)
     if @comment.save
-      redirect_to request.referer || root_url
-    else
-      flash.now[:alert] = 'コメントに失敗しました'
-      redirect_to @food
+      render :index
     end
   end
 
   def destroy
     @comment = Comment.find_by(id: params[:id], food_id: params[:food_id])
-    @comment.destroy
-    flash[:success] = 'コメントを解除しました。'
-    redirect_back(fallback_location: root_path)
+    if @comment.destroy
+      render :index
+    end
   end
 
   private

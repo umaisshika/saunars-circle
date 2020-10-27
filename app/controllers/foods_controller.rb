@@ -24,8 +24,8 @@ class FoodsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
     @comments = @food.comments.order(id: 'DESC')
-    @comment = current_user.comments.new
   end
 
   def edit; end
