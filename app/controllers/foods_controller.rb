@@ -5,6 +5,7 @@ class FoodsController < ApplicationController
     @foods = Food.page(params[:page])
                  .per(PER)
                  .order(created_at: :desc)
+    @like = Like.new
   end
 
   def new
