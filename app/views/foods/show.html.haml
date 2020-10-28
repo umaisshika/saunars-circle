@@ -30,21 +30,13 @@
             ひと言:
           %span.food-detail__lists__list__value
             = @food.description
-      .ml-10.text-left.mb-10
-        %span いいねの数: #{@food.likes.count}
       - if user_signed_in?
-        - if current_user.already_liked?(@food)
-          .ml-10.text-left.mb-10
-            = form_with url:food_like_path(@food), method: :delete, local: true do |f|
-              %button{type: "submit",class: 'btn btn-default liked-base-btn'}
-                %i.fas.fa-heart.like-btn
-                %span いいね
-        -else
-          .ml-10.text-left.mb-10
-            = form_with url:food_likes_path(@food), local: true do |f|
-              %button{type: "submit",class: 'btn btn-default base-btn'}
-                %i.fas.fa-heart.unlike-btn
-                %span いいね
+        .ml-10.text-left.mb-10
+          %div{:id => "likes_buttons_#{@food.id}"}
+            = render 'likes/like', food: @food
+      -else
+        .ml-10.text-left.mb-10
+          %span いいねの数: #{@food.likes.count}        
       - if user_signed_in? && current_user.id == @food.user_id || current_user.admin?
         = link_to '編集する', edit_food_path(@food), class: 'btn btn-primary btn-lg edit-btn mb-10' 
         = link_to '削除する', food_path(@food),method: :delete,class: 'btn btn-danger btn-lg edit-btn mb-10'
