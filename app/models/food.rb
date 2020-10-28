@@ -11,4 +11,6 @@ class Food < ApplicationRecord
   belongs_to :user
   belongs_to_active_hash :prefecture
   has_many :comments, dependent: :destroy
+  has_many :likes
+  has_many :liked_users, through: :likes, source: :user
 end

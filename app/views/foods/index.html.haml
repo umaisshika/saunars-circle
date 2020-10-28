@@ -15,11 +15,16 @@
               = food.user.name
               = food.created_at.strftime("%Y/%m/%d %H:%M")
             .cards__under.ml-10
-              %i.fas.fa-heart.like-btn
-              .ml-5
-                0
+              - if current_user.already_liked?(food)
+                .ml-10.text-left.mb-10
+                  %label.fas.fa-heart.liked-btn
+                  = food.likes.count
+              -else
+                .ml-10.text-left.mb-10
+                  %label.fas.fa-heart.like-btn
+                  = food.likes.count
               %i.far.fa-comment.comment-btn.ml-10
               .ml-5
-                0
+                = food.comments.count
     .text-center
       = paginate @foods
