@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_26_164904) do
+ActiveRecord::Schema.define(version: 2020_10_28_054353) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 2020_10_26_164904) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_foods_on_user_id"
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "food_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "fk_rails_a368781569"
+    t.index ["user_id"], name: "fk_rails_1e09b5dabf"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -58,4 +67,6 @@ ActiveRecord::Schema.define(version: 2020_10_26_164904) do
   add_foreign_key "comments", "foods"
   add_foreign_key "comments", "users"
   add_foreign_key "foods", "users"
+  add_foreign_key "likes", "foods"
+  add_foreign_key "likes", "users"
 end
