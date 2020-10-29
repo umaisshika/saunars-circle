@@ -3,24 +3,12 @@ class RelationshipsController < ApplicationController
 
   def create
     following = current_user.follow(@user)
-    if following.save
-      flash[:success] = 'お気に入り追加しました'
-      redirect_to @user
-    else
-      flash.now[:alert] = 'お気に入り追加に失敗しました'
-      redirect_back(fallback_location: root_path)
-    end
+    following.save
   end
 
   def destroy
     following = current_user.unfollow(@user)
-    if following.destroy
-      flash[:success] = 'お気に入りを解除しました'
-      redirect_to @user
-    else
-      flash.now[:alert] = 'お気に入り解除に失敗しました'
-      redirect_back(fallback_location: root_path)
-    end
+    following.destroy
   end
 
   private
