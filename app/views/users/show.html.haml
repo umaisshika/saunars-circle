@@ -5,11 +5,11 @@
         .mypage-header__info
           .mypage-header__info__date.text-left
             #{@user.created_at.strftime('%Y年%m月%d日')}登録
-          - if current_user == @user
+          - if user_signed_in? && current_user == @user
             .mypage-header__info__edit.text-right
               = link_to edit_user_registration_path(current_user.id) do
                 プロフィール編集
-          - elsif current_user.admin?
+          - elsif user_signed_in? && current_user.admin?
             .mypage-header__info__edit.text-right
               = link_to '削除する', user_path(@user),method: :delete, data: { confirm: '削除しますか？' },class: 'btn btn-danger btn-lg edit-btn'
         .mypage-header__contents
