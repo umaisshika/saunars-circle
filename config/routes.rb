@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
   end
+  resources :relationships, only: [:create, :destroy]
   root 'home#top'
 end

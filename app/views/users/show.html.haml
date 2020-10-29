@@ -20,7 +20,9 @@
             -if user_signed_in?
               - unless current_user == @user
                 .mypage-header__contents__main__friend
-                  サ友に追加する
+                  -# フォローボタン
+                  %div{:id => "follow_form_#{@user.id}"}
+                    = render "relationships/follow_button", user: @user
       .mypage-profile
         %ul.mypage-profile__lists
           %li.mypage-profile__lists__list
