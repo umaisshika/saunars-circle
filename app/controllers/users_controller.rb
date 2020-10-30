@@ -23,11 +23,15 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followings
+    @followings = @user.followings.page(params[:page])
+                       .per(PER)
+                       .order(created_at: :desc)
   end
 
   def followers
-    @followers = @user.followers
+    @followers = @user.followers.page(params[:page])
+                      .per(PER)
+                      .order(created_at: :desc)
   end
 
   def like_foods
