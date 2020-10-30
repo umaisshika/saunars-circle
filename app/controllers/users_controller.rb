@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :destroy]
+  before_action :set_user, only: [:show, :destroy, :followings, :followers, :like_foods]
   before_action :admin_user, only: :destroy
 
   def index
@@ -8,7 +8,13 @@ class UsersController < ApplicationController
                  .order(created_at: :desc)
   end
 
-  def show; end
+  def show
+    @foods = Food.where(user_id: @user.id)
+                 .page(params[:page])
+                 .per(PER)
+                 .order(created_at: :desc)
+    @food = @user.foods.build
+  end
 
   def destroy
     @user.destroy
@@ -17,11 +23,21 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings = @user.followings
+    @followings = @user.followings.page(params[:page])
+                       .per(PER)
+                       .order(created_at: :desc)
   end
 
   def followers
-    @followers = @user.followers
+    @followers = @user.followers.page(params[:page])
+                      .per(PER)
+                      .order(created_at: :desc)
+  end
+
+  def like_foods
+    @foods = @user.liked_foods.page(params[:page])
+                  .per(PER)
+                  .order(created_at: :desc)
   end
 
   private
