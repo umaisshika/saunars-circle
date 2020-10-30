@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
                                         :profile
                                       ])
   end
-  # 投稿6個で次のページ
+
+  # 投稿6で次のページ
   PER = 6
 end

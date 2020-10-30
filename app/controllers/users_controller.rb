@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :destroy, :followings, :followers]
+  before_action :set_user, only: [:show, :destroy, :followings, :followers, :like_foods]
   before_action :admin_user, only: :destroy
 
   def index
@@ -28,6 +28,12 @@ class UsersController < ApplicationController
 
   def followers
     @followers = @user.followers
+  end
+
+  def like_foods
+    @foods = @user.liked_foods.page(params[:page])
+                  .per(PER)
+                  .order(created_at: :desc)
   end
 
   private
