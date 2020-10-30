@@ -77,7 +77,8 @@
         %li.mypage-content__lists__list
           = link_to followers_user_path(user) do
             お気に入られ
-            = user.followers.count
+            %div{:id => "followers_#{user.id}"}
+              = user.followers.count
         %li.mypage-content__lists__list
           = link_to like_foods_user_path(user) do
             いいね

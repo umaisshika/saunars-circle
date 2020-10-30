@@ -3,4 +3,5 @@
   = render 'users/profile', user: @user
   
   %h2 お気に入られ一覧
-  = render 'users/users', users: @followers
+  %div{:id => "follower_list"}
+    = render 'users/users', users: @followers
