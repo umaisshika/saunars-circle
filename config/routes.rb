@@ -6,7 +6,13 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
-  resources :users, only: [:show, :index]
+
+  resources :users, only: [:show, :index, :destroy] do
+    member do
+      get :followings, :followers
+    end
+  end
+
   resources :foods do
     resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]

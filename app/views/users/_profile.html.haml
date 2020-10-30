@@ -71,13 +71,13 @@
             サ飯
             = user.foods.count
         %li.mypage-content__lists__list
-          = link_to root_path do
+          = link_to followings_user_path(user) do
             お気に入り
-            0
+            = user.followings.count
         %li.mypage-content__lists__list
-          = link_to root_path do
+          = link_to followers_user_path(user) do
             お気に入られ
-            0
+            = user.followers.count
         %li.mypage-content__lists__list
           = link_to root_path do
             いいね
