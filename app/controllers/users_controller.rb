@@ -8,7 +8,13 @@ class UsersController < ApplicationController
                  .order(created_at: :desc)
   end
 
-  def show; end
+  def show
+    @foods = Food.where(user_id: @user.id)
+                 .page(params[:page])
+                 .per(PER)
+                 .order(created_at: :desc)
+    @food = @user.foods.build
+  end
 
   def destroy
     @user.destroy
