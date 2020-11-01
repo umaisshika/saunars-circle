@@ -45,7 +45,7 @@ class FoodsController < ApplicationController
 
   def destroy
     @food.destroy
-    flash[:success] = "投稿を削除しました"
+    flash[:success] = '投稿を削除しました'
     redirect_to foods_path
   end
 
