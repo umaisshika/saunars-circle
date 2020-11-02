@@ -1,5 +1,7 @@
 class FoodsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
   before_action :set_food, only: [:show, :update, :edit, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @foods = Food.page(params[:page])
@@ -8,7 +10,7 @@ class FoodsController < ApplicationController
   end
 
   def new
-    @food = Food.new
+    @food = current_user.foods.build if user_signed_in?
   end
 
   def create
@@ -33,32 +35,28 @@ class FoodsController < ApplicationController
 
   def update
     if @food.update(food_params)
-      flash[:success] = 'サ飯を更新しました'
+      flash[:success] = '投稿を更新しました'
       redirect_to food_path(@food.id)
     else
-      render 'edit', alert: '編集出来ません。入力必須項目を確認してください'
+      flash.now[:danger] = '編集出来ません。入力必須項目を確認してください'
+      render :edit
     end
   end
 
   def destroy
-    if @food.user_id == current_user.id || current_user.admin?
-      if @food.destroy
-        flash[:success] = '投稿を削除しました'
-        redirect_to foods_path
-      else
-        flash.now[:danger] = '投稿の削除に失敗しました'
-        render :show
-      end
-    else
-      render action: :show,
-             alert: '投稿削除する権限がありません'
-    end
+    @food.destroy
+    flash[:success] = '投稿を削除しました'
+    redirect_to foods_path
   end
 
   private
 
   def food_params
     params.require(:food).permit(:name, :visited_sauna, :prefecture_id, :description, :image)
+  end
+
+  def correct_user
+    redirect_to(root_url) unless (@food.user_id == current_user.id) || current_user.admin?
   end
 
   def set_food

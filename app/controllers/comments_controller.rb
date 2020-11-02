@@ -4,6 +4,9 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     if @comment.save
       render :index
+    else
+      flash[:alert] = 'コメントに失敗しました'
+      redirect_back(fallback_location: root_path)
     end
   end
 
