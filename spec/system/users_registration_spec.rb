@@ -36,7 +36,7 @@ RSpec.describe 'ユーザー登録', type: :system do
     it 'プロフィールを編集出来ること' do
       login user
       visit edit_user_registration_path(user)
-      attach_file 'アイコン', 'spec/factories/images/test.jpg'
+      attach_file 'user[avatar]', 'spec/factories/images/test.jpg'
       fill_in '自己紹介', with: '毎週水曜は欠かさずホームサウナに通ってます'
       click_on '更新する'
       expect(page).to have_content 'アカウント情報を変更しました。'
