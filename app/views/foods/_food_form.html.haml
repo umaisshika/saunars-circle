@@ -4,7 +4,11 @@
       .form-group
         = f.label :image, '画像 ※必須'
         %br/
-        = f.file_field :image, class: 'form-control-file' ,style: 'margin-top:10px'
+        = f.file_field :image, class: 'form-control-file' ,style: 'margin-top:10px', id: 'food_img'
+        -if food.image.present?
+          = image_tag food.image.url, size: "220x220", id: 'img_prev'
+        -else
+          = image_tag 'default_camera.png',  size: "220x220", id: 'img_prev'
       .form-group
         = f.label :name, '品名(20文字以内) ※必須'
         %br/
@@ -22,4 +26,4 @@
         %br/
         = f.text_area :description, autofocus: true, class: 'form-control', rows:"4"
       .form-btn
-        = f.submit "投稿する", class: 'btn btn-success btn-block'
+        = f.submit "送信", class: 'btn btn-success btn-block'
