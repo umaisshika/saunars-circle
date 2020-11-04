@@ -9,8 +9,11 @@
           .form-group
             = f.label :avatar, 'アイコン'
             %br/
-            = image_tag @user.avatar.url, size: "100x100", class:'img-circle' if @user.avatar?
-            = f.file_field :avatar, class: 'form-control-file' ,style: 'margin-top:10px'
+            -if @user.avatar.present?
+              = image_tag @user.avatar.url, size: "100x100", class:'img-circle', id: 'img_prev'
+            -else
+              = image_tag 'default_prof.png',  size: "100x100", class:'img-circle', id: 'img_prev'
+            = f.file_field :avatar, class: 'form-control-file' ,style: 'margin-top:10px', id: 'user_img'
           .form-group
             = f.label :name, 'ユーザー名'
             %br/
