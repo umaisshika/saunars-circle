@@ -1,33 +1,4 @@
 .container.mb-100
   .section-title
     %h2 サ飯を編集する
-    .row
-      .col-md-offset-4.col-md-4
-        = form_with model: @food, local: true do |f|
-          .form-group
-            = f.label :image, '画像 ※必須'
-            %br/
-            .square-img
-              -# プレビューを表示させる
-              = image_tag @food.image.to_s, size: "250x250"
-            = f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control-file' , style: 'margin-top:10px'
-          .form-group
-            = f.label :name, '品名(20文字以内) ※必須'
-            %br/
-            = f.text_field :name, autofocus: true, class: 'form-control'
-          .form-group
-            = f.label :visited_sauna, 'サウナ名(20文字以内) ※必須'
-            %br/
-            = f.text_field :visited_sauna, autofocus: true, class: 'form-control'
-          .form-group
-            = f.label :prefecture_id, 'エリア ※必須'
-            %br/
-            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--", class: "form-control"
-          .form-group
-            = f.label :description, 'ひと言(200文字以内)'
-            %br/
-            = f.text_area :description, autofocus: true, class: 'form-control', rows:"4"
-
-
-          .form-btn
-            = f.submit "更新する", class: 'btn btn-success btn-block'
+    = render 'food_form', food: @food
