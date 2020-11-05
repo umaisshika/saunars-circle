@@ -13,12 +13,12 @@ RSpec.describe '投稿機能', type: :system do
 
     context '有効な入力をしたとき' do
       it '投稿成功のメッセージが表示される' do
-        attach_file '画像', 'spec/factories/images/test.jpg'
+        attach_file 'food[image]', 'spec/factories/images/test.jpg'
         fill_in '品名', with: 'カレー'
         fill_in 'サウナ名', with: 'かるまる池袋'
         select '東京都', from: 'エリア'
         fill_in 'ひと言', with: 'スタンダードなカレー。サウナの後に食べると美味しい。'
-        click_button '投稿する'
+        click_button '送信'
         expect(page).to have_content('投稿しました')
         expect(Food.count).to eq 2
       end
@@ -26,7 +26,7 @@ RSpec.describe '投稿機能', type: :system do
 
     context '無効な入力をしたとき' do
       it '投稿失敗のメッセージが表示されること' do
-        click_button '投稿する'
+        click_button '送信'
         expect(page).to have_content('投稿に失敗しました')
       end
     end
@@ -51,14 +51,14 @@ RSpec.describe '投稿機能', type: :system do
     context '有効な入力をしたとき' do
       it '成功のメッセージが表示されること' do
         fill_in '品名', with: 'イカ飯定食大盛り！！'
-        click_button '更新する'
+        click_button '送信'
         expect(page).to have_content '投稿を更新しました'
       end
     end
     context '無効な入力したとき' do
       it '失敗のメッセージが表示されること' do
         fill_in '品名', with: nil
-        click_button '更新する'
+        click_button '送信'
         expect(page).to have_content('編集出来ません。入力必須項目を確認してください')
       end
     end
