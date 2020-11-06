@@ -86,4 +86,5 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'rails-i18n'
+gem 'ransack'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

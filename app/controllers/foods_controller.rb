@@ -4,9 +4,11 @@ class FoodsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @foods = Food.page(params[:page])
-                 .per(PER)
-                 .order(created_at: :desc)
+    @q = Food.ransack(params[:q])
+    @foods = @q.result(distinct: true)
+                .page(params[:page])
+                .per(PER)
+                .order(created_at: :desc)
   end
 
   def new

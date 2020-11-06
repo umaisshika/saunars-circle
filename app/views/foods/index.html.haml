@@ -4,6 +4,11 @@
     %br
     /投稿ボタン
     = render "foods/new-btn"
-
+    -# 都道府県検索
+    .search.text-center.mb-10
+      = search_form_for @q do |f|
+        .text-form
+          = f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name
+          = f.submit "県名で検索する"  
     -# 投稿一覧
     = render 'foods/foods', foods: @foods
