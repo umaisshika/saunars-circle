@@ -4,6 +4,14 @@
     %br
     /投稿ボタン
     = render "foods/new-btn"
+    -# 検索フォーム
+    .search.text-center.mb-10
+      = search_form_for @q do |f|
+        = f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name,
+          { include_blank: 'エリア' },
+          { class: 'search-select' }
 
+        = f.text_field :name_or_visited_sauna_or_description_cont_any, placeholder: 'キーワード'
+        = f.submit "検索する"
     -# 投稿一覧
     = render 'foods/foods', foods: @foods
