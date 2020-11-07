@@ -6,9 +6,9 @@ class FoodsController < ApplicationController
   def index
     @q = Food.ransack(params[:q])
     @foods = @q.result(distinct: true)
-                .page(params[:page])
-                .per(PER)
-                .order(created_at: :desc)
+               .page(params[:page])
+               .per(PER)
+               .order(created_at: :desc)
   end
 
   def new
