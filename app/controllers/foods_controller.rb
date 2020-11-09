@@ -53,9 +53,13 @@ class FoodsController < ApplicationController
 
   def following_foods
     @user = current_user
-    @users = @user.followings.page(params[:page])
+    @users = @user.followings
+    @users.each do |user|
+      @foods = Food.where(user_id: user.id)
+                  .page(params[:page])
                   .per(PER)
                   .order(created_at: :desc)
+    end
   end
 
   private
