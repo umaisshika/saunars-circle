@@ -10,7 +10,6 @@
         = f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name,
           { include_blank: 'エリア' },
           { class: 'search-select' }
-
         = f.text_field :name_or_visited_sauna_or_description_cont_any, placeholder: 'キーワード'
         = f.submit "検索する"
     -# 投稿一覧

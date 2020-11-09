@@ -55,7 +55,8 @@ class FoodsController < ApplicationController
     @user = current_user
     @users = @user.followings
     @users.each do |user|
-      @foods = Food.where(user_id: user.id)
+      @q_following = Food.ransack(params[:q_following])
+      @foods = @q_following.result(distinct: true).where(user_id: user.id)
                   .page(params[:page])
                   .per(PER)
                   .order(created_at: :desc)

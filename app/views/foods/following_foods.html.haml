@@ -1,6 +1,17 @@
 .container
   .section-title.text-center
     %h2 お気に入りのサ飯
-    -# 投稿一覧
-    = render 'foods/following_foods_list', foods: @foods
+    %br
+  /投稿ボタン
+  = render "foods/new-btn"
+  -# 検索フォーム
+  .search.text-center.mb-10
+    = search_form_for @q_following, url: following_foods_path do |f|
+      = f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name,
+        { include_blank: 'エリア' },
+        { class: 'search-select' }
+      = f.text_field :name_or_visited_sauna_or_description_cont_any, placeholder: 'キーワード'
+      = f.submit "検索する"
+  -# 投稿一覧
+  = render 'foods/following_foods_list', foods: @foods
     
