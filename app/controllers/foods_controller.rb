@@ -54,8 +54,8 @@ class FoodsController < ApplicationController
   def following_foods
     @user = current_user
     @users = @user.followings.page(params[:page])
-                              .per(PER)
-                              .order(created_at: :desc)
+                  .per(PER)
+                  .order(created_at: :desc)
   end
 
   private
