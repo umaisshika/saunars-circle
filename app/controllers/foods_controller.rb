@@ -51,6 +51,13 @@ class FoodsController < ApplicationController
     redirect_to foods_path
   end
 
+  def following_foods
+    @user = current_user
+    @users = @user.followings.page(params[:page])
+                              .per(PER)
+                              .order(created_at: :desc)
+  end
+
   private
 
   def food_params

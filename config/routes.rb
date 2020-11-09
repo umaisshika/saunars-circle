@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       get :followings, :followers, :like_foods
     end
   end
-
+  get "following_foods" => "foods#following_foods"
   resources :foods do
     resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
