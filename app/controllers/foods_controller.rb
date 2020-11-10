@@ -1,7 +1,7 @@
 class FoodsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, :following_foods]
   before_action :set_food, only: [:show, :update, :edit, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy, :following_foods]
 
   def index
     @q = Food.ransack(params[:q])
@@ -49,6 +49,18 @@ class FoodsController < ApplicationController
     @food.destroy
     flash[:success] = '投稿を削除しました'
     redirect_to foods_path
+  end
+
+  def following_foods
+    @user = current_user
+    @users = @user.followings
+    @users.each do |user|
+      @q_following = Food.ransack(params[:q_following])
+      @foods = @q_following.result(distinct: true).where(user_id: user.id)
+                           .page(params[:page])
+                           .per(PER)
+                           .order(created_at: :desc)
+    end
   end
 
   private

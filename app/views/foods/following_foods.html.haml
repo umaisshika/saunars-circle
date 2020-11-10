@@ -5,8 +5,10 @@
     /投稿ボタン
     = render "new-btn"
     -# 検索フォーム
-    = render 'search_form', q: @q
+    = render 'foods/following_search_form', q_following: @q_following
+    
     -# 投稿一覧
-    = render 'foods_list', foods: @foods
+    = render 'following_foods_list', foods: @foods
   - else
     %h2 まだ投稿がありません
+    
