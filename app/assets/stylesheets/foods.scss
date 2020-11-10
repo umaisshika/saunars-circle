@@ -1,8 +1,31 @@
+.cards-list {
+  &__tab{
+    font-size: 18px;
+    &__active{
+      background-color: #FFF;
+      padding: 10px;
+      border-radius: 12px 12px 0 0;
+    }
+    &__inactive{
+      background-color: lightgray;
+      padding: 10px;
+      border-radius: 12px 12px 0 0;
+    }
+  }
+}
+
+.cards-body{
+  padding: 20px 40px;
+  background-color: #FFF;
+  margin-bottom: 30px;
+  border-radius: 0 12px 12px 12px;
+}
+
 .cards{
   padding-bottom: 10px;
   background-color: #FFF;
   margin-bottom: 15px;
-  border-radius: 12px;
+  border-bottom: 1px solid;
   &__upper{
     margin: 5px 0;
   }

@@ -1,16 +1,12 @@
 .container
-  .section-title.text-center
-    %h2 サ飯一覧
-    %br
+  - if @foods.present?
+    .section-title.text-center
+      %h2 サ飯
     /投稿ボタン
-    = render "foods/new-btn"
+    = render "new-btn"
     -# 検索フォーム
-    .search.text-center.mb-10
-      = search_form_for @q do |f|
-        = f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name,
-          { include_blank: 'エリア' },
-          { class: 'search-select' }
-        = f.text_field :name_or_visited_sauna_or_description_cont_any, placeholder: 'キーワード'
-        = f.submit "検索する"
+    = render 'search_form', q: @q
     -# 投稿一覧
-    = render 'foods/foods_list', foods: @foods
+    = render 'foods_list', foods: @foods
+  - else
+    %h2 まだ投稿がありません

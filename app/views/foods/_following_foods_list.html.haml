@@ -1,25 +1,33 @@
-- if foods.present?
-  .row
-    - foods.each do |food|
-      .col-md-4.col-xs-12
-        .cards
-          = link_to food_path(food) do
-            = image_tag food.image.url, size: "300x300", class: "img-rounded food-img"
-          .cards__upper.ml-10.text-left
-            = image_tag food.user.avatar.url, size: "30x30", class: "img-circle"
-            = food.user.name
-            = food.created_at.strftime("%Y/%m/%d %H:%M")
-          .cards__under.ml-10
-            - if user_signed_in? && current_user.already_liked?(food)
-              .ml-10.text-left.mb-10
-                %label.fas.fa-heart.liked-btn
-                = food.likes.count
-            -else
-              .ml-10.text-left.mb-10
-                %label.fas.fa-heart.like-btn
-                = food.likes.count
-            %i.far.fa-comment.comment-btn.ml-10
-            .ml-5
-              = food.comments.count
-  .text-center
-    = paginate foods
+.cards-list
+  .cards-list__tab.flex-box
+    .cards-list__tab__item
+      .cards-list__tab__inactive
+        = link_to 'みんなの投稿', foods_path
+    .cards-list__tab__item
+      .cards-list__tab__active
+        = link_to 'お気に入りの投稿', following_foods_path
+  .cards-body
+    .row
+      - foods.each do |food|
+        .col-md-4.col-xs-12
+          .cards
+            = link_to food_path(food) do
+              = image_tag food.image.url, size: "300x300", class: "img-rounded food-img"
+            .cards__upper.ml-10.text-left
+              = image_tag food.user.avatar.url, size: "30x30", class: "img-circle"
+              = food.user.name
+              = food.created_at.strftime("%Y/%m/%d %H:%M")
+            .cards__under.ml-10
+              - if user_signed_in? && current_user.already_liked?(food)
+                .ml-10.text-left.mb-10
+                  %label.fas.fa-heart.liked-btn
+                  = food.likes.count
+              -else
+                .ml-10.text-left.mb-10
+                  %label.fas.fa-heart.like-btn
+                  = food.likes.count
+              %i.far.fa-comment.comment-btn.ml-10
+              .ml-5
+                = food.comments.count
+    .text-center
+      = paginate foods
