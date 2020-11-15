@@ -3,7 +3,7 @@
     - foods.each do |food|
       .col-md-4.col-xs-12
         .cards
-          = link_to food_path(food) do
+          = link_to food_path(food) ,"data-turbolinks": false do
             = image_tag food.image.url, size: "300x300", class: "img-rounded food-img"
           .cards__upper.ml-10.text-left
             = image_tag food.user.avatar.url, size: "30x30", class: "img-circle"

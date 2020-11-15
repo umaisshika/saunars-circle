@@ -18,13 +18,12 @@
         %li.food-detail__lists__list
           %span.food-detail__lists__list__key
             サウナ:
-          %span.food-detail__lists__list__value#sauna_name
+          %span.food-detail__lists__list__value
             = @food.visited_sauna
         %li.food-detail__lists__list
           %span.food-detail__lists__list__key
             エリア:
           %span.food-detail__lists__list__value
-            = @food.prefecture.name
         %li.food-detail__lists__list
           %span.food-detail__lists__list__key
             ひと言:
@@ -50,10 +49,11 @@
           = f.text_area :content, rows: 3,placeholder: "コメント欄",class:".comment-form base-textarea", id: "comment-input"
           = f.hidden_field :food_id, value: @food.id
           = f.submit 'コメントする',class:"btn btn-success"
-    
+      
     -# コメントリスト
     %div{:id => "comment-list"}
       = render partial: 'comments/index', locals: { comments: @comments }
+=render 'show_map', food: @food
 
 
 
