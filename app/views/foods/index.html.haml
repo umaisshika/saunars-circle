@@ -7,6 +7,19 @@
     -# 検索フォーム
     = render 'search_form', q: @q
     -# 投稿一覧
-    = render 'foods_list', foods: @foods
+    .cards-list
+      .cards-list__tab.flex-box
+        .cards-list__tab__item
+          .cards-list__tab__active
+            = link_to 'みんなの投稿', foods_path
+        - if user_signed_in?
+          .cards-list__tab__item
+            .cards-list__tab__inactive
+              = link_to 'お気に入りの投稿', following_foods_path
+        - else
+          .cards-list__tab__item
+            .cards-list__tab__inactive
+              %span お気に入りの投稿
+      = render 'foods_list', foods: @foods
   - else
     %h2 まだ投稿がありません

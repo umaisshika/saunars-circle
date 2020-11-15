@@ -1,7 +1,7 @@
 class FoodsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, :following_foods]
   before_action :set_food, only: [:show, :update, :edit, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy, :following_foods]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @q = Food.ransack(params[:q])

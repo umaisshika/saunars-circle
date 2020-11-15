@@ -24,12 +24,12 @@
           %span.food-detail__lists__list__key
             エリア:
           %span.food-detail__lists__list__value
-            = @food.prefecture.name
         %li.food-detail__lists__list
           %span.food-detail__lists__list__key
             ひと言:
           %span.food-detail__lists__list__value
             = @food.description
+      
       - if user_signed_in?
         .ml-10.text-left.mb-10
           %div{:id => "likes_buttons_#{@food.id}"}
@@ -37,17 +37,24 @@
       -else
         .ml-10.text-left.mb-10
           %span いいねの数: #{@food.likes.count}
+      -# 地図表示
+      .food_map
+        #map
       - if user_signed_in?
         - if current_user.id == @food.user_id || current_user.admin?
           = link_to '編集する', edit_food_path(@food), class: 'btn btn-primary btn-lg edit-btn mb-10' 
           = link_to '投稿を削除する', food_path(@food),method: :delete, data: { confirm: '削除しますか？' },class: 'btn btn-danger btn-lg edit-btn mb-10'
-        
-          = form_with(model:[@food, @comment], remote: true) do |f|
-
-            = f.text_area :content, rows: 3,placeholder: "コメント欄",class:".comment-form base-textarea", id: "comment-input"
-            = f.hidden_field :food_id, value: @food.id
-            = f.submit 'コメントする',class:"btn btn-success"
-
-    
+        -# コメントフォーム
+        = form_with(model:[@food, @comment], remote: true) do |f|
+          = f.text_area :content, rows: 3,placeholder: "コメント欄",class:".comment-form base-textarea", id: "comment-input"
+          = f.hidden_field :food_id, value: @food.id
+          = f.submit 'コメントする',class:"btn btn-success"
+      
+    -# コメントリスト
     %div{:id => "comment-list"}
       = render partial: 'comments/index', locals: { comments: @comments }
+=render 'show_map', food: @food
+
+
+
+
