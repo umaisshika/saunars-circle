@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
     @food = Food.find(params[:food_id])
     @comment = current_user.comments.new(comment_params)
     if @comment.save
+      @food.create_notification_comment!(current_user, @comment.id)
       render :index
     else
       flash[:alert] = 'コメントに失敗しました'
