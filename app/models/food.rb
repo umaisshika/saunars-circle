@@ -42,5 +42,4 @@ class Food < ApplicationRecord
     notification.checked = true if notification.visitor_id == notification.visited_id
     notification.save if notification.valid?
   end
-
 end
