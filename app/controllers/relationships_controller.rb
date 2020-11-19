@@ -7,6 +7,7 @@ class RelationshipsController < ApplicationController
     @followers = @user.followers.page(params[:page])
                       .per(PER)
                       .order(created_at: :desc)
+    @user.create_notification_follow!(current_user)
   end
 
   def destroy
