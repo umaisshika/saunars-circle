@@ -41,7 +41,7 @@ Style/Documentation:
 Style/EmptyElse:
   EnforcedStyle: empty
 
-Style/ExtraSpacing:
+Layout/ExtraSpacing:
   Exclude:
     - "db/migrate/*.rb"
 
