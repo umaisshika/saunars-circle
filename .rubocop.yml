@@ -41,10 +41,6 @@ Style/Documentation:
 Style/EmptyElse:
   EnforcedStyle: empty
 
-Layout/ExtraSpacing:
-  Exclude:
-    - "db/migrate/*.rb"
-
 Style/EmptyMethod:
   Exclude:
     - 'app/controllers/home_controller.rb'
