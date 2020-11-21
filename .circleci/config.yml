@@ -2,19 +2,19 @@ version: 2.1
 jobs:
   build:
     docker:
-    - image: circleci/ruby:2.5.1-node-browsers
-      environment:
-        - RAILS_ENV: test
-        - RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
-        - MYSQL_HOST: db
-        - MYSQL_USERNAME: root
-        - MYSQL_PASSWORD: 
-        - MYSQL_PORT: 4306
-      - image: circleci/mysql:5.6.47
-        # command: mysqld --default-authentication-plugin=mysql_native_password
+      - image: circleci/ruby:2.5.1-node-browsers
         environment:
-          - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-          - MYSQL_HOST: '%'
+          - RAILS_ENV: test
+          - RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+          - MYSQL_HOST: db
+          - MYSQL_USERNAME: root
+          - MYSQL_PASSWORD: 
+          - MYSQL_PORT: 4306
+        - image: circleci/mysql:5.6.47
+          # command: mysqld --default-authentication-plugin=mysql_native_password
+          environment:
+            - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+            - MYSQL_HOST: '%'
 
     working_directory: ~/repo
 
