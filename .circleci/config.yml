@@ -2,27 +2,22 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.5.1-node-browsers
-        environment:
-          - RAILS_ENV: test
-          - RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
-          - MYSQL_HOST: db
-          - MYSQL_USERNAME: root
-          - MYSQL_PASSWORD: 
-          - MYSQL_PORT: 4306
-      - image: circleci/mysql:5.6.47
-        environment:
-          - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-          - MYSQL_HOST: '%'
+        - image: circleci/ruby:2.5.1-node-browsers
+          environment:
+            - RAILS_ENV: test
+        - image: circleci/mysql:5.6.47
+          environment:
+            - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+            - MYSQL_HOST: '%'
 
     working_directory: ~/repo
 
     steps:
       - checkout # CI環境上の working_directory の値の場所にGitリポジトリをコピーする
       - restore_cache:
-        keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          - v1-dependencies-
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
       
       - run: gem install bundler -v 1.16.6
       - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
