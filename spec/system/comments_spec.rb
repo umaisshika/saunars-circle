@@ -11,6 +11,7 @@ RSpec.describe 'コメント機能', type: :system do
       visit food_path(food.id)
       fill_in 'コメント欄', with: 'テストコメント'
       click_button 'コメントする'
+      sleep 1
       expect(page).to have_content('テストコメント')
       expect(Comment.count).to eq 2
     end
