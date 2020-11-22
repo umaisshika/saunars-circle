@@ -16,6 +16,7 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'spec/**/*'
+    - 'vendor/**/*'
   DisplayCopNames: true
 
 
@@ -40,10 +41,6 @@ Style/Documentation:
 
 Style/EmptyElse:
   EnforcedStyle: empty
-
-Style/ExtraSpacing:
-  Exclude:
-    - "db/migrate/*.rb"
 
 Style/EmptyMethod:
   Exclude:
