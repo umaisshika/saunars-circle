@@ -10,8 +10,9 @@
 body {
   background: #f2f2f2;
 }
+
 footer {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 h1,h2 {
@@ -27,10 +28,7 @@ ul{
   padding-inline-start: 0;
   justify-content: center;
 }
-li{
-  align-items: center;
-  display: block;
-}
+
 
 a {
   color: #333;
@@ -114,62 +112,19 @@ a {
 
 /*footer*/
 
-#footer {
-  // padding: 2em 0;
+.footer {
+  padding: 2em 0;
   background: #323a45;
   color: #878c93;
   bottom: 0;
   margin-bottom: 0;
   font-weight: 300;
   text-align: center;
-  width: 100vw;
 }
 
-#footer .footer-content {
+.footer-content {
   justify-content: center;
   position: relative;
-  z-index: 9;
-}
-
-#footer .container .row > div {
-  margin-bottom: 30px;
-}
-
-#footer p {
-  display: block;
-}
-
-#footer .fh5co-copyright small {
-  font-size: 12px;
-}
-
-#footer .lead {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  color: #fff;
-  margin-bottom: 20px;
-}
-
-#footer a {
-  color: #9a9fa5;
-  padding: 5px, 15px;
-  &:hover, &:active, &:focus {
-    color: #4fd2c2;
-
-  }
-}
-
-#footer ul {
-  padding: 0;
-  margin: 0;
-
-  li {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 14px 0;
-    line-height: 16px;
-  }
 }
 
 .pt-20{
