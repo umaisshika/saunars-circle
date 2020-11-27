@@ -25,9 +25,12 @@ h3,h4 {
 ul{
   list-style: none;
   padding-inline-start: 0;
+  justify-content: center;
 }
-
-
+li{
+  align-items: center;
+  display: block;
+}
 
 a {
   color: #333;
@@ -67,9 +70,12 @@ a {
 // navbar
 .navbar {
   background-color: white;
+  height: 70px;
+  align-items: center;
+  padding: 0.5rem 1rem;
 }
 .navbar-header img {
-  height: 60px;
+  height: 70px;
 }
 
 /* cover */
@@ -109,7 +115,7 @@ a {
 /*footer*/
 
 #footer {
-  padding: 2em 0;
+  // padding: 2em 0;
   background: #323a45;
   color: #878c93;
   bottom: 0;
@@ -277,4 +283,10 @@ a {
 
 .search-select {
   height: 1.8em;
+}
+
+.vertical-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
