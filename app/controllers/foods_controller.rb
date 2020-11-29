@@ -61,6 +61,10 @@ class FoodsController < ApplicationController
 
   private
 
+  def food_params
+    params.require(:food).permit(:name, :visited_sauna, :prefecture_id, :description, :image)
+  end
+
   def correct_user
     redirect_to(root_url) unless (@food.user_id == current_user.id) || current_user.admin?
   end
