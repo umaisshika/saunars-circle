@@ -47,7 +47,7 @@ class User < ApplicationRecord
   end
 
   def feed
-    following_ids = "SELECT follow_id FROM relationships 
+    following_ids = "SELECT follow_id FROM relationships
                       WHERE user_id = :user_id"
     Food.where("user_id IN (#{following_ids})
         OR user_id = :user_id", user_id: id)

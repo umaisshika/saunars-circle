@@ -54,9 +54,9 @@ class FoodsController < ApplicationController
   def following_foods
     @q_following = current_user.feed.ransack(params[:q])
     @foods = @q_following.result(distinct: true)
-                        .page(params[:page])
-                        .per(PER)
-                        .order(created_at: :desc)
+                         .page(params[:page])
+                         .per(PER)
+                         .order(created_at: :desc)
   end
 
   private
