@@ -2,5 +2,8 @@
   -# ユーザープロフィール
   = render 'users/profile', user: @user
   
-  %h2 お気に入り一覧
-  = render 'users/users', users: @followings
+  - if @followinngs.present?
+    %h2 お気に入り一覧
+    = render 'users/users', users: @followings
+  - else
+    %h2 まだ誰もお気に入りしてません

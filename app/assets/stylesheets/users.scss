@@ -1,11 +1,13 @@
-.mypage-wrapper{
-  padding: 80px 80px 0;
+.mypage{
   background-color: #FFF;
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
-  margin-bottom: 30px;
+  width: 100%;
   border-radius: 12px;
+}
+.mypage-wrapper{
+  padding: 40px 40px 0;
+  margin-bottom: 10px;
 }
 
 .mypage-header{
@@ -39,15 +41,16 @@
 }
 
 .mypage-content{
-  padding: 10px;
+  padding: 0 10px;
   &__lists{
     display: flex;
     overflow-x: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     &__list{
-      width: 120px;
+      width: 150px;
       font-size: 15px;
+      padding: 18px 10px;
     }
   }
 }

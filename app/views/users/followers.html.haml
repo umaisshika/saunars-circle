@@ -2,6 +2,9 @@
   -# ユーザープロフィール
   = render 'users/profile', user: @user
   
-  %h2 お気に入られ一覧
-  %div{:id => "follower_list"}
-    = render 'users/users', users: @followers
+  - if @followers.present?
+    %h2 お気に入られ一覧
+    %div{:id => "follower_list"}
+      = render 'users/users', users: @followers
+  - else
+    %h2 まだお気に入られされてません
