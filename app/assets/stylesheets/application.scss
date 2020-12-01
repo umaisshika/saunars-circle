@@ -76,6 +76,14 @@ a {
   height: 70px;
 }
 
+.navbar-collapse{
+  background-color: white;
+}
+
+.features{
+  height: calc(100vh - 450px);
+}
+
 /* cover */
 .cover {
   margin-top: -20px;

@@ -10,14 +10,16 @@
       %img{:alt => "header-logo", :src => "/images/Samesy-logo.png"}/
   #bs-example-navbar-collapse-1.collapse.navbar-collapse
     %ul.nav.navbar-nav.navbar-right.mr-10.vertical-center
-      %li
+      %li.text-center
         = link_to foods_path do
           %span.glyphicon.glyphicon-cutlery{"aria-hidden" => "true"}
-          投稿一覧
-      %li
+          .nav-value
+            投稿一覧
+      %li.text-center
         = link_to users_path do
           %span.glyphicon.glyphicon-user{"aria-hidden" => "true"}
-          ユーザー一覧
+          .nav-value
+            ユーザー一覧
       - if user_signed_in?
         %li
           = link_to notifications_path do
