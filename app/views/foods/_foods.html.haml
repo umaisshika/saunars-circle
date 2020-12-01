@@ -25,4 +25,5 @@
     .text-center
       = paginate foods
 - else
-  %h2 まだ投稿がありません
+  %h2
+    = @nil_message

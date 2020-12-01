@@ -3,8 +3,5 @@
   = render 'users/profile', user: @user
 
   /投稿一覧
-  -if @foods.present?
-    %h2 #{@user.name}の投稿
-    = render 'foods/foods', foods: @foods
-  - else
-    %h2 まだ投稿がありません
+  %h2 #{@user.name}の投稿
+  = render 'foods/foods', foods: @foods

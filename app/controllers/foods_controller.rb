@@ -9,6 +9,7 @@ class FoodsController < ApplicationController
                .page(params[:page])
                .per(PER)
                .order(created_at: :desc)
+    @nil_message = 'まだ投稿がありません'
   end
 
   def new
@@ -57,6 +58,7 @@ class FoodsController < ApplicationController
                          .page(params[:page])
                          .per(PER)
                          .order(created_at: :desc)
+    @nil_message = 'まだ投稿がありません'
   end
 
   private

@@ -3,8 +3,6 @@
   = render 'users/profile', user: @user
 
   -# 投稿一覧
-  -if @foods.present?
-    %h2 いいねした投稿
-    = render 'foods/foods', foods: @foods
-  - else
-    %h2 まだいいねした投稿がありません
+  %h2 いいねした投稿
+  = render 'foods/foods', foods: @foods
+
