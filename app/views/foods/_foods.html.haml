@@ -6,11 +6,7 @@
           .cards
             = link_to food_path(food) ,"data-turbolinks": false do
               = image_tag food.image.url, size: "300x300", class: "img-rounded food-img"
-            .cards__upper.ml-10.text-left
-              = image_tag food.user.avatar.url, size: "30x30", class: "img-circle"
-              = food.user.name
-              = food.created_at.strftime("%Y/%m/%d %H:%M")
-            .cards__under.ml-10
+            .cards__under.ml-10.mt-10
               - if user_signed_in? && current_user.already_liked?(food)
                 .ml-10.text-left.mb-10
                   %label.fas.fa-heart.liked-btn
@@ -22,6 +18,15 @@
               %i.far.fa-comment.comment-btn.ml-10
               .ml-5
                 = food.comments.count
+            .cards__upper.ml-10
+              = food.name
+            .cards__upper.ml-10
+              = food.visited_sauna
+            .cards__upper.ml-10.text-left
+              = image_tag food.user.avatar.url, size: "30x30", class: "img-circle"
+              = food.user.name
+              = food.created_at.strftime("%Y/%m/%d %H:%M")
+            
     .text-center
       = paginate foods
 - else

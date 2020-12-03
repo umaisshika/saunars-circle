@@ -2,5 +2,6 @@
   .cover-inner
     .cover-contents
       %h1 サウナ飯を楽しもう
-      = link_to 'はじめる', root_path, class: 'btn btn-success btn-lg cover-button'
-.features
+      = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary btn-lg cover-button'
+      = link_to 'ログイン', new_user_session_path, class: 'btn btn-success btn-lg cover-button'
+      = link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'btn btn-warning btn-lg cover-button'

@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "home";
 @import "users";
 @import "foods";
 @import "comments";
@@ -68,7 +69,6 @@ a {
 // navbar
 .navbar {
   background-color: white;
-  height: 70px;
   align-items: center;
   padding: 0.5rem 1rem;
 }
@@ -78,43 +78,6 @@ a {
 
 .navbar-collapse{
   background-color: white;
-}
-
-.features{
-  height: calc(100vh - 450px);
-}
-
-/* cover */
-.cover {
-  margin-top: -20px;
-  width: 100%;
-  background: url("/images/TOP.png") center center no-repeat;
-  background-size: cover;
-  .cover-inner {
-    height: 100%;
-    width: 100%;
-    margin: auto;
-    display: table;
-    .cover-contents {
-      display: table-cell;
-      vertical-align: middle;
-      text-align: center;
-      position: relative;
-      h1 {
-        margin: 0 0 20px 0;
-        padding: 3em 0;
-        color: white;
-        font-weight: bold;
-        letter-spacing: 0.15em;
-        font-size: 6vw;
-        text-shadow: black 1px 1px 0px, black -1px 1px 0px,
-      }      
-    }    
-  }
-}
-
-.cover-button {
-  margin-bottom: 20px;
 }
 
 /*footer*/
