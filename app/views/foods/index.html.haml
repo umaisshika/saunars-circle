@@ -9,12 +9,7 @@
       .cards-list__tab__item.ml-50
         .cards-list__tab__active
           = link_to 'みんなのサ飯', foods_path
-      - if user_signed_in?
-        .cards-list__tab__item
-          .cards-list__tab__inactive
-            = link_to 'お気に入りのサ飯', following_foods_path
-      - else
-        .cards-list__tab__item
-          .cards-list__tab__inactive
-            %span お気に入りの投稿
+      .cards-list__tab__item
+        .cards-list__tab__inactive
+          %span お気に入りの投稿
     = render 'foods', foods: @foods

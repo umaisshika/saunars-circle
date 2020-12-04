@@ -1,27 +1,19 @@
 .container
-  - if @foods.present?
-    .section-title.text-center
-      %h2 投稿一覧
-    /投稿ボタン
-    = render "new-btn"
-    -# 検索フォーム
-    = render 'foods/following_search_form'
-    
-    -# 投稿一覧
-    .cards-list
-      .cards-list__tab.flex-box
-        .cards-list__tab__item.ml-50
-          .cards-list__tab__inactive
-            = link_to 'みんなのサ飯', foods_path
-        - if user_signed_in?
-          .cards-list__tab__item
-            .cards-list__tab__active
-              = link_to 'お気に入りのサ飯', following_foods_path
-        - else
-          .cards-list__tab__item
-            .cards-list__tab__inactive
-              %span お気に入りの投稿
-    = render 'foods', foods: @foods
-  - else
-    %h2 まだ投稿がありません
+  .section-title.text-center
+    %h2 投稿一覧
+  /投稿ボタン
+  = render "new-btn"
+  -# 検索フォーム
+  = render 'foods/following_search_form'
+  
+  -# 投稿一覧
+  .cards-list
+    .cards-list__tab.flex-box
+      .cards-list__tab__item.ml-50
+        .cards-list__tab__inactive
+          = link_to 'みんなのサ飯', foods_path
+      .cards-list__tab__item
+        .cards-list__tab__active
+          = link_to 'お気に入りのサ飯', following_foods_path
+  = render 'foods', foods: @foods
     
