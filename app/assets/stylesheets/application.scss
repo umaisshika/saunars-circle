@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "home";
 @import "users";
 @import "foods";
 @import "comments";
@@ -10,8 +11,9 @@
 body {
   background: #f2f2f2;
 }
+
 footer {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 h1,h2 {
@@ -25,8 +27,8 @@ h3,h4 {
 ul{
   list-style: none;
   padding-inline-start: 0;
+  justify-content: center;
 }
-
 
 
 a {
@@ -67,48 +69,20 @@ a {
 // navbar
 .navbar {
   background-color: white;
+  align-items: center;
+  padding: 0.5rem 1rem;
 }
 .navbar-header img {
-  height: 50px;
+  height: 70px;
 }
 
-/* cover */
-.cover {
-  margin-top: -20px;
-  margin-bottom: 20px;
-  width: 100%;
-  height: auto;
-  background: url("/images/top-background.jpg") center center no-repeat;
-  background-size: cover;
-  .cover-inner {
-    height: 100%;
-    margin: auto;
-    display: table;
-    .cover-contents {
-      display: table-cell;
-      vertical-align: middle;
-      text-align: center;
-      position: relative;
-      h1 {
-        margin: 0 0 20px 0;
-        padding: 3em 0;
-        color: white;
-        font-weight: bold;
-        letter-spacing: 0.15em;
-        font-size: 6vw;
-        text-shadow: black 1px 1px 0px, black -1px 1px 0px,
-      }      
-    }    
-  }
-}
-
-.cover-button {
-  margin-bottom: 20px;
+.navbar-collapse{
+  background-color: white;
 }
 
 /*footer*/
 
-#footer {
+.footer {
   padding: 2em 0;
   background: #323a45;
   color: #878c93;
@@ -116,54 +90,11 @@ a {
   margin-bottom: 0;
   font-weight: 300;
   text-align: center;
-  width: 100vw;
 }
 
-#footer .footer-content {
+.footer-content {
   justify-content: center;
   position: relative;
-  z-index: 9;
-}
-
-#footer .container .row > div {
-  margin-bottom: 30px;
-}
-
-#footer p {
-  display: block;
-}
-
-#footer .fh5co-copyright small {
-  font-size: 12px;
-}
-
-#footer .lead {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  color: #fff;
-  margin-bottom: 20px;
-}
-
-#footer a {
-  color: #9a9fa5;
-  padding: 5px, 15px;
-  &:hover, &:active, &:focus {
-    color: #4fd2c2;
-
-  }
-}
-
-#footer ul {
-  padding: 0;
-  margin: 0;
-
-  li {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 14px 0;
-    line-height: 16px;
-  }
 }
 
 .pt-20{
@@ -178,6 +109,11 @@ a {
 .ml-20{
   margin-left: 20px;
 }
+
+.ml-50{
+  margin-left: 50px;
+}
+
 .mt-10{
   margin-top: 10px;
 }
@@ -277,4 +213,10 @@ a {
 
 .search-select {
   height: 1.8em;
+}
+
+.vertical-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

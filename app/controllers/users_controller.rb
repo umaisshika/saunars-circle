@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @users = User.page(params[:page])
                  .per(PER)
                  .order(created_at: :desc)
+    @nil_message = 'まだ登録者がいません'
   end
 
   def show
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
                  .per(PER)
                  .order(created_at: :desc)
     @food = @user.foods.build
+    @nil_message = 'まだ投稿がありません'
   end
 
   def destroy
@@ -26,18 +28,21 @@ class UsersController < ApplicationController
     @followings = @user.followings.page(params[:page])
                        .per(PER)
                        .order(created_at: :desc)
+    @nil_message = 'まだお気に入りしていません'
   end
 
   def followers
     @followers = @user.followers.page(params[:page])
                       .per(PER)
                       .order(created_at: :desc)
+    @nil_message = 'まだお気に入られされていません'
   end
 
   def like_foods
     @foods = @user.liked_foods.page(params[:page])
                   .per(PER)
                   .order(created_at: :desc)
+    @nil_message = 'まだいいねした投稿がありません'
   end
 
   private

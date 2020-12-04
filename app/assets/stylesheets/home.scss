@@ -1,3 +1,36 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* cover */
+.cover {
+  margin-top: -20px;
+  width: 100%;
+  background: url("/images/TOP.png") center center no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: calc(100vh - 100px);
+  width: 100%;
+  position: relative;
+  .cover-inner {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    display: table;
+    .cover-contents {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      position: relative;
+      h1 {
+        margin: 0 0 20px 0;
+        padding: 3em 0;
+        color: white;
+        font-weight: bold;
+        letter-spacing: 0.15em;
+        font-size: 6vw;
+        text-shadow: black 1px 1px 0px, black -1px 1px 0px,
+      }      
+    }    
+  }
+}
+
+.cover-button {
+  margin-bottom: 20px;
+}
