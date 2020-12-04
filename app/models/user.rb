@@ -46,6 +46,13 @@ class User < ApplicationRecord
     followings.include?(other_user)
   end
 
+  def feed
+    following_ids = "SELECT follow_id FROM relationships
+                      WHERE user_id = :user_id"
+    Food.where("user_id IN (#{following_ids})
+        OR user_id = :user_id", user_id: id)
+  end
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64

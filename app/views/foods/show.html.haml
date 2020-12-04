@@ -1,12 +1,13 @@
 .container
   .section-title.text-center
-    %h2 サ飯詳細
+    %h2 投稿詳細
     %br
     .food-detail.center-block
       .food-detail__user-info.text-left
-        = image_tag @food.user.avatar.url, size: "30x30", class: "img-circle"
-        = @food.user.name
-        = @food.created_at.strftime("%Y/%m/%d %H:%M")
+        = link_to user_path(@food.user) do
+          = image_tag @food.user.avatar.url, size: "40x40", class: "img-circle"
+          = @food.user.name
+          = @food.created_at.strftime("%Y/%m/%d %H:%M")
       .food-detail__food-img
         = image_tag @food.image.url, size: "400x400", class: "img-rounded food-img"
       %ul.food-detail__lists.text-left
@@ -24,6 +25,7 @@
           %span.food-detail__lists__list__key
             エリア:
           %span.food-detail__lists__list__value
+            = @food.prefecture.name
         %li.food-detail__lists__list
           %span.food-detail__lists__list__key
             ひと言:
@@ -45,10 +47,10 @@
           = link_to '編集する', edit_food_path(@food), class: 'btn btn-primary btn-lg edit-btn mb-10' 
           = link_to '投稿を削除する', food_path(@food),method: :delete, data: { confirm: '削除しますか？' },class: 'btn btn-danger btn-lg edit-btn mb-10'
         -# コメントフォーム
-        = form_with(model:[@food, @comment], remote: true) do |f|
-          = f.text_area :content, rows: 3,placeholder: "コメント欄",class:".comment-form base-textarea", id: "comment-input"
+        = form_with(model:[@food, @comment], class: 'comment-form',remote: true) do |f|
+          = f.text_area :content, rows: 3,placeholder: "コメント欄",class:"comment-box base-textarea", id: "comment-input"
           = f.hidden_field :food_id, value: @food.id
-          = f.submit 'コメントする',class:"btn btn-success"
+          = f.submit 'コメントする',class:"btn btn-success btn-lg edit-btn"
       
     -# コメントリスト
     %div{:id => "comment-list"}

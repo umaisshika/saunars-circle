@@ -1,27 +1,26 @@
-.cover
-  .cover-inner
-    .cover-contents
-      %h1 みんなでサウナを楽しもう
-      = link_to 'はじめる', root_path, class: 'btn btn-success btn-lg cover-button'
-.features
+- unless user_signed_in?
+  .cover
+    .cover-inner
+      .cover-contents
+        %h1 サウナ飯を楽しもう
+        = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary btn-lg cover-button'
+        = link_to 'ログイン', new_user_session_path, class: 'btn btn-success btn-lg cover-button'
+        = link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'btn btn-warning btn-lg cover-button'
+- else
   .container
     .section-title.text-center
-      %h1.title サウナ部とは
-      %h4.title サウナの楽しいを共有したり、サウナー同士が交流するためのサービスです。
-      %br
-    .row
-      .col-md-4.col-sm-6.feature.text-center
-        %span.glyphicon.glyphicon-cutlery{"aria-hidden" => "true", :style => "font-size: 40px"}
-        %h3.feature-title サ飯
-        %p サウナ飯の写真を投稿しよう
-        = link_to 'サ飯を見る', foods_path, class: 'btn btn-primary btn-sm cover-button'
-      .col-md-4.col-sm-6.feature.text-center
-        %span.glyphicon.glyphicon-user{"aria-hidden" => "true", :style => "font-size: 40px"}
-        %h3.feature-title サ友
-        %p サウナ友達を探そう
-        = link_to 'サ友を見る', users_path, class: 'btn btn-primary btn-sm cover-button'
-      .col-md-4.col-sm-6.feature.text-center
-        %span.glyphicon.glyphicon-glass{"aria-hidden" => "true", :style => "font-size: 40px"}
-        %h3.feature-title サ会
-        %p サウナイベントやサウナ飲み会を開こう
-        = link_to 'サ会を見る', root_path, class: 'btn btn-primary btn-sm cover-button' 
+      %h2 投稿一覧
+    /投稿ボタン
+    = render "foods/new-btn"
+    -# 検索フォーム
+    = render 'foods/search_form', q: @q
+    -# 投稿一覧
+    .cards-list
+      .cards-list__tab.flex-box
+        .cards-list__tab__item.ml-50
+          .cards-list__tab__active
+            = link_to 'みんなのサ飯', foods_path
+        .cards-list__tab__item
+          .cards-list__tab__inactive
+            = link_to 'お気に入りのサ飯', following_foods_path
+      = render 'foods/foods', foods: @foods

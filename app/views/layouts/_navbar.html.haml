@@ -1,5 +1,4 @@
 %nav.navbar.navbar-default.navbar-static-top
-
   .navbar-header
     %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
       %span.sr-only Toggle navigation
@@ -7,21 +6,20 @@
       %span.icon-bar
       %span.icon-bar
     %a.navbar-left{:href => "/"}
-      %img{:alt => "header-logo", :src => "/images/logo.png"}/
+      %img{:alt => "header-logo", :src => "/images/Samesy-logo.png"}/
   #bs-example-navbar-collapse-1.collapse.navbar-collapse
-    %ul.nav.navbar-nav.navbar-right.mr-10
-      %li
-        = link_to foods_path do
-          %span.glyphicon.glyphicon-cutlery{"aria-hidden" => "true"}
-          サ飯
-      %li
+    %ul.nav.navbar-nav.navbar-right.mr-10.vertical-center
+      - unless user_signed_in?
+        %li.text-center
+          = link_to foods_path do
+            %span.glyphicon.glyphicon-cutlery{"aria-hidden" => "true"}
+            .nav-value
+              投稿一覧
+      %li.text-center
         = link_to users_path do
           %span.glyphicon.glyphicon-user{"aria-hidden" => "true"}
-          サ友
-      %li
-        = link_to root_path do
-          %span.glyphicon.glyphicon-glass{"aria-hidden" => "true"}
-          サ会
+          .nav-value
+            ユーザー一覧
       - if user_signed_in?
         %li
           = link_to notifications_path do
@@ -34,7 +32,8 @@
         %li
           = link_to "ログアウト", destroy_user_session_path, method: :delete
         %li
-          = link_to "マイページ", user_path(current_user.id)
+          = link_to user_path(current_user.id) do
+            = image_tag current_user.avatar.url, size: "40x40", class: "img-circle"
       - else
         %li
           = link_to 'ログイン', new_user_session_path
