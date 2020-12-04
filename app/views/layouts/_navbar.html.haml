@@ -9,11 +9,12 @@
       %img{:alt => "header-logo", :src => "/images/Samesy-logo.png"}/
   #bs-example-navbar-collapse-1.collapse.navbar-collapse
     %ul.nav.navbar-nav.navbar-right.mr-10.vertical-center
-      %li.text-center
-        = link_to foods_path do
-          %span.glyphicon.glyphicon-cutlery{"aria-hidden" => "true"}
-          .nav-value
-            投稿一覧
+      - unless user_signed_in?
+        %li.text-center
+          = link_to foods_path do
+            %span.glyphicon.glyphicon-cutlery{"aria-hidden" => "true"}
+            .nav-value
+              投稿一覧
       %li.text-center
         = link_to users_path do
           %span.glyphicon.glyphicon-user{"aria-hidden" => "true"}
