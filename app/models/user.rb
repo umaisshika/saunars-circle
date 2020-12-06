@@ -9,7 +9,11 @@ class User < ApplicationRecord
   before_save { self.email = email.downcase }
 
   validates :name, presence: true, length: { maximum: 15 }
-
+  validates :email, presence: true, length: { maximum: 255 },
+            uniqueness: { case_sensitive: false } 
+  validates :description, length: { maximum: 240 }
+  # validates :avatar_size
+  
   mount_uploader :avatar, AvatarUploader
 
   enum gender: { 男性: 0, 女性: 1, 無回答: 2 }
@@ -67,4 +71,11 @@ class User < ApplicationRecord
     )
     notification.save if notification.valid?
   end
+
+  # private
+  # def avatar_size
+  #   if avatar.size > 5.megabytes
+  #     errors.add(:avatar, "画像は5MBより小さくしてください。")
+  #   end
+  # end
 end
