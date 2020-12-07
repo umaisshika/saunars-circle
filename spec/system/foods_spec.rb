@@ -4,7 +4,7 @@ RSpec.describe '投稿機能', type: :system do
   let!(:user) { FactoryBot.create :user }
   let!(:other_user) { FactoryBot.create :user }
   let!(:test_food) { create(:food, user_id: user.id) }
-  
+
   describe '投稿の新規作成' do
     before do
       login user
@@ -39,7 +39,6 @@ RSpec.describe '投稿機能', type: :system do
         expect(page).to have_content('ゲストユーザーでログイン')
       end
     end
-
   end
 
   describe '投稿の編集' do
@@ -73,7 +72,6 @@ RSpec.describe '投稿機能', type: :system do
   end
 
   describe '投稿の削除', js: true do
-
     context '投稿を削除できる' do
       it '成功のメッセージが表示されること' do
         login user

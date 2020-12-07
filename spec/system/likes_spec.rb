@@ -9,7 +9,7 @@ RSpec.describe 'いいね機能', type: :system do
       login user
       visit food_path(food.id)
     end
-    it '投稿をいいねして解除できる' , js: true do
+    it '投稿をいいねして解除できる', js: true do
       find('.like-btn').click
       expect(page).to have_selector '.liked-btn'
       expect(food.likes.count).to eq(1)

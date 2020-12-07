@@ -5,7 +5,7 @@ RSpec.describe 'ユーザーフォロー機能', type: :system do
   let!(:other_user) { FactoryBot.create(:user, name: 'その他ユーザー') }
 
   describe '他のユーザーをフォローしていない場合' do
-    it 'フォローできること' , js: true do
+    it 'フォローできること', js: true do
       login user
       visit user_path(other_user)
       expect(other_user.followers.count).to eq(0)
@@ -15,7 +15,7 @@ RSpec.describe 'ユーザーフォロー機能', type: :system do
       expect(other_user.followers.count).to eq(1)
     end
 
-    it 'フォロワー一覧を表示してる状態でフォロワーが追加されること' , js: true do
+    it 'フォロワー一覧を表示してる状態でフォロワーが追加されること', js: true do
       login user
       visit followers_user_path(other_user)
       click_on 'お気に入り'
@@ -25,7 +25,7 @@ RSpec.describe 'ユーザーフォロー機能', type: :system do
   end
 
   describe '他のユーザーをフォローしている場合' do
-    let!(:relationship) {FactoryBot.create(:relationship, user_id: user.id, follow_id: other_user.id)}
+    let!(:relationship) { FactoryBot.create(:relationship, user_id: user.id, follow_id: other_user.id) }
 
     it 'ユーザーのフォロー状況が表示されていること' do
       visit followings_user_path(user)
@@ -37,7 +37,7 @@ RSpec.describe 'ユーザーフォロー機能', type: :system do
       expect(page).to have_content user.name
     end
 
-    it 'フォロー解除できること' , js: true do
+    it 'フォロー解除できること', js: true do
       login user
       visit user_path(other_user)
       expect(other_user.followers.count).to eq(1)
@@ -46,7 +46,7 @@ RSpec.describe 'ユーザーフォロー機能', type: :system do
       expect(other_user.followers.count).to eq(0)
     end
 
-    it 'フォロワー一覧を表示してる状態でフォロワーが削除されること' , js: true do
+    it 'フォロワー一覧を表示してる状態でフォロワーが削除されること', js: true do
       login user
       visit followers_user_path(other_user)
       expect(page).to have_content user.name

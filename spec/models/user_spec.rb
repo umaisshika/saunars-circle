@@ -95,17 +95,17 @@ RSpec.describe 'User', type: :model do
       expect(user.errors).to be_added(:description, :too_long, count: 240)
     end
 
-    it "画像なしの場合、デフォルト画像が設定されること" do
+    it '画像なしの場合、デフォルト画像が設定されること' do
       user.avatar = nil
-      expect(user.avatar.url).to eq "default_prof.png"
+      expect(user.avatar.url).to eq 'default_prof.png'
     end
 
-    it "5MB以下の画像はアップロードできること" do
+    it '5MB以下の画像はアップロードできること' do
       user.avatar = File.open('spec/factories/images/test.jpg')
       expect(user).to be_valid
     end
 
-    it "5MBを超える画像はアップロードできないこと" do
+    it '5MBを超える画像はアップロードできないこと' do
       user.avatar = File.open('spec/factories/images/5M_test.png')
       user.valid?
       expect(user.errors[:avatar]).to include 'を5MB以下のサイズにしてください'
@@ -113,28 +113,21 @@ RSpec.describe 'User', type: :model do
   end
 
   describe '関連性' do
-    it "ユーザーが削除されるとユーザーの投稿も削除されること" do
+    it 'ユーザーが削除されるとユーザーの投稿も削除されること' do
       food = create(:food, user: user)
       expect(user.foods.count).to eq 1
       user.destroy
       expect(user.foods.count).to eq 0
     end
 
-    it'ユーザーが他のユーザーをフォロー、フォロー解除可能である' do
-      user.follow(other_user)
-      expect(user.following?(other_user)).to eq true
-      user.unfollow(other_user)
-      expect(user.following?(other_user)).to eq false
-    end
-
-    it "ユーザーが削除されると、紐づくフォローも全て削除されること" do
+    it 'ユーザーが削除されると、紐づくフォローも全て削除されること' do
       user.follow(other_user)
       expect(user.followings.count).to eq 1
       user.destroy
       expect(user.followings.count).to eq 0
     end
 
-    it "ユーザーが削除されると、紐づくフォロワーも全て削除されること" do
+    it 'ユーザーが削除されると、紐づくフォロワーも全て削除されること' do
       other_user.follow(user)
       expect(user.followers.count).to eq 1
       user.destroy
@@ -155,6 +148,56 @@ RSpec.describe 'User', type: :model do
       expect(user.likes.count).to eq 1
       user.destroy
       expect(user.likes.count).to eq 0
+    end
+
+    it 'フォロー後にユーザーを削除すると関連する通知も削除されること' do
+      user.create_notification_follow!(other_user)
+      expect(user.passive_notifications.count).to eq 1
+      user.destroy
+      expect(user.passive_notifications.count).to eq 0
+    end
+
+    it 'フォローされた後にユーザーを削除すると関連する通知も削除されること' do
+      other_user.create_notification_follow!(user)
+      expect(user.active_notifications.count).to eq 1
+      user.destroy
+      expect(user.active_notifications.count).to eq 0
+    end
+  end
+
+  describe 'フォロー' do
+    it 'ユーザーが他のユーザーをフォロー、フォロー解除可能である' do
+      user.follow(other_user)
+      expect(user.following?(other_user)).to eq true
+      user.unfollow(other_user)
+      expect(user.following?(other_user)).to eq false
+    end
+
+    it 'フォローしているユーザーの投稿はお気に入りの投稿に表示されること' do
+      food = create(:food, user: other_user)
+      user.follow(other_user)
+      other_user.foods.each do |food_following|
+        expect(user.feed).to include(food_following)
+      end
+    end
+
+    it 'フォローしていないユーザーの投稿はフィードに表示されないこと' do
+      food = create(:food, user: other_user)
+      expect(user.following?(other_user)).to eq false
+      other_user.foods.each do |food_following|
+        expect(user.feed).not_to include(food_following)
+      end
+    end
+  end
+
+  describe '通知' do
+    it '初回フォローで通知が作成されること' do
+      expect { user.create_notification_follow!(other_user) }.to change(user.passive_notifications, :count).by(1)
+    end
+
+    it '過去にフォローしたことがある場合、通知は作成されないこと' do
+      user.create_notification_follow!(other_user)
+      expect { user.create_notification_follow!(other_user) }.to change(user.passive_notifications, :count).by(0)
     end
   end
 end

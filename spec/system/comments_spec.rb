@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe 'コメント機能', type: :system do
   let!(:user) { create(:user) }
   let!(:food) { create(:food, user: user) }
-  let!(:comment){create(:comment, food: food, user: user)}
-  
+  let!(:comment) { create(:comment, food: food, user: user) }
+
   describe 'コメントの新規作成' do
-    it 'コメントできること' , js: true do
+    it 'コメントできること', js: true do
       login user
       visit food_path(food.id)
       fill_in 'コメント欄', with: 'テストコメント'

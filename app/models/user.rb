@@ -63,6 +63,10 @@ class User < ApplicationRecord
   end
 
   def create_notification_follow!(current_user)
+    # 過去にフォローしたことがある場合は、nilを返す
+    already_follow = Notification.where(visitor_id: current_user.id, visited_id: id, action: 'follow')
+    return nil if already_follow.present?
+
     notification = current_user.active_notifications.new(
       visited_id: id,
       action: 'follow'

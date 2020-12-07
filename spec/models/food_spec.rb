@@ -6,7 +6,7 @@ RSpec.describe Food, type: :model do
       food = build(:food)
       expect(food).to be_valid
     end
-  
+
     it 'エリアがないためエラーになる' do
       food = build(:food, prefecture_id: nil)
       expect(food.valid?).to eq(false)
