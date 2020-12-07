@@ -10,23 +10,21 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 15 }
   validates :email, presence: true, length: { maximum: 255 },
-            uniqueness: { case_sensitive: false } 
+                    uniqueness: { case_sensitive: false }
   validates :description, length: { maximum: 240 }
-  # validates :avatar_size
-  
+
   mount_uploader :avatar, AvatarUploader
 
   enum gender: { 男性: 0, 女性: 1, 無回答: 2 }
 
   belongs_to_active_hash :prefecture
-  has_many :foods
-  has_many :comments, dependent: :destroy
   has_many :foods, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_foods, through: :likes, source: :food
-  has_many :relationships
+  has_many :relationships, class_name: 'Relationship',foreign_key: 'user_id',dependent: :destroy
   has_many :followings, through: :relationships, source: :follow
-  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id',dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :user
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
@@ -71,11 +69,4 @@ class User < ApplicationRecord
     )
     notification.save if notification.valid?
   end
-
-  # private
-  # def avatar_size
-  #   if avatar.size > 5.megabytes
-  #     errors.add(:avatar, "画像は5MBより小さくしてください。")
-  #   end
-  # end
 end

@@ -44,10 +44,9 @@ RSpec.describe 'User', type: :model do
     end
 
     it '重複したemailが存在する場合登録できないこと' do
-      user = create(:user)
-      another_user = build(:user, email: user.email)
-      another_user.valid?
-      expect(another_user.errors).to be_added(:email, :taken, value: user.email)
+      other_user.email = user.email
+      other_user.valid?
+      expect(other_user.errors).to be_added(:email, :taken, value: user.email)
     end
 
     it 'メールアドレスに@が含まれていないなら無効な状態であること' do
@@ -96,14 +95,66 @@ RSpec.describe 'User', type: :model do
       expect(user.errors).to be_added(:description, :too_long, count: 240)
     end
 
+    it "画像なしの場合、デフォルト画像が設定されること" do
+      user.avatar = nil
+      expect(user.avatar.url).to eq "default_prof.png"
+    end
+
+    it "5MB以下の画像はアップロードできること" do
+      user.avatar = File.open('spec/factories/images/test.jpg')
+      expect(user).to be_valid
+    end
+
+    it "5MBを超える画像はアップロードできないこと" do
+      user.avatar = File.open('spec/factories/images/5M_test.png')
+      user.valid?
+      expect(user.errors[:avatar]).to include 'を5MB以下のサイズにしてください'
+    end
   end
 
-  # describe '関連性' do
-  #   it "ユーザーが削除されるとユーザーの投稿も削除されること" do
-  #     food = create(:food, user: user)
-  #     expect(user.foods.count).to eq 1
-  #     user.destroy
-  #     expect(user.foods.count).to eq 0
-  #   end
-  # end
+  describe '関連性' do
+    it "ユーザーが削除されるとユーザーの投稿も削除されること" do
+      food = create(:food, user: user)
+      expect(user.foods.count).to eq 1
+      user.destroy
+      expect(user.foods.count).to eq 0
+    end
+
+    it'ユーザーが他のユーザーをフォロー、フォロー解除可能である' do
+      user.follow(other_user)
+      expect(user.following?(other_user)).to eq true
+      user.unfollow(other_user)
+      expect(user.following?(other_user)).to eq false
+    end
+
+    it "ユーザーが削除されると、紐づくフォローも全て削除されること" do
+      user.follow(other_user)
+      expect(user.followings.count).to eq 1
+      user.destroy
+      expect(user.followings.count).to eq 0
+    end
+
+    it "ユーザーが削除されると、紐づくフォロワーも全て削除されること" do
+      other_user.follow(user)
+      expect(user.followers.count).to eq 1
+      user.destroy
+      expect(user.followers.count).to eq 0
+    end
+
+    it 'ユーザーを削除すると関連する投稿のコメントも削除されること' do
+      food = create(:food, user: user)
+      comment = create(:comment, food: food, user: user)
+      expect(user.comments.count).to eq 1
+      user.destroy
+      expect(user.comments.count).to eq 0
+    end
+
+    it 'ユーザーを削除すると関連するイベントのLikeも削除されること' do
+      food = create(:food, user: user)
+      like = create(:like, user: user, food: food)
+      expect(user.likes.count).to eq 1
+      user.destroy
+      expect(user.likes.count).to eq 0
+    end
+  end
 end
