@@ -142,7 +142,7 @@ RSpec.describe 'User', type: :model do
       expect(user.comments.count).to eq 0
     end
 
-    it 'ユーザーを削除すると関連するイベントのLikeも削除されること' do
+    it 'ユーザーを削除すると関連する投稿のいいねも削除されること' do
       food = create(:food, user: user)
       like = create(:like, user: user, food: food)
       expect(user.likes.count).to eq 1

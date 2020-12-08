@@ -19,6 +19,6 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # ファイルサイズの制限
   def size_range
-    1..5.megabytes
+    0..5.megabytes
   end
 end
