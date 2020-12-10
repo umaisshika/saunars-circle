@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_user, only: [:show, :destroy, :followings, :followers, :like_foods]
   before_action :admin_user, only: :destroy
+
 
   def index
     @users = User.page(params[:page])
