@@ -67,15 +67,15 @@ RSpec.describe 'ユーザー登録', type: :system do
       visit user_path(user)
       expect {
         click_on '削除する'
-        page.accept_confirm "削除しますか？"
-        expect(page).to have_content "「一般ユーザー」は正常に削除されました"
+        page.accept_confirm '削除しますか？'
+        expect(page).to have_content '「一般ユーザー」は正常に削除されました'
       }.to change { User.count }.by(-1)
     end
 
     it '管理者権限のないユーザーはユーザーを削除リンクが表示されないこと' do
       login(user)
       visit user_path(user)
-      expect(page).not_to have_content "削除する"
+      expect(page).not_to have_content '削除する'
     end
   end
 end
