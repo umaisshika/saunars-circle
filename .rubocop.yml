@@ -7,7 +7,6 @@ AllCops:
     - 'lib/**'
     - 'db/**/*'
     - 'config/**/*'
-    - 'vendor/**/*'
   DisplayCopNames: true
 
 Layout/LineLength:
