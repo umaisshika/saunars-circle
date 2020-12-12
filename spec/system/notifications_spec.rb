@@ -51,12 +51,12 @@ RSpec.describe '通知機能', type: :system, js: true do
       logout
       login user
       expect {
-      visit notifications_path
+        visit notifications_path
         expect(page).to have_content('その他ユーザー')
         expect(page).to have_content('あなたの投稿')
         expect(page).to have_content('にコメントしました')
         expect(page).to have_content('テストコメント')
-    }.to change { user.passive_notifications.where(checked: true).count }.by(1)
+      }.to change { user.passive_notifications.where(checked: true).count }.by(1)
     end
 
     it '2回コメントしてコメントされたことが2回通知されること' do
