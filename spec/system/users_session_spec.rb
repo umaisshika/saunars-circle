@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'セッション管理', type: :system do
-  let!(:user) { FactoryBot.create :user }
+  let!(:user) { create(:user) }
 
   describe 'ログイン成功' do
     it 'ログインできること' do
