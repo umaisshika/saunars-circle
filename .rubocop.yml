@@ -1,12 +1,14 @@
 inherit_from: .rubocop_todo.yml
 
 AllCops:
+  TargetRubyVersion: 2.5.1
   Exclude:
     - 'config.ru'
     - 'bin/**'
     - 'lib/**'
     - 'db/**/*'
     - 'config/**/*'
+    - 'vendor/**/*'
   DisplayCopNames: true
 
 Layout/LineLength:
