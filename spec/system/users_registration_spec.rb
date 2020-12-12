@@ -14,15 +14,11 @@ RSpec.describe 'ユーザー登録', type: :system do
       fill_in 'user[password_confirmation]', with: 'password123'
       click_button '登録する'
     end
-    it '登録成功メッセージが表示されるできること' do
+
+    it '登録成功メッセージが表示されること' do
       expect(page).to have_content 'アカウント登録が完了しました'
     end
-    it 'ログアウトボタンが表示されるできること' do
-      expect(page).to have_content 'ログアウト'
-    end
-    it 'ログアウトボタンが表示されるできること' do
-      expect(page).to have_content 'ログアウト'
-    end
+
     it '登録したユーザーが表示されること' do
       visit users_path
       expect(page).to have_content 'テストユーザー'
