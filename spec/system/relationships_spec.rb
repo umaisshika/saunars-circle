@@ -18,7 +18,7 @@ RSpec.describe 'ユーザーフォロー機能', type: :system do
       login user
       visit followers_user_path(other_user)
       expect {
-      click_on 'お気に入り'
+        click_on 'お気に入り'
         expect(page).to have_button 'お気に入り済み'
         expect(page).to have_content user.name
       }.to change { other_user.followers.count }.by(1)
