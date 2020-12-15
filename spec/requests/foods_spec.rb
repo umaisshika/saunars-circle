@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Foods', type: :request do
   let!(:user) { create(:user) }
   let!(:food) { create(:food, user: user) }
-  
+
   describe 'GET #index' do
     it 'リクエストが成功すること' do
       get '/foods'
@@ -68,7 +68,7 @@ RSpec.describe 'Foods', type: :request do
         expect {
           post foods_path, params: { food: food_params }
           expect(response.body).to include '投稿に失敗しました'
-        }.to_not change { Food.count }
+        }.to_not change(Food.count)
       end
     end
 
@@ -140,7 +140,7 @@ RSpec.describe 'Foods', type: :request do
         food_params = attributes_for(:food, name: '更新テスト')
         expect {
           put food_path(food), params: { food: food_params }
-        }.to change { Food.find(food.id).name }.from('カレーライス').to ('更新テスト')
+        }.to change { Food.find(food.id).name }.from('カレーライス').to('更新テスト')
       end
     end
 
@@ -157,7 +157,7 @@ RSpec.describe 'Foods', type: :request do
         food_params = attributes_for(:food, :invalid)
         expect {
           put food_path(food), params: { food: food_params }
-        }.to_not change { Food.find(food.id).name }
+        }.to_not change(Food.find(food.id).name)
       end
     end
 
