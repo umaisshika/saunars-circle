@@ -68,7 +68,7 @@ RSpec.describe 'Foods', type: :request do
         expect {
           post foods_path, params: { food: food_params }
           expect(response.body).to include '投稿に失敗しました'
-        }.to_not change(Food.count)
+        }.to_not change(Food, :count)
       end
     end
 
@@ -157,7 +157,7 @@ RSpec.describe 'Foods', type: :request do
         food_params = attributes_for(:food, :invalid)
         expect {
           put food_path(food), params: { food: food_params }
-        }.to_not change(Food.find(food.id).name)
+        }.to_not change(Food.find(food.id), :name)
       end
     end
 
