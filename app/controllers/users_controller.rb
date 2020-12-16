@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     flash[:success] = "「#{@user.name}」は正常に削除されました"
-    redirect_to users_path
+    redirect_to root_path
   end
 
   def followings

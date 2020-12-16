@@ -83,7 +83,7 @@ RSpec.describe 'Foods', type: :request do
   end
 
   describe 'DELETE #destroy' do
-    context 'イベントが存在する場合' do
+    context 'ログイン状態のとき' do
       it 'リクエストが成功すること' do
         sign_in user
         delete food_path(food)
