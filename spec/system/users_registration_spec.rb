@@ -38,16 +38,6 @@ RSpec.describe 'ユーザー登録', type: :system do
       click_on '更新する'
       expect(page).to have_content 'アカウント情報を変更しました。'
     end
-
-    it 'ゲストユーザーはプロフィールを編集出来ないこと' do
-      visit new_user_session_path
-      click_link 'ゲストユーザーでログイン'
-      visit edit_user_registration_path(user)
-      attach_file 'user[avatar]', 'spec/factories/images/test.jpg'
-      fill_in '自己紹介', with: '毎週水曜は欠かさずホームサウナに通ってます'
-      click_on '更新する'
-      expect(page).to have_content 'ゲストユーザーの変更・削除できません。'
-    end
   end
 
   describe '詳細表示機能' do
