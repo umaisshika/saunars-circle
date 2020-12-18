@@ -25,7 +25,7 @@ RSpec.describe 'Likes', type: :request do
       it 'トップページにリダイレクトされること' do
         post likes_path(food_id: food.id), xhr: true
         expect(response).to have_http_status 200
-        expect(response).to redirect_to root_path
+        expect(response).to redirect_to new_user_session_path
       end
 
       it 'いいねできないこと' do
@@ -74,7 +74,7 @@ RSpec.describe 'Likes', type: :request do
       it 'トップページにリダイレクトされること' do
         delete like_path(id: like.id, food_id: food.id), xhr: true
         expect(response).to have_http_status 200
-        expect(response).to redirect_to root_path
+        expect(response).to redirect_to new_user_session_path
       end
 
       it 'いいね解除できないこと' do

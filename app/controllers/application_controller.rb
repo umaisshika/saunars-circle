@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def authority_login
     unless user_signed_in?
       flash[:danger] = 'ログイン後、操作してください'
-      redirect_to root_path
+      redirect_to new_user_session_path
     end
   end
 
