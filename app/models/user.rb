@@ -29,10 +29,6 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
-  def already_liked?(food)
-    likes.exists?(food_id: food.id)
-  end
-
   def follow(other_user)
     unless self == other_user
       relationships.find_or_create_by(follow_id: other_user.id)

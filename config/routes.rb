@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   get "following_foods" => "foods#following_foods"
   resources :foods do
     resources :comments, only: [:create, :destroy]
-    resources :likes, only: [:create, :destroy]
   end
+  resources :likes, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :notifications, only: :index
   root 'home#top'

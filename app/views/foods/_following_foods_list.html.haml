@@ -18,7 +18,7 @@
               = food.user.name
               = food.created_at.strftime("%Y/%m/%d %H:%M")
             .cards__under.ml-10
-              - if user_signed_in? && current_user.already_liked?(food)
+              - if user_signed_in? && food.already_liked?(current_user)
                 .ml-10.text-left.mb-10
                   %label.fas.fa-heart.liked-btn
                   = food.likes.count

@@ -80,7 +80,7 @@ RSpec.describe 'Users', type: :request do
       end
     end
 
-    # 未ログイン時のリダイレクトが出来ないのでeditはdevise使わない仕様に変更予定
+    # 未ログイン時のリダイレクトが出来ないのでbeforeactionを変えて対応
     # autheticateuserがeditだけ使えないのでここだけusers_controllerに変更する
     # context '未ログイン状態のとき' do
     #   it 'ログインページにリダイレクトされること' do

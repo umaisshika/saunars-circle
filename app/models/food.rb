@@ -15,6 +15,18 @@ class Food < ApplicationRecord
   has_many :liked_users, through: :likes, source: :user
   has_many :notifications, dependent: :destroy
 
+  def like(user)
+    likes.create(user_id: user.id)
+  end
+
+  def unlike(user)
+    likes.find_by(user_id: user.id).destroy
+  end
+
+  def already_liked?(user)
+    likes.exists?(user_id: user.id)
+  end
+
   def create_notification_like!(current_user)
     # 自分で自分のレビューにいいね！した時はnilを返す
     return nil if current_user.id == user_id
