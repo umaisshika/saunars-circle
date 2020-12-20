@@ -24,7 +24,7 @@ RSpec.describe 'Likes', type: :request do
     end
 
     context '未ログイン状態のとき' do
-      it 'トップページにリダイレクトされること' do
+      it 'ログインページにリダイレクトされること' do
         like_params = attributes_for(:like, food: food, user: user)
         post food_likes_path(food_id: food.id), xhr: true, params: { like: like_params }
         expect(response).to have_http_status 200
