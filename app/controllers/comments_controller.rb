@@ -1,7 +1,12 @@
 class CommentsController < ApplicationController
+  before_action :authority_login
+  before_action :set_owner, only: :destroy
+  before_action :check_owner, only: :destroy
+
   def create
     @food = Food.find(params[:food_id])
-    @comment = current_user.comments.new(comment_params)
+    @comment = @food.comments.new(comment_params)
+    @comment.user_id = current_user.id
     if @comment.save
       @food.create_notification_comment!(current_user, @comment.id)
       render :index
@@ -21,6 +26,10 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content, :food_id)
+    params.require(:comment).permit(:content)
+  end
+
+  def set_owner
+    @owner = Comment.find(params[:id]).user
   end
 end

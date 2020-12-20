@@ -1,4 +1,7 @@
 class LikesController < ApplicationController
+  before_action :authority_login
+  before_action :set_owner, only: :destroy
+  before_action :check_owner, only: :destroy
   before_action :set_food
 
   def create
@@ -11,7 +14,9 @@ class LikesController < ApplicationController
     @like.destroy
   end
 
-  private
+  def set_owner
+    @owner = Like.find(params[:id]).user
+  end
 
   def set_food
     @food = Food.find(params[:food_id])

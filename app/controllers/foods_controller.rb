@@ -17,8 +17,7 @@ class FoodsController < ApplicationController
   end
 
   def create
-    @food = Food.new(food_params)
-    @food.user_id = current_user.id
+    @food = current_user.foods.new(food_params)
     if @food.save
       flash[:success] = '投稿しました'
       redirect_to foods_path

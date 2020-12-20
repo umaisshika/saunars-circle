@@ -22,19 +22,19 @@ RSpec.describe Comment, type: :model do
     it 'コメントがない場合、無効であること' do
       comment.content = nil
       comment.valid?
-      expect(comment).to_not be_valid
+      expect(comment.errors).to be_added(:content, :blank)
     end
 
     it '投稿がない場合、無効であること' do
       comment.food = nil
       comment.valid?
-      expect(comment).to_not be_valid
+      expect(comment.errors).to be_added(:food, :blank)
     end
 
     it 'ユーザーがない場合、無効であること' do
       comment.user = nil
       comment.valid?
-      expect(comment).to_not be_valid
+      expect(comment.errors).to be_added(:user, :blank)
     end
   end
 
@@ -44,9 +44,10 @@ RSpec.describe Comment, type: :model do
       expect(comment).to be_valid
     end
 
-    it 'コメントが151文字以上の場合、登録できないこと' do
+    it 'コメントが241文字以上の場合、無効であること' do
       comment.content = 'a' * 241
-      expect(comment).to_not be_valid
+      comment.valid?
+      expect(comment.errors).to be_added(:content, :too_long, count: 240)
     end
   end
 end

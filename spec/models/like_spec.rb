@@ -1,23 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  let(:like) { create(:like) }
+  let!(:user) { create(:user) }
+  let!(:food) { create(:food, user: user) }
+  let!(:like) { create(:like, user: user, food: food) }
 
   describe '#create' do
-    it "有効なファクトリを持つこと" do
+    it '有効なファクトリを持つこと' do
       expect(like).to be_valid
     end
 
-    it "投稿がない場合、無効であること" do
-      like.food_id = nil
+    it '投稿がない場合は無効であること' do
+      like.food = nil
       like.valid?
-      expect(like).not_to be_valid
+      expect(like.errors).to be_added(:food, :blank)
     end
 
-    it "ユーザーがない場合、無効であること" do
-      like.user_id = nil
+    it 'ユーザーがない場合は無効であること' do
+      like.user = nil
       like.valid?
-      expect(like).not_to be_valid
+      expect(like.errors).to be_added(:user, :blank)
     end
   end
 end

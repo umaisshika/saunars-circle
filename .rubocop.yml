@@ -1,24 +1,34 @@
 inherit_from: .rubocop_todo.yml
 
-Metrics/AbcSize:
-  Enabled: true
-  Max: 20
-
-Metrics/MethodLength:
-  Enabled: true
-  Max: 20
-
 AllCops:
+  TargetRubyVersion: 2.5.1
   Exclude:
     - 'config.ru'
     - 'bin/**'
     - 'lib/**'
     - 'db/**/*'
     - 'config/**/*'
-    - 'spec/**/*'
     - 'vendor/**/*'
   DisplayCopNames: true
 
+Layout/LineLength:
+  Max: 154
+
+Lint/UselessAssignment:
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/AbcSize:
+  Enabled: true
+  Max: 20
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/MethodLength:
+  Enabled: true
+  Max: 20
 
 Style/ClassAndModuleChildren:
   Exclude:
@@ -60,9 +70,6 @@ Style/PercentLiteralDelimiters:
 
 Style/SymbolArray:
   Enabled: false
-
-Layout/LineLength:
-  Max: 154
 
 Style/FrozenStringLiteralComment:
   Enabled: false

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:destroy]
   before_action :set_user, only: [:show, :destroy, :followings, :followers, :like_foods]
   before_action :admin_user, only: :destroy
 
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     flash[:success] = "「#{@user.name}」は正常に削除されました"
-    redirect_to users_path
+    redirect_to root_path
   end
 
   def followings
