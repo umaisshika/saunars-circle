@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:destroy]
+  before_action :authenticate_user!, only: [:destroy, :edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :destroy, :followings, :followers, :like_foods]
   before_action :admin_user, only: :destroy
 
@@ -23,8 +23,8 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:success] = 'プロフィールを更新しました'
-      redirect_to user_path(@user.id)
+      flash[:success] = 'アカウント情報を変更しました。'
+      redirect_to root_path
     else
       flash.now[:danger] = '編集出来ません。入力必須項目を確認してください'
       render :edit
