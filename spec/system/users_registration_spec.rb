@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'ユーザー登録', type: :system do
-
   describe '登録成功' do
     before do
       visit new_user_registration_path
