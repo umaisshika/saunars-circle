@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:destroy]
-  before_action :set_user, only: [:show, :destroy, :followings, :followers, :like_foods]
+  before_action :authenticate_user!, only: [:destroy, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :followings, :followers, :like_foods]
   before_action :admin_user, only: :destroy
 
   def index
@@ -17,6 +17,18 @@ class UsersController < ApplicationController
                  .order(created_at: :desc)
     @food = @user.foods.build
     @nil_message = 'まだ投稿がありません'
+  end
+
+  def edit; end
+
+  def update
+    if @user.update(user_params)
+      flash[:success] = 'アカウント情報を変更しました。'
+      redirect_to root_path
+    else
+      flash.now[:danger] = '編集出来ません。入力必須項目を確認してください'
+      render :edit
+    end
   end
 
   def destroy
@@ -54,5 +66,19 @@ class UsersController < ApplicationController
 
   def admin_user
     redirect_to(root_path) unless current_user.admin?
+  end
+
+  def user_params
+    params.require(:user).permit(
+      :email,
+      :avatar,
+      :name,
+      :gender,
+      :sauna_career,
+      :home_sauna,
+      :prefecture_id,
+      :description,
+      :profile
+    )
   end
 end

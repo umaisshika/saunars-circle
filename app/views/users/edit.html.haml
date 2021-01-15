@@ -3,8 +3,8 @@
     .panel.panel-default
       .panel-heading.text-center プロフィール編集
       .panel-body
-        = form_with model: @user, url: user_registration_path,  class: 'user__form',local: true do |f|
-          = render "devise/shared/error_messages", resource: resource
+        = form_with model: @user,  class: 'user__form',local: true do |f|
+          = render "layouts/error_messages", model: f.object
           
           .form-group
             = f.label :avatar, 'アイコン'

@@ -75,22 +75,18 @@ RSpec.describe 'Users', type: :request do
     context 'ログイン状態のとき' do
       it 'リクエストが成功すること' do
         sign_in user
-        get edit_user_registration_path(user)
+        get edit_user_path(user)
         expect(response.status).to eq 200
       end
     end
 
-    # 未ログイン時のリダイレクトが出来ないのでbeforeactionを変えて対応
-    # autheticateuserがeditだけ使えないのでここだけusers_controllerに変更する
-    # context '未ログイン状態のとき' do
-    #   it 'ログインページにリダイレクトされること' do
-    #     get edit_user_registration_path(user)
-    #     expect(response.status).to eq 302
-    #     expect(response).to redirect_to new_user_session_path
-    #   end
-    # end
-
-    # ゲストユーザーでログイン
+    context '未ログイン状態のとき' do
+      it 'ログインページにリダイレクトされること' do
+        get edit_user_path(user)
+        expect(response.status).to eq 302
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
   end
 
   describe 'PUT #update' do
@@ -98,7 +94,7 @@ RSpec.describe 'Users', type: :request do
       it 'リクエストが成功すること' do
         sign_in user
         user_params = attributes_for(:user)
-        put user_registration_path, params: { user: user_params }
+        put user_path(user), params: { user: user_params }
         expect(response.status).to eq 302
         expect(response).to redirect_to root_path
       end
@@ -106,7 +102,7 @@ RSpec.describe 'Users', type: :request do
       it '更新できること' do
         sign_in user
         user_params = attributes_for(:user, name: '更新テスト')
-        put user_registration_path, params: { user: user_params }
+        put user_path(user), params: { user: user_params }
         expect(user.reload.name).to eq '更新テスト'
       end
     end
@@ -115,7 +111,7 @@ RSpec.describe 'Users', type: :request do
       it 'リクエストが成功すること' do
         sign_in user
         user_params = attributes_for(:user, name: nil)
-        put user_registration_path, params: { user: user_params }
+        put user_path(user), params: { user: user_params }
         expect(response.status).to eq 200
       end
 
@@ -123,7 +119,7 @@ RSpec.describe 'Users', type: :request do
         sign_in user
         user_params = attributes_for(:user, name: nil)
         expect {
-          put user_registration_path, params: { user: user_params }
+          put user_path(user), params: { user: user_params }
         }.to_not change(User.find(user.id), :name)
       end
     end
@@ -133,7 +129,7 @@ RSpec.describe 'Users', type: :request do
         sign_in guest_user
         user_params = attributes_for(:user)
         expect {
-          put user_registration_path, params: { user: user_params }
+          put user_path(guest_user), params: { user: user_params }
         }.to_not change(User.find(user.id), :name)
         expect(response.status).to eq 302
         expect(response).to redirect_to root_path
@@ -144,7 +140,7 @@ RSpec.describe 'Users', type: :request do
       it '更新されずログインページにリダイレクトされること' do
         user_params = attributes_for(:user)
         expect {
-          put user_registration_path, params: { user: user_params }
+          put user_path(user), params: { user: user_params }
         }.to_not change(User.find(user.id), :name)
         expect(response.status).to eq 302
         expect(response).to redirect_to new_user_session_path

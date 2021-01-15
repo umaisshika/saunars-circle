@@ -1,0 +1,11 @@
+<% if model.errors.any? %>
+  <div class="error_explanation alert-warning" style="background-color:#F8D7DA; padding:5px; margin-bottom:10px; border-radius:10px">
+    <div class="alert" style="margin-bottom:0;">
+      <ul style="list-style: none;">
+        <% model.errors.full_messages.each do |message| %>
+          <li style="color:rgb(114, 31, 31) !important;"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
