@@ -61,6 +61,144 @@ User.create!(
   description: '静かなサウナ', 
   profile: '休日や合間を利用してサウナ探訪してます。'
 )
+User.create!( 
+  name: "山田", 
+  email: "sample5@example.com",
+  password: 'password',
+  avatar: File.open("./app/assets/images/user_image5.png")
+  sauna_career: "2018-11-01", 
+  home_sauna: '観音湯', 
+  prefecture_id: 13,
+  description: '熱いお風呂。/ 狭くて暗くて静かなサウナ。/ なめらかな水風呂。/ 風が抜ける外気浴。', 
+  profile: '休日や合間を利用してサウナ探訪してます。'
+)
+User.create!( 
+  name: "ノリ", 
+  email: "sample6@example.com",
+  password: 'password',
+  avatar: File.open("./app/assets/images/user_image6.jpg")
+  sauna_career: "2018-11-01", 
+  home_sauna: 'サウナと天然温泉 湯らっくす', 
+  prefecture_id: 43,
+  description: 'テレビなし。湿度高め。塩があれば尚良き。', 
+  profile: 'ホームサウナ「湯らっくす」までは車で１０分。 サウナも好きだが、水風呂も好き。'
+)
+
+User.create!( 
+  name: "大道", 
+  email: "sample7@example.com",
+  password: 'password',
+  avatar: File.open("./app/assets/images/user_image7.jpg")
+  sauna_career: "2015-11-01", 
+  home_sauna: 'ウェルビー栄', 
+  prefecture_id: 23,
+  description: '人が少ない静かなサウナが好みです', 
+  profile: 'スパプラザに通ってましたが，無くなってからはサウナジプシーです'
+)
+
+User.create!( 
+  name: "登人", 
+  email: "sample8@example.com",
+  password: 'password',
+  avatar: File.open("./app/assets/images/user_image8.jpg")
+  sauna_career: "2001-07-01", 
+  home_sauna: 'ニコーリフレ SAPPORO', 
+  prefecture_id: 1,
+  description: 'ロウリュ(アウフグース)が大好物!', 
+  profile: '主にボルダリング後、出張時にととのえています。'
+)
+
+User.create!( 
+  name: "焼石に水", 
+  email: "sample9@example.com",
+  password: 'password',
+  avatar: File.open("./app/assets/images/user_image9.jpg")
+  sauna_career: "2020-02-01", 
+  home_sauna: 'スカイスパYOKOHAMA', 
+  prefecture_id: 14,
+  description: 'テレビ無し、90℃前後の湿度高め、サ室の香りは非常に重要。', 
+  profile: 'マナーのある良き施設利用者、サウナーで在りたい。'
+)
+
+User.create!( 
+  name: "ちゃんあや", 
+  email: "sample10@example.com",
+  password: 'password',
+  avatar: File.open("./app/assets/images/user_image10.jpg")
+  sauna_career: "2020-02-01", 
+  home_sauna: 'スカイスパYOKOHAMA', 
+  prefecture_id: 14,
+  description: 'スカイスパYOKOHAMA/しきじ/稲村ヶ崎温泉/野田の湯', 
+  profile: 'ゆるサウナー'
+)
+
+User.create!( 
+  name: "ちゃんあや", 
+  email: "sample10@example.com",
+  password: 'password',
+  avatar: File.open("./app/assets/images/user_image10.jpg")
+  sauna_career: "2020-02-01", 
+  home_sauna: 'スカイスパYOKOHAMA', 
+  prefecture_id: 14,
+  description: 'スカイスパYOKOHAMA/しきじ/稲村ヶ崎温泉/野田の湯', 
+  profile: 'ゆるサウナー'
+)
+User.create!( 
+  name: "ちゃんあや", 
+  email: "sample11@example.com",
+  password: 'password',
+  avatar: File.open("./app/assets/images/user_image11.jpg")
+  sauna_career: "2020-02-01", 
+  home_sauna: 'スカイスパYOKOHAMA', 
+  prefecture_id: 14,
+  description: 'スカイスパYOKOHAMA/しきじ/稲村ヶ崎温泉/野田の湯', 
+  profile: 'ゆるサウナー'
+)
+User.create!( 
+  name: "サウナース", 
+  email: "sample12@example.com",
+  password: 'password',
+  avatar: File.open("./app/assets/images/user_image12.jpg")
+  sauna_career: "2019-10-01", 
+  home_sauna: '名古屋ビーズホテル らくだの湯', 
+  prefecture_id: 23,
+  description: 'The Sauna(長野)、養心薬湯(岐阜)、ume,sauna(奈良)、臥龍の郷(岐阜)', 
+  profile: '週に2回は、サウナ巡りをしています。夜勤明けのサウナにはまっています。'
+)
+
+User.create!( 
+  name: "ふぐ", 
+  email: "sample13@example.com",
+  password: 'password',
+  avatar: File.open("./app/assets/images/user_image13.jpg")
+  sauna_career: "2020-08-01", 
+  home_sauna: '名古屋ビーズホテル らくだの湯', 
+  prefecture_id: 18,
+  description: 'The Sauna(長野)、養心薬湯(岐阜)、ume,sauna(奈良)、臥龍の郷(岐阜)', 
+  profile: '週に2回は、サウナ巡りをしています。夜勤明けのサウナにはまっています。'
+)
+User.create!( 
+  name: "midori", 
+  email: "sample14@example.com",
+  password: 'password',
+  avatar: File.open("./app/assets/images/user_image14.jpg")
+  sauna_career: "2020-12-01", 
+  home_sauna: 'SPA専♨太平のゆ', 
+  prefecture_id: 18,
+  description: 'TV無、100度超', 
+  profile: 'しきじに魅せられたビギナーです。'
+)
+User.create!( 
+  name: "midori", 
+  email: "sample15@example.com",
+  password: 'password',
+  avatar: File.open("./app/assets/images/user_image15.jpg")
+  sauna_career: "2020-12-01", 
+  home_sauna: '天空のアジト マルシンスパ', 
+  prefecture_id: 18,
+  description: '仙川湯けむりの里＆よみうりランド丘の湯', 
+  profile: '100℃越えのサウナ室、ロウリュ・アウフグース大好きですが、顔面熱に弱いので通常はサウナハットとフェイスタオルで防備しています。'
+)
 
 # Food
 Food.create!(
