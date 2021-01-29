@@ -452,39 +452,99 @@ Food.create!(
   user_id: 13
 )
 Food.create!(
-  name: "カレーうどん",
+  name: "ぶりしゃぶ",
   visited_sauna: "スパ ラクーア",
   prefecture_id: 13,
   description: "ラクーアでお酒を飲むときはこれを頼みます",
-  image: File.open('./public/seeds_image/スパラクーア_ぶりしゃぶ.jpg'),
+  image: File.open('./public/seeds_image/スパ ラクーア_ぶりしゃぶ.jpg'),
   user_id: 3
 )
 # like
-# 1.upto(18) do |n|
-#   user = User.find(n)
-#   food = Food.order("RAND()").limit(20)
-#   food.each { |food| food.like(user) }
-# end
+1.upto(17) do |n|
+  user = User.find(n)
+  food = Food.order("RAND()").limit(20)
+  food.each { |food| food.like(user) }
+end
 
 # comment
+Comment.create!(
+  content: '辛そう、でも美味しそう', 
+  user_id:3, 
+  food_id: 15
+)
 
+Comment.create!(
+  content: '野菜もとれていいですね', 
+  user_id:4, 
+  food_id: 32
+)
+
+Comment.create!(
+  content: '深夜に見たらだめなやつだw', 
+  user_id:5, 
+  food_id: 31
+)
+
+Comment.create!(
+  content: '名古屋飯だ', 
+  user_id:6, 
+  food_id: 21
+)
+
+Comment.create!(
+  content: '無料でこれはいいですね', 
+  user_id:7, 
+  food_id: 22
+)
+
+Comment.create!(
+  content: 'ラム肉の麻婆、そそられる', 
+  user_id:8, 
+  food_id: 24
+)
+
+Comment.create!(
+  content: 'オサレ', 
+  user_id:9, 
+  food_id: 19
+)
+
+Comment.create!(
+  content: '野菜がたくさん', 
+  user_id:10, 
+  food_id: 1
+)
+
+Comment.create!(
+  content: '野菜がたくさん', 
+  user_id:11, 
+  food_id: 1
+)
 # relationship
-# users = User.all.to_a
-# users.permutation(2) do |user1, user2|
-#   user1.follow(user2)
-# end
+users = User.all.to_a
+users.permutation(2) do |user1, user2|
+  user1.follow(user2)
+end
 
 # notification
-# Notification.create!(
-#   visitor_id:1, 
-#   visited_id:2, 
-#   action: 'follow'
-# )
+Notification.create!(
+  visitor_id:3, 
+  visited_id:2, 
+  action: 'follow'
+)
 
-# Notification.create!(
-#   visitor_id:2, 
-#   visited_id:1, 
-#   food_id: 1,
-#   action: 'like'
-# )
+Notification.create!(
+  visitor_id:4, 
+  visited_id:2, 
+  food_id: 1,
+  action: 'like'
+)
+
+Notification.create!(
+  visitor_id:3, 
+  visited_id:2, 
+  comment_id: 1,
+  food_id: 15,
+  action: 'comment'
+)
 
