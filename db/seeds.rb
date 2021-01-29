@@ -5,24 +5,19 @@ User.create!(
   admin: true
 )
 
-# 20.times do |n|
-#   name     = Faker::Name.name
-#   email    = "sample#{n+1}@example.com"
-#   password = '123password'
-#   User.create!(
-#     name: name,
-#     email: email,
-#     password: password,
-#   )
-# end
+User.create!(
+  name: 'ゲストユーザー',
+  email: 'guest@example.com',
+  password: SecureRandom.urlsafe_base64,
+)
 
 # User
 User.create!( 
   name: "まみ", 
   email: "sample1@example.com",
   password: 'password',
-  avatar: File.open("./app/assets/images/user_image1")
-  sauna_career: "2018-01-01", 
+  avatar: File.open("./public/seeds_image/user_image1.jpg"),
+  sauna_career: '2018-01-01', 
   home_sauna: '草加健康ランド', 
   prefecture_id: 11,
   description: 'テレビ無し、湿度高め、90℃、水風呂18℃', 
@@ -32,7 +27,7 @@ User.create!(
   name: "ふじこ湯", 
   email: "sample2@example.com",
   password: 'password',
-  avatar: File.open("./app/assets/images/user_image2")
+  avatar: File.open("./public/seeds_image/user_image2.jpg"),
   sauna_career: "2017-06-01", 
   home_sauna: '妙法湯', 
   prefecture_id: 13,
@@ -43,7 +38,7 @@ User.create!(
   name: "ハリー", 
   email: "sample3@example.com",
   password: 'password',
-  avatar: File.open("./app/assets/images/user_image3")
+  avatar: File.open("./public/seeds_image/user_image3.jpg"),
   sauna_career: "2013-01-01", 
   home_sauna: 'あかねの湯 姫路南店', 
   prefecture_id: 28,
@@ -54,7 +49,7 @@ User.create!(
   name: "3度のメシよりサウナメシ", 
   email: "sample4@example.com",
   password: 'password',
-  avatar: File.open("./app/assets/images/user_image4")
+  avatar: File.open("./public/seeds_image/user_image4.jpg"),
   sauna_career: "2019-02-01", 
   home_sauna: '大黒湯', 
   prefecture_id: 13,
@@ -65,7 +60,7 @@ User.create!(
   name: "山田", 
   email: "sample5@example.com",
   password: 'password',
-  avatar: File.open("./app/assets/images/user_image5.png")
+  avatar: File.open("./public/seeds_image/user_image5.png"),
   sauna_career: "2018-11-01", 
   home_sauna: '観音湯', 
   prefecture_id: 13,
@@ -76,7 +71,7 @@ User.create!(
   name: "ノリ", 
   email: "sample6@example.com",
   password: 'password',
-  avatar: File.open("./app/assets/images/user_image6.jpg")
+  avatar: File.open("./public/seeds_image/user_image6.jpg"),
   sauna_career: "2018-11-01", 
   home_sauna: 'サウナと天然温泉 湯らっくす', 
   prefecture_id: 43,
@@ -88,7 +83,7 @@ User.create!(
   name: "大道", 
   email: "sample7@example.com",
   password: 'password',
-  avatar: File.open("./app/assets/images/user_image7.jpg")
+  avatar: File.open("./public/seeds_image/user_image7.jpg"),
   sauna_career: "2015-11-01", 
   home_sauna: 'ウェルビー栄', 
   prefecture_id: 23,
@@ -100,7 +95,7 @@ User.create!(
   name: "登人", 
   email: "sample8@example.com",
   password: 'password',
-  avatar: File.open("./app/assets/images/user_image8.jpg")
+  avatar: File.open("./public/seeds_image/user_image8.jpg"),
   sauna_career: "2001-07-01", 
   home_sauna: 'ニコーリフレ SAPPORO', 
   prefecture_id: 1,
@@ -112,7 +107,7 @@ User.create!(
   name: "焼石に水", 
   email: "sample9@example.com",
   password: 'password',
-  avatar: File.open("./app/assets/images/user_image9.jpg")
+  avatar: File.open("./public/seeds_image/user_image9.jpg"),
   sauna_career: "2020-02-01", 
   home_sauna: 'スカイスパYOKOHAMA', 
   prefecture_id: 14,
@@ -124,7 +119,7 @@ User.create!(
   name: "ちゃんあや", 
   email: "sample10@example.com",
   password: 'password',
-  avatar: File.open("./app/assets/images/user_image10.jpg")
+  avatar: File.open("./public/seeds_image/user_image10.jpg"),
   sauna_career: "2020-02-01", 
   home_sauna: 'スカイスパYOKOHAMA', 
   prefecture_id: 14,
@@ -133,32 +128,21 @@ User.create!(
 )
 
 User.create!( 
-  name: "ちゃんあや", 
-  email: "sample10@example.com",
-  password: 'password',
-  avatar: File.open("./app/assets/images/user_image10.jpg")
-  sauna_career: "2020-02-01", 
-  home_sauna: 'スカイスパYOKOHAMA', 
-  prefecture_id: 14,
-  description: 'スカイスパYOKOHAMA/しきじ/稲村ヶ崎温泉/野田の湯', 
-  profile: 'ゆるサウナー'
-)
-User.create!( 
-  name: "ちゃんあや", 
+  name: "サ腕", 
   email: "sample11@example.com",
   password: 'password',
-  avatar: File.open("./app/assets/images/user_image11.jpg")
-  sauna_career: "2020-02-01", 
-  home_sauna: 'スカイスパYOKOHAMA', 
-  prefecture_id: 14,
-  description: 'スカイスパYOKOHAMA/しきじ/稲村ヶ崎温泉/野田の湯', 
-  profile: 'ゆるサウナー'
+  avatar: File.open("./public/seeds_image/user_image11.jpg"),
+  sauna_career: "2018-02-01", 
+  home_sauna: '草加健康センター', 
+  prefecture_id: 11,
+  description: '地元周辺でリーズナブルなところ中心。あまみが出る温度差があればなお良し。', 
+  profile: '草野球の疲労回復目的で積極的にサウナ／水風呂利用はしていましたが、2020年から野球できる機会がほぼ無くなり、サウナそのものが目的になってます。'
 )
 User.create!( 
   name: "サウナース", 
   email: "sample12@example.com",
   password: 'password',
-  avatar: File.open("./app/assets/images/user_image12.jpg")
+  avatar: File.open("./public/seeds_image/user_image12.jpg"),
   sauna_career: "2019-10-01", 
   home_sauna: '名古屋ビーズホテル らくだの湯', 
   prefecture_id: 23,
@@ -170,7 +154,7 @@ User.create!(
   name: "ふぐ", 
   email: "sample13@example.com",
   password: 'password',
-  avatar: File.open("./app/assets/images/user_image13.jpg")
+  avatar: File.open("./public/seeds_image/user_image13.jpg"),
   sauna_career: "2020-08-01", 
   home_sauna: '名古屋ビーズホテル らくだの湯', 
   prefecture_id: 18,
@@ -178,10 +162,10 @@ User.create!(
   profile: '週に2回は、サウナ巡りをしています。夜勤明けのサウナにはまっています。'
 )
 User.create!( 
-  name: "midori", 
+  name: "ナツイ・フェスタ・ダーヤマ", 
   email: "sample14@example.com",
   password: 'password',
-  avatar: File.open("./app/assets/images/user_image14.jpg")
+  avatar: File.open("./public/seeds_image/user_image14.jpg"),
   sauna_career: "2020-12-01", 
   home_sauna: 'SPA専♨太平のゆ', 
   prefecture_id: 18,
@@ -192,7 +176,7 @@ User.create!(
   name: "midori", 
   email: "sample15@example.com",
   password: 'password',
-  avatar: File.open("./app/assets/images/user_image15.jpg")
+  avatar: File.open("./public/seeds_image/user_image15.jpg"),
   sauna_career: "2020-12-01", 
   home_sauna: '天空のアジト マルシンスパ', 
   prefecture_id: 18,
@@ -207,7 +191,7 @@ Food.create!(
   prefecture_id: 13,
   description: "ラクーアに行ったら毎回これ",
   image: File.open('./public/seeds_image/ラクーア_カレーうどん.jpg'),
-  user_id: 1
+  user_id: 2
 )
 Food.create!(
   name: "焼肉定食",
@@ -223,7 +207,7 @@ Food.create!(
   prefecture_id: 13,
   description: "今年初サウナの後は唐揚げにしました。汗を流した後は揚げ物がやたらと美味しく感じます。",
   image: File.open('./public/seeds_image/北欧_唐揚げ.jpg'),
-  user_id: 3
+  user_id: 2
 )
 Food.create!(
   name: "スンドゥブ",
@@ -231,23 +215,23 @@ Food.create!(
   prefecture_id: 11,
   description: "熱いのが好きな人、辛いのが好きな人、いつもと違うサ飯を味わいたい人にスンドゥブはおすすめ",
   image: File.open('./public/seeds_image/スパロイヤル川口_スンドゥブ.jpg'),
-  user_id: 4
+  user_id: 3
 )
 Food.create!(
   name: "パワーアップ豚焼き",
   visited_sauna: "草加健康センター",
   prefecture_id: 11,
   description: "ガツンと効いたニンニクが五臓六腑に染み渡ります。",
-  image: File.open('./public/seeds_image/草加健康センター_パワーアップ豚焼き.jpg'),
-  user_id: 4
+  image: File.open('./public/seeds_image/草加健康センター_パワーアップ豚焼き.jpeg'),
+  user_id: 2
 )
 Food.create!(
   name: "酸辣湯麺",
   visited_sauna: "草加健康センター",
-  prefecture_id: 11,
+  prefecture_id: 2,
   description: "テレビドラマ『サ道』でも取り上げられた酸辣湯麺。餡が麺に絡んでやみつきな旨さ。旨辛！",
   image: File.open('./public/seeds_image/草加健康センター_酸辣湯麺.jpg'),
-  user_id: 5
+  user_id: 4
 )
 Food.create!(
   name: "麻婆豆腐定食",
@@ -261,9 +245,9 @@ Food.create!(
   name: "マグロ納豆",
   visited_sauna: "草加健康センター",
   prefecture_id: 11,
-  description: "ご飯がとても進むので、おなかがすいている人はおすすめ。",
+  description: "納豆のネバっとしたコクと、スッキリとしたくどさがないマグロがベストマッチしています",
   image: File.open('./public/seeds_image/草加健康センター_マグロ納豆.jpg'),
-  user_id: 7
+  user_id: 3
 )
 Food.create!(
   name: "カレーライス",
@@ -271,7 +255,7 @@ Food.create!(
   prefecture_id: 13,
   description: "スタンダードなカレー。サウナに行ったら大体カレーかラーメンを食べます。",
   image: File.open('./public/seeds_image/天空のアジト マルシンスパ_カレーライス.jpg'),
-  user_id: 8
+  user_id: 14
 )
 Food.create!(
   name: "笹塚チャーシューセット",
@@ -279,7 +263,7 @@ Food.create!(
   prefecture_id: 13,
   description: "マルシンスパといえばこれ。甘辛くとろとろに煮込まれたチャーシューとメンマに、カラシをつけて食べると最高です。",
   image: File.open('./public/seeds_image/天空のアジト マルシンスパ_笹塚チャーシューセット.jpg'),
-  user_id: 9
+  user_id: 7
 )
 Food.create!(
   name: "唐揚定食",
@@ -287,7 +271,7 @@ Food.create!(
   prefecture_id: 13,
   description: "定食人気NO.1の唐揚定食。ニンニクゴマ醤油味でご飯とビールに合いまくり",
   image: File.open('./public/seeds_image/かるまる_唐揚定食.jpg'),
-  user_id: 10
+  user_id: 11
 )
 Food.create!(
   name: "親子丼",
@@ -295,7 +279,7 @@ Food.create!(
   prefecture_id: 13,
   description: "鶏肉１つ１つがめちゃくちゃ大きくカットされていて、ボリュームが半端じゃない",
   image: File.open('./public/seeds_image/かるまる_親子丼.jpg'),
-  user_id: 11
+  user_id: 2
 )
 Food.create!(
   name: "十勝豚ロースカツカレー",
@@ -303,7 +287,7 @@ Food.create!(
   prefecture_id: 13,
   description: "辛さがマイルドで、ちょっと甘さが目立つ仕上がり",
   image: File.open('./public/seeds_image/かるまる_十勝豚ロースカツカレー.jpg'),
-  user_id: 12
+  user_id: 11
 )
 
 Food.create!(
@@ -312,7 +296,7 @@ Food.create!(
   prefecture_id: 13,
   description: "身がふっくらとしたカレイに、舞茸・えのき・しめじなどきのこたっぷりのあんが絡んでおいしかったです",
   image: File.open('./public/seeds_image/武蔵野温泉 なごみの湯_カレイの唐揚げ定食.jpg'),
-  user_id: 13
+  user_id: 4
 )
 
 Food.create!(
@@ -321,7 +305,7 @@ Food.create!(
   prefecture_id: 43,
   description: "痺れる大人の辛さ。さすが人気メニュー。うまい。",
   image: File.open('./public/seeds_image/サウナと天然温泉 湯らっくす_四川風麻婆豆腐.jpg'),
-  user_id: 14
+  user_id: 2
 )
 
 Food.create!(
@@ -330,7 +314,7 @@ Food.create!(
   prefecture_id: 43,
   description: "鶏ガラスープをベースにあっさり、ピリ辛に仕上げてあり食欲倍増",
   image: File.open('./public/seeds_image/サウナと天然温泉 湯らっくす_酸辣湯.jpg'),
-  user_id: 15
+  user_id: 8
 )
 
 Food.create!(
@@ -338,8 +322,8 @@ Food.create!(
   visited_sauna: "サウナと天然温泉 湯らっくす",
   prefecture_id: 43,
   description: "湯らっくすのカツ丼の美味さを日本中に知ってほしい",
-  image: File.open('./public/seeds_image/サウナと天然温泉 湯らっくす_カツ丼.jpg'),
-  user_id: 16
+  image: File.open('./public/seeds_image/サウナと天然温泉 湯らっくす_カツ丼.jpeg'),
+  user_id: 8
 )
 
 Food.create!(
@@ -348,7 +332,7 @@ Food.create!(
   prefecture_id: 14,
   description: "鶏ガラスープをベースにあっさり、ピリ辛に仕上げてあり食欲倍増",
   image: File.open('./public/seeds_image/スカイスパYOKOHAMA_キムチチゲ鍋.jpg'),
-  user_id: 17
+  user_id: 11
 )
 
 Food.create!(
@@ -357,7 +341,7 @@ Food.create!(
   prefecture_id: 14,
   description: "まろやかなチーズ、トマトの酸味、アンチョビの塩気…いろんな味がフランスパンに染み込んでいる。",
   image: File.open('./public/seeds_image/スカイスパYOKOHAMA_フランスパンのアンチョビチーズ焼き.jpg'),
-  user_id: 18
+  user_id: 11
 )
 
 Food.create!(
@@ -365,8 +349,8 @@ Food.create!(
   visited_sauna: "ウェルビー栄",
   prefecture_id: 23,
   description: "もやし・ニラ・ひき肉がピリ辛で炒められており、酒がとにかくススムススム！",
-  image: File.open('./public/seeds_image/ウェルビー栄_台湾もやしタワー.jpg'),
-  user_id: 19
+  image: File.open('./public/seeds_image/ウェルビー栄_台湾もやしタワー.jpeg'),
+  user_id: 2
 )
 
 Food.create!(
@@ -374,8 +358,8 @@ Food.create!(
   visited_sauna: "ウェルビー栄",
   prefecture_id: 23,
   description: "ウェルビーに行ってサウナ後はとりあえず手羽先とビール",
-  image: File.open('./public/seeds_image/ウェルビー栄_手羽先.jpg'),
-  user_id: 20
+  image: File.open('./public/seeds_image/ウェルビー栄_手羽先.jpeg'),
+  user_id: 9
 )
 
 Food.create!(
@@ -383,8 +367,8 @@ Food.create!(
   visited_sauna: "ウェルビー栄",
   prefecture_id: 23,
   description: "宿泊だとこれが7時〜10時の間無料でいただけます。しかもご飯と味噌汁はおかわり自由",
-  image: File.open('./public/seeds_image/ウェルビー栄_朝食（無料）.jpg'),
-  user_id: 21
+  image: File.open('./public/seeds_image/ウェルビー栄_朝食（無料）.jpeg'),
+  user_id: 9
 )
 
 Food.create!(
@@ -393,7 +377,7 @@ Food.create!(
   prefecture_id: 23,
   description: "表面はパリッと焼き上げられており、スパイスの良い香りが漂う。普通のソーセージよりも、スパイスの味が濃厚で、サウナ後の塩分補給にもぴったりです！",
   image: File.open('./public/seeds_image/サウナラボ_ソーセージマッカラ.jpg'),
-  user_id: 22
+  user_id: 14
 )
 
 Food.create!(
@@ -402,7 +386,7 @@ Food.create!(
   prefecture_id: 20,
   description: "味が濃くて、サウナの後にピッタリ。ビールと一緒に",
   image: File.open('./public/seeds_image/The Sauna_ラム麻婆ご飯.jpg'),
-  user_id: 23
+  user_id: 6
 )
 
 Food.create!(
@@ -411,7 +395,7 @@ Food.create!(
   prefecture_id: 13,
   description: "塩スープに各具材のダシが染み出て、何と言えない美味しさ",
   image: File.open('./public/seeds_image/スパ&カプセル ニューウイング_ちゃんこ鍋.jpg'),
-  user_id: 24
+  user_id: 6
 )
 
 Food.create!(
@@ -420,7 +404,7 @@ Food.create!(
   prefecture_id: 1,
   description: "サウナ後の塩分補給を兼ねて",
   image: File.open('./public/seeds_image/ニコーリフレ SAPPORO_味噌ラーメン.jpg'),
-  user_id: 25
+  user_id: 10
 )
 
 Food.create!(
@@ -429,7 +413,7 @@ Food.create!(
   prefecture_id: 1,
   description: "トンカツと麻婆豆腐の組み合わせが何とも不思議な感じですが、とっても美味しいです。",
   image: File.open('./public/seeds_image/ニコーリフレ SAPPORO_麻婆カツライス.jpg'),
-  user_id: 26
+  user_id: 10
 )
 
 Food.create!(
@@ -438,7 +422,7 @@ Food.create!(
   prefecture_id: 28,
   description: "一口食べると旨味が爆裂。上質なオイスターソースが香る逸品です。",
   image: File.open('./public/seeds_image/神戸サウナ&スパ_五目焼きそば.jpg'),
-  user_id: 27
+  user_id: 5
 )
 
 Food.create!(
@@ -447,7 +431,7 @@ Food.create!(
   prefecture_id: 27,
   description: "食事何処で漫画が読めるので、ビール飲みながら漫画を読むときのツマミによく頼みます",
   image: File.open('./public/seeds_image/サウナ&スパ カプセルホテル 大東洋_どて焼き.jpg'),
-  user_id: 28
+  user_id: 5
 )
 
 Food.create!(
@@ -455,8 +439,8 @@ Food.create!(
   visited_sauna: "ウェルビー福岡",
   prefecture_id: 40,
   description: "どうですか、無料なのにこのボリューム。",
-  image: File.open('./public/seeds_image/ウェルビー福岡_無料朝ごはん.jpg'),
-  user_id: 29
+  image: File.open('./public/seeds_image/ウェルビー福岡_無料朝ごはん.jpeg'),
+  user_id: 2
 )
 
 Food.create!(
@@ -465,35 +449,42 @@ Food.create!(
   prefecture_id: 40,
   description: "濃厚でまろやかな白ごまペーストに、ピリッとしたラー油の辛さが効いています",
   image: File.open('./public/seeds_image/タイムズ スパ・レスタ_坦々麺.jpg'),
-  user_id: 30
+  user_id: 13
 )
-
+Food.create!(
+  name: "カレーうどん",
+  visited_sauna: "スパ ラクーア",
+  prefecture_id: 13,
+  description: "ラクーアでお酒を飲むときはこれを頼みます",
+  image: File.open('./public/seeds_image/スパラクーア_ぶりしゃぶ.jpg'),
+  user_id: 3
+)
 # like
-1.upto(18) do |n|
-  user = User.find(n)
-  food = Food.order("RAND()").limit(20)
-  food.each { |food| food.like(user) }
-end
+# 1.upto(18) do |n|
+#   user = User.find(n)
+#   food = Food.order("RAND()").limit(20)
+#   food.each { |food| food.like(user) }
+# end
 
 # comment
 
 # relationship
-users = User.all.to_a
-users.permutation(2) do |user1, user2|
-  user1.follow(user2)
-end
+# users = User.all.to_a
+# users.permutation(2) do |user1, user2|
+#   user1.follow(user2)
+# end
 
 # notification
-Notification.create!(
-  visitor_id:1, 
-  visited_id:2, 
-  action: 'follow'
-)
+# Notification.create!(
+#   visitor_id:1, 
+#   visited_id:2, 
+#   action: 'follow'
+# )
 
-Notification.create!(
-  visitor_id:2, 
-  visited_id:1, 
-  food_id: 1,
-  action: 'like'
-)
+# Notification.create!(
+#   visitor_id:2, 
+#   visited_id:1, 
+#   food_id: 1,
+#   action: 'like'
+# )
 
