@@ -1,13 +1,15 @@
-%span いいねの数: #{@food.likes.count}
-- if current_user.already_liked?(@food)
+%span いいねの数: #{food.likes.count}
+- if food.already_liked?(current_user)
   .ml-10.text-left.mb-10
-    = form_with(url: food_like_path(@like.food.id, @like.id), html: { method: :delete }) do |f|
+    = form_with(model: food.likes.find_by(user_id: current_user.id), html: { method: :delete }) do |f|
+      = hidden_field_tag :food_id, food.id
       %button{type: "submit",class: 'btn btn-default liked-base-btn'}
         %i.fas.fa-heart.liked-btn
         %span いいね
 - else
   .ml-10.text-left.mb-10
-    = form_with(model: [@food, @like]) do |f|
+    = form_with(model: food.likes.build) do |f|
+      = hidden_field_tag :food_id, food.id
       %button{type: "submit",class: 'btn btn-default like-base-btn'}
         %i.fas.fa-heart.like-btn
         %span いいね 
