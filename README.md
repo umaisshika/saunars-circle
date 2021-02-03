@@ -2,6 +2,10 @@
 https://www.samesy.work/br>
 サウナメシの写真と感想を投稿・共有できるWebサービスです。
 
+![samesyトップ画](https://user-images.githubusercontent.com/63295568/106753621-3e721900-666f-11eb-9b4d-d6443b625769.jpg)
+※トップページの右上にあるログインボタンをクリックしログイン画面に遷移した後、  
+「ゲストユーザーでログイン」のボタンをクリックすると、フォームに文字を入力せずにログインできます。
+
 ## 機能一覧
 - ユーザー機能
   - 新規登録、ログイン、ログアウト機能ほか<br>
@@ -37,5 +41,7 @@ https://www.samesy.work/br>
   - rubocop(静的コード解析ツール)
   - Git, GitHub
   - Google Maps Platform
+## ER図
+  ![インフラ構成図](https://user-images.githubusercontent.com/63295568/106405658-5765a900-647a-11eb-90ad-1751bcf6a47c.jpg)
 ## インフラ構成図
   ![インフラ構成図](https://user-images.githubusercontent.com/63295568/106405658-5765a900-647a-11eb-90ad-1751bcf6a47c.jpg)
