@@ -16,11 +16,7 @@ User.create!(
   name: "まみ", 
   email: "sample1@example.com",
   password: 'password',
-<<<<<<< Updated upstream
-  avatar: File.open("./public/seeds_image/user_image1.jpg"),
-=======
   avatar: open("#{Rails.root}/public/seeds_image/user_image1.jpg"),
->>>>>>> Stashed changes
   sauna_career: '2018-01-01', 
   home_sauna: '草加健康ランド', 
   prefecture_id: 11,
@@ -31,11 +27,7 @@ User.create!(
   name: "ふじこ湯", 
   email: "sample2@example.com",
   password: 'password',
-<<<<<<< Updated upstream
-  avatar: File.open("./public/seeds_image/user_image2.jpg"),
-=======
   avatar: open("#{Rails.root}/public/seeds_image/user_image2.jpg"),
->>>>>>> Stashed changes
   sauna_career: "2017-06-01", 
   home_sauna: '妙法湯', 
   prefecture_id: 13,
@@ -46,11 +38,7 @@ User.create!(
   name: "ハリー", 
   email: "sample3@example.com",
   password: 'password',
-<<<<<<< Updated upstream
-  avatar: File.open("./public/seeds_image/user_image3.jpg"),
-=======
   avatar: open("#{Rails.root}/public/seeds_image/user_image3.jpg"),
->>>>>>> Stashed changes
   sauna_career: "2013-01-01", 
   home_sauna: 'あかねの湯 姫路南店', 
   prefecture_id: 28,
@@ -61,11 +49,7 @@ User.create!(
   name: "3度のメシよりサウナメシ", 
   email: "sample4@example.com",
   password: 'password',
-<<<<<<< Updated upstream
-  avatar: File.open("./public/seeds_image/user_image4.jpg"),
-=======
   avatar: open("#{Rails.root}/public/seeds_image/user_image4.jpg"),
->>>>>>> Stashed changes
   sauna_career: "2019-02-01", 
   home_sauna: '大黒湯', 
   prefecture_id: 13,
@@ -76,11 +60,7 @@ User.create!(
   name: "山田", 
   email: "sample5@example.com",
   password: 'password',
-<<<<<<< Updated upstream
-  avatar: File.open("./public/seeds_image/user_image5.png"),
-=======
   avatar: open("#{Rails.root}/public/seeds_image/user_image5.png"),
->>>>>>> Stashed changes
   sauna_career: "2018-11-01", 
   home_sauna: '観音湯', 
   prefecture_id: 13,
@@ -91,11 +71,7 @@ User.create!(
   name: "ノリ", 
   email: "sample6@example.com",
   password: 'password',
-<<<<<<< Updated upstream
-  avatar: File.open("./public/seeds_image/user_image6.jpg"),
-=======
   avatar: open("#{Rails.root}/public/seeds_image/user_image6.jpg"),
->>>>>>> Stashed changes
   sauna_career: "2018-11-01", 
   home_sauna: 'サウナと天然温泉 湯らっくす', 
   prefecture_id: 43,
@@ -107,11 +83,7 @@ User.create!(
   name: "大道", 
   email: "sample7@example.com",
   password: 'password',
-<<<<<<< Updated upstream
-  avatar: File.open("./public/seeds_image/user_image7.jpg"),
-=======
   avatar: open("#{Rails.root}/public/seeds_image/user_image7.jpg"),
->>>>>>> Stashed changes
   sauna_career: "2015-11-01", 
   home_sauna: 'ウェルビー栄', 
   prefecture_id: 23,
@@ -123,11 +95,7 @@ User.create!(
   name: "登人", 
   email: "sample8@example.com",
   password: 'password',
-<<<<<<< Updated upstream
-  avatar: File.open("./public/seeds_image/user_image8.jpg"),
-=======
   avatar: open("#{Rails.root}/public/seeds_image/user_image8.jpg"),
->>>>>>> Stashed changes
   sauna_career: "2001-07-01", 
   home_sauna: 'ニコーリフレ SAPPORO', 
   prefecture_id: 1,
@@ -139,11 +107,7 @@ User.create!(
   name: "焼石に水", 
   email: "sample9@example.com",
   password: 'password',
-<<<<<<< Updated upstream
-  avatar: File.open("./public/seeds_image/user_image9.jpg"),
-=======
   avatar: open("#{Rails.root}/public/seeds_image/user_image9.jpg"),
->>>>>>> Stashed changes
   sauna_career: "2020-02-01", 
   home_sauna: 'スカイスパYOKOHAMA', 
   prefecture_id: 14,
@@ -155,11 +119,7 @@ User.create!(
   name: "ちゃんあや", 
   email: "sample10@example.com",
   password: 'password',
-<<<<<<< Updated upstream
-  avatar: File.open("./public/seeds_image/user_image10.jpg"),
-=======
   avatar: open("#{Rails.root}/public/seeds_image/user_image10.jpg"),
->>>>>>> Stashed changes
   sauna_career: "2020-02-01", 
   home_sauna: 'スカイスパYOKOHAMA', 
   prefecture_id: 14,
@@ -171,11 +131,7 @@ User.create!(
   name: "サ腕", 
   email: "sample11@example.com",
   password: 'password',
-<<<<<<< Updated upstream
-  avatar: File.open("./public/seeds_image/user_image11.jpg"),
-=======
   avatar: open("#{Rails.root}/public/seeds_image/user_image11.jpg"),
->>>>>>> Stashed changes
   sauna_career: "2018-02-01", 
   home_sauna: '草加健康センター', 
   prefecture_id: 11,
@@ -186,11 +142,7 @@ User.create!(
   name: "サウナース", 
   email: "sample12@example.com",
   password: 'password',
-<<<<<<< Updated upstream
-  avatar: File.open("./public/seeds_image/user_image12.jpg"),
-=======
   avatar: open("#{Rails.root}/public/seeds_image/user_image12.jpg"),
->>>>>>> Stashed changes
   sauna_career: "2019-10-01", 
   home_sauna: '名古屋ビーズホテル らくだの湯', 
   prefecture_id: 23,
@@ -202,11 +154,7 @@ User.create!(
   name: "ふぐ", 
   email: "sample13@example.com",
   password: 'password',
-<<<<<<< Updated upstream
-  avatar: File.open("./public/seeds_image/user_image13.jpg"),
-=======
   avatar: open("#{Rails.root}/public/seeds_image/user_image13.jpg"),
->>>>>>> Stashed changes
   sauna_career: "2020-08-01", 
   home_sauna: '名古屋ビーズホテル らくだの湯', 
   prefecture_id: 18,
@@ -217,11 +165,7 @@ User.create!(
   name: "ナツイ・フェスタ・ダーヤマ", 
   email: "sample14@example.com",
   password: 'password',
-<<<<<<< Updated upstream
-  avatar: File.open("./public/seeds_image/user_image14.jpg"),
-=======
   avatar: open("#{Rails.root}/public/seeds_image/user_image14.jpg"),
->>>>>>> Stashed changes
   sauna_career: "2020-12-01", 
   home_sauna: 'SPA専♨太平のゆ', 
   prefecture_id: 18,
@@ -232,11 +176,7 @@ User.create!(
   name: "midori", 
   email: "sample15@example.com",
   password: 'password',
-<<<<<<< Updated upstream
-  avatar: File.open("./public/seeds_image/user_image15.jpg"),
-=======
   avatar: open("#{Rails.root}/public/seeds_image/user_image15.jpg"),
->>>>>>> Stashed changes
   sauna_career: "2020-12-01", 
   home_sauna: '天空のアジト マルシンスパ', 
   prefecture_id: 18,
@@ -250,11 +190,7 @@ Food.create!(
   visited_sauna: "スパ ラクーア",
   prefecture_id: 13,
   description: "ラクーアに行ったら毎回これ",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/ラクーア_カレーうどん.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image1.jpg"),
->>>>>>> Stashed changes
   user_id: 2
 )
 Food.create!(
@@ -262,11 +198,7 @@ Food.create!(
   visited_sauna: "サウナしきじ",
   prefecture_id: 22,
   description: "サウナで癒された後、サウナ飯でも癒される。最高の一日でした。",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/しきじ_焼肉定食.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image2.jpg"),
->>>>>>> Stashed changes
   user_id: 2
 )
 Food.create!(
@@ -274,11 +206,7 @@ Food.create!(
   visited_sauna: "サウナ・カプセル 北欧",
   prefecture_id: 13,
   description: "今年初サウナの後は唐揚げにしました。汗を流した後は揚げ物がやたらと美味しく感じます。",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/北欧_唐揚げ.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image3.jpg"),
->>>>>>> Stashed changes
   user_id: 2
 )
 Food.create!(
@@ -286,11 +214,7 @@ Food.create!(
   visited_sauna: "スパロイヤル川口",
   prefecture_id: 11,
   description: "熱いのが好きな人、辛いのが好きな人、いつもと違うサ飯を味わいたい人にスンドゥブはおすすめ",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/スパロイヤル川口_スンドゥブ.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image4.jpg"),
->>>>>>> Stashed changes
   user_id: 3
 )
 Food.create!(
@@ -298,11 +222,7 @@ Food.create!(
   visited_sauna: "草加健康センター",
   prefecture_id: 11,
   description: "ガツンと効いたニンニクが五臓六腑に染み渡ります。",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/草加健康センター_パワーアップ豚焼き.jpeg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image5.jpeg"),
->>>>>>> Stashed changes
   user_id: 2
 )
 Food.create!(
@@ -310,11 +230,7 @@ Food.create!(
   visited_sauna: "草加健康センター",
   prefecture_id: 2,
   description: "テレビドラマ『サ道』でも取り上げられた酸辣湯麺。餡が麺に絡んでやみつきな旨さ。旨辛！",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/草加健康センター_酸辣湯麺.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image6.jpg"),
->>>>>>> Stashed changes
   user_id: 4
 )
 Food.create!(
@@ -322,11 +238,7 @@ Food.create!(
   visited_sauna: "草加健康センター",
   prefecture_id: 11,
   description: "ご飯がとても進むので、おなかがすいている人はおすすめ。",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/草加健康センター_麻婆豆腐定食.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image7.jpg"),
->>>>>>> Stashed changes
   user_id: 6
 )
 Food.create!(
@@ -334,11 +246,7 @@ Food.create!(
   visited_sauna: "草加健康センター",
   prefecture_id: 11,
   description: "納豆のネバっとしたコクと、スッキリとしたくどさがないマグロがベストマッチしています",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/草加健康センター_マグロ納豆.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image8.jpg"),
->>>>>>> Stashed changes
   user_id: 3
 )
 Food.create!(
@@ -346,11 +254,7 @@ Food.create!(
   visited_sauna: "天空のアジト マルシンスパ",
   prefecture_id: 13,
   description: "スタンダードなカレー。サウナに行ったら大体カレーかラーメンを食べます。",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/天空のアジト マルシンスパ_カレーライス.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image9.jpg"),
->>>>>>> Stashed changes
   user_id: 14
 )
 Food.create!(
@@ -358,11 +262,7 @@ Food.create!(
   visited_sauna: "天空のアジト マルシンスパ",
   prefecture_id: 13,
   description: "マルシンスパといえばこれ。甘辛くとろとろに煮込まれたチャーシューとメンマに、カラシをつけて食べると最高です。",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/天空のアジト マルシンスパ_笹塚チャーシューセット.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image10.jpg"),
->>>>>>> Stashed changes
   user_id: 7
 )
 Food.create!(
@@ -370,11 +270,7 @@ Food.create!(
   visited_sauna: "かるまる",
   prefecture_id: 13,
   description: "定食人気NO.1の唐揚定食。ニンニクゴマ醤油味でご飯とビールに合いまくり",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/かるまる_唐揚定食.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image11.jpg"),
->>>>>>> Stashed changes
   user_id: 11
 )
 Food.create!(
@@ -382,11 +278,7 @@ Food.create!(
   visited_sauna: "かるまる",
   prefecture_id: 13,
   description: "鶏肉１つ１つがめちゃくちゃ大きくカットされていて、ボリュームが半端じゃない",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/かるまる_親子丼.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image12.jpg"),
->>>>>>> Stashed changes
   user_id: 2
 )
 Food.create!(
@@ -394,11 +286,7 @@ Food.create!(
   visited_sauna: "かるまる",
   prefecture_id: 13,
   description: "辛さがマイルドで、ちょっと甘さが目立つ仕上がり",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/かるまる_十勝豚ロースカツカレー.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image13.jpg"),
->>>>>>> Stashed changes
   user_id: 11
 )
 
@@ -407,11 +295,7 @@ Food.create!(
   visited_sauna: "武蔵野温泉 なごみの湯",
   prefecture_id: 13,
   description: "身がふっくらとしたカレイに、舞茸・えのき・しめじなどきのこたっぷりのあんが絡んでおいしかったです",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/武蔵野温泉 なごみの湯_カレイの唐揚げ定食.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image14.jpg"),
->>>>>>> Stashed changes
   user_id: 4
 )
 
@@ -420,11 +304,7 @@ Food.create!(
   visited_sauna: "サウナと天然温泉 湯らっくす",
   prefecture_id: 43,
   description: "痺れる大人の辛さ。さすが人気メニュー。うまい。",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/サウナと天然温泉 湯らっくす_四川風麻婆豆腐.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image15.jpg"),
->>>>>>> Stashed changes
   user_id: 2
 )
 
@@ -433,11 +313,7 @@ Food.create!(
   visited_sauna: "サウナと天然温泉 湯らっくす",
   prefecture_id: 43,
   description: "鶏ガラスープをベースにあっさり、ピリ辛に仕上げてあり食欲倍増",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/サウナと天然温泉 湯らっくす_酸辣湯.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image16.jpg"),
->>>>>>> Stashed changes
   user_id: 8
 )
 
@@ -446,11 +322,7 @@ Food.create!(
   visited_sauna: "サウナと天然温泉 湯らっくす",
   prefecture_id: 43,
   description: "湯らっくすのカツ丼の美味さを日本中に知ってほしい",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/サウナと天然温泉 湯らっくす_カツ丼.jpeg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image17.jpeg"),
->>>>>>> Stashed changes
   user_id: 8
 )
 
@@ -459,11 +331,7 @@ Food.create!(
   visited_sauna: "スカイスパYOKOHAMA",
   prefecture_id: 14,
   description: "鶏ガラスープをベースにあっさり、ピリ辛に仕上げてあり食欲倍増",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/スカイスパYOKOHAMA_キムチチゲ鍋.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image18.jpg"),
->>>>>>> Stashed changes
   user_id: 11
 )
 
@@ -472,11 +340,7 @@ Food.create!(
   visited_sauna: "スカイスパYOKOHAMA",
   prefecture_id: 14,
   description: "まろやかなチーズ、トマトの酸味、アンチョビの塩気…いろんな味がフランスパンに染み込んでいる。",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/スカイスパYOKOHAMA_フランスパンのアンチョビチーズ焼き.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image19.jpg"),
->>>>>>> Stashed changes
   user_id: 11
 )
 
@@ -485,11 +349,7 @@ Food.create!(
   visited_sauna: "ウェルビー栄",
   prefecture_id: 23,
   description: "もやし・ニラ・ひき肉がピリ辛で炒められており、酒がとにかくススムススム！",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/ウェルビー栄_台湾もやしタワー.jpeg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image20.jpeg"),
->>>>>>> Stashed changes
   user_id: 2
 )
 
@@ -498,11 +358,7 @@ Food.create!(
   visited_sauna: "ウェルビー栄",
   prefecture_id: 23,
   description: "ウェルビーに行ってサウナ後はとりあえず手羽先とビール",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/ウェルビー栄_手羽先.jpeg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image21.jpeg"),
->>>>>>> Stashed changes
   user_id: 9
 )
 
@@ -511,11 +367,7 @@ Food.create!(
   visited_sauna: "ウェルビー栄",
   prefecture_id: 23,
   description: "宿泊だとこれが7時〜10時の間無料でいただけます。しかもご飯と味噌汁はおかわり自由",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/ウェルビー栄_朝食（無料）.jpeg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image22.jpeg"),
->>>>>>> Stashed changes
   user_id: 9
 )
 
@@ -524,11 +376,7 @@ Food.create!(
   visited_sauna: "サウナラボ",
   prefecture_id: 23,
   description: "表面はパリッと焼き上げられており、スパイスの良い香りが漂う。普通のソーセージよりも、スパイスの味が濃厚で、サウナ後の塩分補給にもぴったりです！",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/サウナラボ_ソーセージマッカラ.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image23.jpg"),
->>>>>>> Stashed changes
   user_id: 14
 )
 
@@ -537,11 +385,7 @@ Food.create!(
   visited_sauna: "The Sauna",
   prefecture_id: 20,
   description: "味が濃くて、サウナの後にピッタリ。ビールと一緒に",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/The Sauna_ラム麻婆ご飯.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image24.jpg"),
->>>>>>> Stashed changes
   user_id: 6
 )
 
@@ -550,11 +394,7 @@ Food.create!(
   visited_sauna: "スパ&カプセル ニューウイング",
   prefecture_id: 13,
   description: "塩スープに各具材のダシが染み出て、何と言えない美味しさ",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/スパ&カプセル ニューウイング_ちゃんこ鍋.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image25.jpg"),
->>>>>>> Stashed changes
   user_id: 6
 )
 
@@ -563,11 +403,7 @@ Food.create!(
   visited_sauna: "ニコーリフレ SAPPORO",
   prefecture_id: 1,
   description: "サウナ後の塩分補給を兼ねて",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/ニコーリフレ SAPPORO_味噌ラーメン.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image26.jpg"),
->>>>>>> Stashed changes
   user_id: 10
 )
 
@@ -576,11 +412,7 @@ Food.create!(
   visited_sauna: "ニコーリフレ SAPPORO",
   prefecture_id: 1,
   description: "トンカツと麻婆豆腐の組み合わせが何とも不思議な感じですが、とっても美味しいです。",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/ニコーリフレ SAPPORO_麻婆カツライス.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image27.jpg"),
->>>>>>> Stashed changes
   user_id: 10
 )
 
@@ -589,11 +421,7 @@ Food.create!(
   visited_sauna: "神戸サウナ&スパ",
   prefecture_id: 28,
   description: "一口食べると旨味が爆裂。上質なオイスターソースが香る逸品です。",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/神戸サウナ&スパ_五目焼きそば.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image28.jpg"),
->>>>>>> Stashed changes
   user_id: 5
 )
 
@@ -602,11 +430,7 @@ Food.create!(
   visited_sauna: "サウナ&スパ カプセルホテル 大東洋",
   prefecture_id: 27,
   description: "食事何処で漫画が読めるので、ビール飲みながら漫画を読むときのツマミによく頼みます",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/サウナ&スパ カプセルホテル 大東洋_どて焼き.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image29.jpg"),
->>>>>>> Stashed changes
   user_id: 5
 )
 
@@ -615,11 +439,7 @@ Food.create!(
   visited_sauna: "ウェルビー福岡",
   prefecture_id: 40,
   description: "どうですか、無料なのにこのボリューム。",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/ウェルビー福岡_無料朝ごはん.jpeg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image30.jpeg"),
->>>>>>> Stashed changes
   user_id: 2
 )
 
@@ -628,11 +448,7 @@ Food.create!(
   visited_sauna: "タイムズ スパ・レスタ",
   prefecture_id: 40,
   description: "濃厚でまろやかな白ごまペーストに、ピリッとしたラー油の辛さが効いています",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/タイムズ スパ・レスタ_坦々麺.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image31.jpg"),
->>>>>>> Stashed changes
   user_id: 13
 )
 Food.create!(
@@ -640,11 +456,7 @@ Food.create!(
   visited_sauna: "スパ ラクーア",
   prefecture_id: 13,
   description: "ラクーアでお酒を飲むときはこれを頼みます",
-<<<<<<< Updated upstream
-  image: File.open('./public/seeds_image/スパ ラクーア_ぶりしゃぶ.jpg'),
-=======
   image: open("#{Rails.root}/public/seeds_image/food_image32.jpg"),
->>>>>>> Stashed changes
   user_id: 3
 )
 # like
