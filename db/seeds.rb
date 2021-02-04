@@ -190,7 +190,7 @@ Food.create!(
   visited_sauna: "スパ ラクーア",
   prefecture_id: 13,
   description: "ラクーアに行ったら毎回これ",
-  image: File.open('./public/seeds_image/ラクーア_カレーうどん.jpg'),
+  image: File.open("./public/seeds_image/ラクーア_カレーうどん.jpg"),
   user_id: 2
 )
 Food.create!(
