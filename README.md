@@ -53,3 +53,5 @@ https://www.samesy.work
   ![samesy_ER図](https://user-images.githubusercontent.com/63295568/106827014-655e3880-66cb-11eb-9c96-3f2c2c9cad70.png)
 ## インフラ構成図
   ![インフラ構成図](https://user-images.githubusercontent.com/63295568/106405658-5765a900-647a-11eb-90ad-1751bcf6a47c.jpg)
+## 今後の改善
+  - issueに記載
