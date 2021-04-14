@@ -9,7 +9,7 @@ set :rbenv_type, :user
 set :rbenv_ruby, '2.5.1'
 
 set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['~/.ssh/saunars-circle.pem']
+                  keys: ['~/.ssh/saunars-circle2.pem']
 
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
@@ -30,7 +30,7 @@ namespace :deploy do
       if test "[ ! -d #{shared_path}/config ]"
         execute "mkdir -p #{shared_path}/config"
       end
-      # upload!('config/master.key', "#{shared_path}/config/master.key")
+      upload!('config/master.key', "#{shared_path}/config/master.key")
     end
   end
   before :starting, 'deploy:upload'
