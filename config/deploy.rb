@@ -1,7 +1,7 @@
 lock '3.16.0'
 
 set :application, 'saunars-circle'
-set :repo_url, 'git@github.com:umaisshika/saunars-circle.git'
+set :repo_url, 'git@github.com:numumi/saunars-circle.git'
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
