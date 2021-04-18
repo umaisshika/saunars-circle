@@ -1,4 +1,4 @@
-lock '3.16.0'
+lock '3.14.1'
 
 set :application, 'saunars-circle'
 set :repo_url, 'git@github.com:numumi/saunars-circle.git'
