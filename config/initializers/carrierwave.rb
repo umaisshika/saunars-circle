@@ -12,7 +12,7 @@ unless Rails.env.development? || Rails.env.test?
       aws_secret_access_key: Rails.application.credentials.aws[:SECRET_KEY],
       region: 'ap-northeast-1'
     }
-    config.fog_directory  = 'saunars-circle-bucket'
-    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/saunars-circle-bucket'
+    config.fog_directory  = 'check-user1-bucket'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/check-user1-bucket'
   end
 end
