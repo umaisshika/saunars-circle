@@ -60,6 +60,11 @@ jobs:
       #       fi
       #       bundle exec cap production deploy
 workflows:
+  version: 2.1
+  test:
+    jobs:
+      - build
+
   # Nginxのデプロイ
   nginx-deploy:
     jobs:
