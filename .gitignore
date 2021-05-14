@@ -29,3 +29,5 @@
 
 # Ignore uploaded files in development
 /public/uploads/
+
+/nginx/log/
