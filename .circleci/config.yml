@@ -1,4 +1,8 @@
 version: 2.1
+orbs:
+  aws-ecr: circleci/aws-ecr@6.7.0
+  aws-ecs: circleci/aws-ecs@1.1.0
+
 jobs:
   build:
     docker:
@@ -11,7 +15,7 @@ jobs:
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           - MYSQL_ROOT_HOST: '%'
 
-    working_directory: ~/repo
+    working_directory: ~/saunars-circle
 
     steps:
       - checkout # CI環境上の working_directory の値の場所にGitリポジトリをコピーする
@@ -32,7 +36,7 @@ jobs:
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
       
-      - run: bundle exec rubocop
+      - run: bundle exec rubocop -a
       
       - run: bundle exec rspec
       
@@ -42,14 +46,68 @@ jobs:
           path: /tmp/test-results
           destination: test-results
       
-      - add_ssh_keys:
-          fingerprints:
-            - "49:a1:ad:08:93:41:48:ab:ee:fa:17:e3:fc:a6:a9:30"
-      
-      - deploy:
-          name: Capistrano deploy
-          command: |
-            if [ "${CIRCLE_BRANCH}" != "master" ]; then
-              exit 0
-            fi
-            bundle exec cap production deploy
+      # # こいつも消す
+      # - add_ssh_keys:
+      #     fingerprints:
+      #       - "49:a1:ad:08:93:41:48:ab:ee:fa:17:e3:fc:a6:a9:30"
+      # # こいつを消してCapistranoから卒業　不要ファイルやgemの削除を忘れない
+      # # unicorn capistrano 関するgemも
+      # - deploy:
+      #     name: Capistrano deploy
+      #     command: |
+      #       if [ "${CIRCLE_BRANCH}" != "master" ]; then
+      #         exit 0
+      #       fi
+      #       bundle exec cap production deploy
+workflows:
+  version: 2.1
+  test_code:
+    jobs:
+      - checkout_code
+      - test:
+          requires:
+            - checkout_code
+  # Nginxのデプロイ
+  nginx-deploy:
+    jobs:
+      - aws-ecr/build-and-push-image:
+          # filters:
+          #   branches:
+          #     only: master
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: true
+          dockerfile: ./nginx/Dockerfile
+          repo: nginx
+          tag: "${CIRCLE_SHA1}"
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
+          family: '${ECS_TASK}'
+          cluster-name: '${ECS_ARN}'
+          service-name: '${ECS_SERVICE}'
+          container-image-name-updates: "container=nginx,tag=${CIRCLE_SHA1}"
+  # Railsのデプロイ
+  rails-deploy:
+    jobs:
+      - aws-ecr/build-and-push-image:
+          # filters:
+          #   branches:
+          #     only: master
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: true
+          dockerfile: ./Dockerfile
+          repo: rails
+          tag: "${CIRCLE_SHA1}"
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
+          family: '${ECS_TASK}'
+          cluster-name: '${ECS_ARN}'
+          service-name: '${ECS_SERVICE}'
+          container-image-name-updates: "container=rails,tag=${CIRCLE_SHA1}"
