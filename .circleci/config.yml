@@ -86,7 +86,7 @@ workflows:
           family: '${ECS_TASK}'
           cluster-name: '${ECS_ARN}'
           service-name: '${ECS_SERVICE}'
-          container-image-name-updates: "container=nginx,tag=${CIRCLE_SHA1}"
+          container-image-name-updates: "container=sauna-nginx,tag=${CIRCLE_SHA1}"
   # Railsのデプロイ
   rails-deploy:
     jobs:
@@ -108,4 +108,4 @@ workflows:
           family: '${ECS_TASK}'
           cluster-name: '${ECS_ARN}'
           service-name: '${ECS_SERVICE}'
-          container-image-name-updates: "container=rails,tag=${CIRCLE_SHA1}"
+          container-image-name-updates: "container=sauna-rails,tag=${CIRCLE_SHA1}"
