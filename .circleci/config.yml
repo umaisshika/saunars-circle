@@ -60,13 +60,6 @@ jobs:
       #       fi
       #       bundle exec cap production deploy
 workflows:
-  version: 2.1
-  test_code:
-    jobs:
-      - checkout_code
-      - test:
-          requires:
-            - checkout_code
   # Nginxのデプロイ
   nginx-deploy:
     jobs:
@@ -80,7 +73,7 @@ workflows:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           create-repo: true
           dockerfile: ./nginx/Dockerfile
-          repo: nginx
+          repo: sauna-nginx
           tag: "${CIRCLE_SHA1}"
       - aws-ecs/deploy-service-update:
           requires:
@@ -102,7 +95,7 @@ workflows:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           create-repo: true
           dockerfile: ./Dockerfile
-          repo: rails
+          repo: sauna-rails
           tag: "${CIRCLE_SHA1}"
       - aws-ecs/deploy-service-update:
           requires:
