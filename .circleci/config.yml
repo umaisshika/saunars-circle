@@ -58,51 +58,55 @@ jobs:
       #         exit 0
       #       fi
       #       bundle exec cap production deploy
+  nginx-deploy:
+    - aws-ecr/build-and-push-image:
+        # filters:
+        #   branches:
+        #     only: master
+        account-url: AWS_ECR_ACCOUNT_URL
+        region: AWS_REGION
+        aws-access-key-id: AWS_ACCESS_KEY_ID
+        aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+        create-repo: true
+        dockerfile: ./nginx/Dockerfile
+        repo: sauna-nginx
+        tag: "${CIRCLE_SHA1}"
+    - aws-ecs/deploy-service-update:
+        requires:
+          - aws-ecr/build-and-push-image
+        family: '${ECS_TASK}'
+        cluster-name: '${ECS_ARN}'
+        service-name: '${ECS_SERVICE}'
+        container-image-name-updates: "container=sauna-nginx,tag=${CIRCLE_SHA1}"
+
+  rails-deploy:
+    - aws-ecr/build-and-push-image:
+        # filters:
+        #   branches:
+        #     only: master
+        account-url: AWS_ECR_ACCOUNT_URL
+        region: AWS_REGION
+        aws-access-key-id: AWS_ACCESS_KEY_ID
+        aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+        create-repo: true
+        dockerfile: ./Dockerfile
+        repo: sauna-rails
+        tag: "${CIRCLE_SHA1}"
+    - aws-ecs/deploy-service-update:
+        requires:
+          - aws-ecr/build-and-push-image
+        family: '${ECS_TASK}'
+        cluster-name: '${ECS_ARN}'
+        service-name: '${ECS_SERVICE}'
+        container-image-name-updates: "container=sauna-rails,tag=${CIRCLE_SHA1}"
 workflows:
   version: 2.1
-  deploy_and_test:
+  build_and_test:
     jobs:
       - test
-      - aws-ecr/build-and-push-image:
-          # filters:
-          #   branches:
-          #     only: master
+      - nginx-deploy
           requires:
             - test
-          account-url: AWS_ECR_ACCOUNT_URL
-          region: AWS_REGION
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          create-repo: true
-          dockerfile: ./nginx/Dockerfile
-          repo: sauna-nginx
-          tag: "${CIRCLE_SHA1}"
-      - aws-ecs/deploy-service-update:
+      - rails-deploy
           requires:
-            - aws-ecr/build-and-push-image
-          family: '${ECS_TASK}'
-          cluster-name: '${ECS_ARN}'
-          service-name: '${ECS_SERVICE}'
-          container-image-name-updates: "container=sauna-nginx,tag=${CIRCLE_SHA1}"
-
-      - aws-ecr/build-and-push-image:
-          # filters:
-          #   branches:
-          #     only: master
-          requires: 
             - test
-          account-url: AWS_ECR_ACCOUNT_URL
-          region: AWS_REGION
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          create-repo: true
-          dockerfile: ./Dockerfile
-          repo: sauna-rails
-          tag: "${CIRCLE_SHA1}"
-      - aws-ecs/deploy-service-update:
-          requires:
-            - aws-ecr/build-and-push-image
-          family: '${ECS_TASK}'
-          cluster-name: '${ECS_ARN}'
-          service-name: '${ECS_SERVICE}'
-          container-image-name-updates: "container=sauna-rails,tag=${CIRCLE_SHA1}"
