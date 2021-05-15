@@ -60,16 +60,15 @@ jobs:
       #       bundle exec cap production deploy
 workflows:
   version: 2.1
-  build_and_test:
+  deploy_and_test:
     jobs:
       - test
-  # Nginxのデプロイ
-  nginx-deploy:
-    jobs:
       - aws-ecr/build-and-push-image:
           # filters:
           #   branches:
           #     only: master
+          requires:
+            - test
           account-url: AWS_ECR_ACCOUNT_URL
           region: AWS_REGION
           aws-access-key-id: AWS_ACCESS_KEY_ID
@@ -85,13 +84,13 @@ workflows:
           cluster-name: '${ECS_ARN}'
           service-name: '${ECS_SERVICE}'
           container-image-name-updates: "container=sauna-nginx,tag=${CIRCLE_SHA1}"
-  # Railsのデプロイ
-  rails-deploy:
-    jobs:
+
       - aws-ecr/build-and-push-image:
           # filters:
           #   branches:
           #     only: master
+          requires: 
+            - test
           account-url: AWS_ECR_ACCOUNT_URL
           region: AWS_REGION
           aws-access-key-id: AWS_ACCESS_KEY_ID
