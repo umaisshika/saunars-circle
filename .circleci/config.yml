@@ -66,7 +66,7 @@ workflows:
           # filters:
           #   branches:
           #     only: master
-          name: nginx-build-and-push-image
+          name: "nginx-build-and-push-image"
           requires:
             - test
           account-url: AWS_ECR_ACCOUNT_URL
@@ -78,9 +78,9 @@ workflows:
           repo: sauna-nginx
           tag: "${CIRCLE_SHA1}"
       - aws-ecs/deploy-service-update:
-          name: nginx-deploy-service-update
+          name: "nginx-deploy-service-update"
           requires:
-            - aws-ecr/build-and-push-image
+            - nginx-build-and-push-image
           family: '${ECS_TASK}'
           cluster-name: '${ECS_ARN}'
           service-name: '${ECS_SERVICE}'
@@ -90,7 +90,7 @@ workflows:
           # filters:
           #   branches:
           #     only: master
-          name: rails-build-and-push-image
+          name: "rails-build-and-push-image"
           requires:
             - test
           account-url: AWS_ECR_ACCOUNT_URL
@@ -102,9 +102,9 @@ workflows:
           repo: sauna-rails
           tag: "${CIRCLE_SHA1}"
       - aws-ecs/deploy-service-update:
-          name: rails-deploy-service-update
+          name: "rails-deploy-service-update"
           requires:
-            - aws-ecr/build-and-push-image
+            - rails-build-and-push-image
           family: '${ECS_TASK}'
           cluster-name: '${ECS_ARN}'
           service-name: '${ECS_SERVICE}'
