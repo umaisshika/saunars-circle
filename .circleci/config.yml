@@ -64,32 +64,30 @@ workflows:
   deploy_and_test:
     jobs:
       - test
-        filters:
-          branches:
-            ignore: master
-    # Nginxのデプロイ
-    - aws-ecr/build-and-push-image:
-        # filters:
-        #   branches:
-        #     only: master
-        account-url: AWS_ECR_ACCOUNT_URL
-        region: AWS_REGION
-        aws-access-key-id: AWS_ACCESS_KEY_ID
-        aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-        create-repo: true
-        dockerfile: ./nginx/Dockerfile
-        repo: sauna-nginx
-        tag: "${CIRCLE_SHA1}"
-    - aws-ecs/deploy-service-update:
-        requires:
-          - aws-ecr/build-and-push-image
-        family: '${ECS_TASK}'
-        cluster-name: '${ECS_ARN}'
-        service-name: '${ECS_SERVICE}'
-        container-image-name-updates: "container=sauna-nginx,tag=${CIRCLE_SHA1}"
-  # Railsのデプロイ
-  rails-deploy:
-    jobs:
+          filters:
+            branches:
+              ignore: master
+      # Nginxのデプロイ
+      - aws-ecr/build-and-push-image:
+          # filters:
+          #   branches:
+          #     only: master
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: true
+          dockerfile: ./nginx/Dockerfile
+          repo: sauna-nginx
+          tag: "${CIRCLE_SHA1}"
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
+          family: '${ECS_TASK}'
+          cluster-name: '${ECS_ARN}'
+          service-name: '${ECS_SERVICE}'
+          container-image-name-updates: "container=sauna-nginx,tag=${CIRCLE_SHA1}"
+      # Railsのデプロイ
       - aws-ecr/build-and-push-image:
           # filters:
           #   branches:
