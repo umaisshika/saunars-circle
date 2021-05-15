@@ -64,9 +64,6 @@ workflows:
   deploy_and_test:
     jobs:
       - test
-          filters:
-            branches:
-              ignore: master
       # Nginxのデプロイ
       - aws-ecr/build-and-push-image:
           # filters:
