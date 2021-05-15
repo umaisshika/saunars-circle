@@ -4,7 +4,7 @@ orbs:
   aws-ecs: circleci/aws-ecs@1.1.0
 
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/ruby:2.5.1-node-browsers
         environment:
@@ -61,12 +61,9 @@ jobs:
       #       bundle exec cap production deploy
 workflows:
   version: 2.1
-  test:
+  build_and_test:
     jobs:
-      - build
-        filters:
-          branches:
-            ignore: master
+      - test
   # Nginxのデプロイ
   nginx-deploy:
     jobs:
