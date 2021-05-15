@@ -4,7 +4,7 @@ orbs:
   aws-ecs: circleci/aws-ecs@1.1.0
 
 jobs:
-  test:
+  build:
     docker:
       - image: circleci/ruby:2.5.1-node-browsers
         environment:
@@ -61,10 +61,15 @@ jobs:
       #       bundle exec cap production deploy
 workflows:
   version: 2.1
-  deploy_and_test:
+  test:
     jobs:
-      - test
-      # Nginxのデプロイ
+      - build
+        filters:
+          branches:
+            ignore: master
+  # Nginxのデプロイ
+  nginx-deploy:
+    jobs:
       - aws-ecr/build-and-push-image:
           # filters:
           #   branches:
@@ -84,7 +89,9 @@ workflows:
           cluster-name: '${ECS_ARN}'
           service-name: '${ECS_SERVICE}'
           container-image-name-updates: "container=sauna-nginx,tag=${CIRCLE_SHA1}"
-      # Railsのデプロイ
+  # Railsのデプロイ
+  rails-deploy:
+    jobs:
       - aws-ecr/build-and-push-image:
           # filters:
           #   branches:
