@@ -41,7 +41,7 @@ https://www.samesy.work
   - Nginx
   - Unicorn<br>
 - インフラ・開発環境等
-  - AWS（VPC, EC2, RDS, S3, Route 53, ALB, ACM）
+  - AWS（VPC, ECS, ECR, RDS, S3, Route 53, ALB, ACM）
   - Docker/docker-compose(ローカル開発環境)
   - CircleCI(自動ビルド、自動テスト、自動デプロイ)
   - Capistrano(自動デプロイ)
@@ -52,6 +52,6 @@ https://www.samesy.work
 ## ER図
   ![samesy_ER図](https://user-images.githubusercontent.com/63295568/106827014-655e3880-66cb-11eb-9c96-3f2c2c9cad70.png)
 ## インフラ構成図
-  ![インフラ構成図](https://user-images.githubusercontent.com/63295568/106405658-5765a900-647a-11eb-90ad-1751bcf6a47c.jpg)
+  ![saunars-circle-ark ](https://user-images.githubusercontent.com/63295568/118406686-d2646f80-b6b7-11eb-8b55-9cc74feddff6.jpg)
 ## 今後の改善
   - issueに記載
