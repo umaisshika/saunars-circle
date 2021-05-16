@@ -47,12 +47,11 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+
 production:
   <<: *default
+  database: <%= ENV['DB_DATABASE'] %>
   adapter: mysql2
-  database: saunars-circle_production
-  username: <%= Rails.application.credentials.rds[:username] %>
-  password: <%= Rails.application.credentials.rds[:password] %>
-  host: <%= Rails.application.credentials.rds[:host] %>
-  port: 3306
-  
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>

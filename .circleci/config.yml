@@ -1,6 +1,9 @@
 version: 2.1
+orbs:
+  aws-ecr: circleci/aws-ecr@7.0.0
+  aws-ecs: circleci/aws-ecs@2.2.1
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/ruby:2.5.1-node-browsers
         environment:
@@ -11,7 +14,7 @@ jobs:
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           - MYSQL_ROOT_HOST: '%'
 
-    working_directory: ~/repo
+    working_directory: ~/saunars-circle
 
     steps:
       - checkout # CI環境上の working_directory の値の場所にGitリポジトリをコピーする
@@ -32,7 +35,7 @@ jobs:
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
       
-      - run: bundle exec rubocop
+      - run: bundle exec rubocop -a
       
       - run: bundle exec rspec
       
@@ -41,15 +44,57 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
-      
-      - add_ssh_keys:
-          fingerprints:
-            - "49:a1:ad:08:93:41:48:ab:ee:fa:17:e3:fc:a6:a9:30"
-      
-      - deploy:
-          name: Capistrano deploy
-          command: |
-            if [ "${CIRCLE_BRANCH}" != "master" ]; then
-              exit 0
-            fi
-            bundle exec cap production deploy
+
+workflows:
+  version: 2.1
+  build_and_test:
+    jobs:
+      - test
+      # テスト後にNginxのデプロイ
+      - aws-ecr/build-and-push-image:
+          filters:
+            branches:
+              only: master
+          name: "nginx-build-and-push-image"
+          requires:
+            - test
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: true
+          dockerfile: ./nginx/Dockerfile
+          repo: sauna-nginx
+          tag: "${CIRCLE_SHA1}"
+      - aws-ecs/deploy-service-update:
+          name: "nginx-deploy-service-update"
+          requires:
+            - nginx-build-and-push-image
+          family: '${ECS_TASK}'
+          cluster-name: '${ECS_ARN}'
+          service-name: '${ECS_SERVICE}'
+          container-image-name-updates: "container=sauna-nginx,tag=${CIRCLE_SHA1}"
+      # テスト後にRailsのデプロイ
+      - aws-ecr/build-and-push-image:
+          filters:
+            branches:
+              only: master
+          name: "rails-build-and-push-image"
+          requires:
+            - test
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: true
+          dockerfile: ./Dockerfile
+          repo: sauna-rails
+          tag: "${CIRCLE_SHA1}"
+      - aws-ecs/deploy-service-update:
+          name: "rails-deploy-service-update"
+          requires:
+            - rails-build-and-push-image
+          family: '${ECS_TASK}'
+          cluster-name: '${ECS_ARN}'
+          service-name: '${ECS_SERVICE}'
+          container-image-name-updates: "container=sauna-rails,tag=${CIRCLE_SHA1}"

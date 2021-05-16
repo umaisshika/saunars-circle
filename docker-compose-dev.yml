@@ -10,7 +10,9 @@ services:
     ports:
       - "4306:3306"
   web:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
     command: bundle exec puma -C config/puma.rb
     tty: true
     stdin_open: true
@@ -28,12 +30,13 @@ services:
   nginx:
     build:
       context: .
-      dockerfile: ./nginx/Dockerfile
+      dockerfile: ./nginx/Dockerfile.dev
     ports:
       - '80:80'
     depends_on:
       - web
     volumes:
+      - ./nginx/log:/var/log/nginx
       - public_data:/saunars-circle/public
       - tmp_data:/saunars-circle/tmp
       - sockets:/saunars-circle/tmp/sockets
