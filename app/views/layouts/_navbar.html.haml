@@ -20,8 +20,6 @@
           %span.glyphicon.glyphicon-user{"aria-hidden" => "true"}
           .nav-value
             ユーザー一覧
-      %li.text-center
-        自動デプロイチェック
       - if user_signed_in?
         %li
           = link_to notifications_path do
