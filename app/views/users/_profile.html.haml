@@ -8,7 +8,7 @@
           .mypage-header__info__edit.text-right
             = link_to edit_user_path(current_user.id) do
               プロフィール編集
-        - elsif user_signed_in? && current_user.admin?
+        - elsif user_signed_in?
           .mypage-header__info__edit.text-right
             = link_to '削除する', user_path(user),method: :delete, data: { confirm: '削除しますか？' },class: 'btn btn-danger btn-lg edit-btn'
       .mypage-header__contents
@@ -16,12 +16,12 @@
         .mypage-header__contents__main  
           %h4.mypage-header__contents__main__name
             = user.name
-          -if user_signed_in?
-            - unless current_user == user
-              .mypage-header__contents__main__friend
-                -# フォローボタン
-                %div{:id => "follow_form_#{user.id}"}
-                  = render "relationships/follow_button", user: user
+          -# -if user_signed_in?
+          -#   - unless current_user == user
+          -#     .mypage-header__contents__main__friend
+          -#       -# フォローボタン
+          -#       %div{:id => "follow_form_#{user.id}"}
+          -#         = render "relationships/follow_button", user: user
     .mypage-profile
       %ul.mypage-profile__lists
         %li.mypage-profile__lists__list
