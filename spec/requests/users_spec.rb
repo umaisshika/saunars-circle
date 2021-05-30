@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
   let!(:user) { create(:user) }
-  let!(:admin_user) { create(:user, admin: true) }
+  # let!(:admin_user) { create(:user, admin: true) }
   let!(:guest_user) { create(:user, email: 'guest@example.com') }
 
   describe 'GET #index' do
@@ -148,72 +148,72 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe 'DELETE #destroy' do
-    context '管理ユーザーでログイン' do
-      it 'リクエストが成功すること' do
-        sign_in admin_user
-        delete user_path(user)
-        expect(response.status).to eq 302
-        expect(response).to redirect_to root_path
-      end
+  # describe 'DELETE #destroy' do
+  #   context '管理ユーザーでログイン' do
+  #     it 'リクエストが成功すること' do
+  #       sign_in admin_user
+  #       delete user_path(user)
+  #       expect(response.status).to eq 302
+  #       expect(response).to redirect_to root_path
+  #     end
 
-      it 'ユーザーが削除されること' do
-        sign_in admin_user
-        expect {
-          delete user_path(user)
-        }.to change(User, :count).by(-1)
-      end
-    end
+  #     it 'ユーザーが削除されること' do
+  #       sign_in admin_user
+  #       expect {
+  #         delete user_path(user)
+  #       }.to change(User, :count).by(-1)
+  #     end
+  #   end
 
-    context '一般ユーザーでログイン' do
-      it 'トップページにリダイレクトされること' do
-        sign_in user
-        delete user_path(user)
-        expect(response.status).to eq 302
-        expect(response).to redirect_to root_path
-      end
+  #   context '一般ユーザーでログイン' do
+  #     it 'トップページにリダイレクトされること' do
+  #       sign_in user
+  #       delete user_path(user)
+  #       expect(response.status).to eq 302
+  #       expect(response).to redirect_to root_path
+  #     end
 
-      it 'ユーザーが削除されないこと' do
-        sign_in user
-        expect {
-          delete user_path(user)
-        }.to_not change(User, :count)
-      end
-    end
+  #     it 'ユーザーが削除されないこと' do
+  #       sign_in user
+  #       expect {
+  #         delete user_path(user)
+  #       }.to_not change(User, :count)
+  #     end
+  #   end
 
-    context '未ログイン状態' do
-      it 'ログインページにリダイレクトされること' do
-        delete user_path(user)
-        expect(response.status).to eq 302
-        expect(response).to redirect_to new_user_session_path
-      end
+  #   context '未ログイン状態' do
+  #     it 'ログインページにリダイレクトされること' do
+  #       delete user_path(user)
+  #       expect(response.status).to eq 302
+  #       expect(response).to redirect_to new_user_session_path
+  #     end
 
-      it 'ユーザーが削除されないこと' do
-        expect {
-          delete user_path(user)
-        }.to_not change(User, :count)
-      end
-    end
-  end
+  #     it 'ユーザーが削除されないこと' do
+  #       expect {
+  #         delete user_path(user)
+  #       }.to_not change(User, :count)
+  #     end
+  #   end
+  # end
 
-  describe 'GET #followings' do
-    it 'リクエストが成功すること' do
-      get followings_user_path(user)
-      expect(response).to have_http_status 200
-    end
-  end
+  # describe 'GET #followings' do
+  #   it 'リクエストが成功すること' do
+  #     get followings_user_path(user)
+  #     expect(response).to have_http_status 200
+  #   end
+  # end
 
-  describe 'GET #followers' do
-    it 'リクエストが成功すること' do
-      get followers_user_path(user)
-      expect(response).to have_http_status 200
-    end
-  end
+  # describe 'GET #followers' do
+  #   it 'リクエストが成功すること' do
+  #     get followers_user_path(user)
+  #     expect(response).to have_http_status 200
+  #   end
+  # end
 
-  describe 'GET #like_foods' do
-    it 'リクエストが成功すること' do
-      get like_foods_user_path(user)
-      expect(response).to have_http_status 200
-    end
-  end
+  # describe 'GET #like_foods' do
+  #   it 'リクエストが成功すること' do
+  #     get like_foods_user_path(user)
+  #     expect(response).to have_http_status 200
+  #   end
+  # end
 end

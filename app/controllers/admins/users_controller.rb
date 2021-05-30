@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:destroy, :edit, :update]
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :followings, :followers, :like_foods]
+  before_action :authenticate_admin!
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.page(params[:page])
@@ -34,27 +34,6 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:success] = "「#{@user.name}」は正常に削除されました"
     redirect_to root_path
-  end
-
-  def followings
-    @followings = @user.followings.page(params[:page])
-                       .per(PER)
-                       .order(created_at: :desc)
-    @nil_message = 'まだお気に入りしていません'
-  end
-
-  def followers
-    @followers = @user.followers.page(params[:page])
-                      .per(PER)
-                      .order(created_at: :desc)
-    @nil_message = 'まだお気に入られされていません'
-  end
-
-  def like_foods
-    @foods = @user.liked_foods.page(params[:page])
-                  .per(PER)
-                  .order(created_at: :desc)
-    @nil_message = 'まだいいねした投稿がありません'
   end
 
   private

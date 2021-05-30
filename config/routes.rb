@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :comments, only: :destroy
     end
     resources :users, only: [:index, :show, :edit, :update, :destroy]
+    
   end
 
   devise_for :users, skip: :all
