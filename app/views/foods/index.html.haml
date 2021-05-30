@@ -4,12 +4,4 @@
   -# 検索フォーム
   = render 'search_form', q: @q
   -# 投稿一覧
-  .cards-list
-    .cards-list__tab.flex-box
-      .cards-list__tab__item.ml-50
-        .cards-list__tab__active
-          = link_to 'みんなのサ飯', foods_path
-      .cards-list__tab__item
-        .cards-list__tab__inactive
-          %span お気に入りの投稿
-    = render 'foods', foods: @foods
+  = render 'food_list'
