@@ -6,7 +6,7 @@
       %span.icon-bar
       %span.icon-bar
     %a.navbar-left{:href => "/"}
-      %img{:alt => "header-logo", :src => "/images/Samesy-logo.png"}/
+      %img{:alt => "header-logo", :src => "/images/Samesy-logo.png"}
   #bs-example-navbar-collapse-1.collapse.navbar-collapse
     %ul.nav.navbar-nav.navbar-right.mr-10.vertical-center
       - unless admin_signed_in?
@@ -49,7 +49,7 @@
         %li
           = link_to "ログアウト", destroy_admin_session_path, method: :delete
         %li
-          -# = image_tag current_user.avatar.url, size: "40x40", class: "img-circle"
+          = image_tag 'admin.png', size: "40x40", class: "img-circle"
       - else
         %li
           = link_to 'ログイン', new_user_session_path
