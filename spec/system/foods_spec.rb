@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe '投稿機能', type: :system do
   let!(:user) { create(:user) }
   let!(:other_user) { create(:user) }
-  let!(:admin_user) { create(:user, name: '管理ユーザー', admin: true) }
   let!(:food) { create(:food, user_id: user.id) }
 
   describe '投稿の新規作成' do
@@ -63,16 +62,6 @@ RSpec.describe '投稿機能', type: :system do
         end
       end
 
-      context '管理ユーザーでログイン' do
-        it '編集するボタンせず、削除するボタンが存在すること' do
-          login admin_user
-          visit food_path(food.id)
-          expect(page).to have_content(user.name)
-          expect(page).not_to have_selector 'a', text: '編集する'
-          expect(page).to have_selector 'a', text: '投稿を削除する'
-        end
-      end
-
       context 'ログインしていない場合' do
         it '編集するボタン、削除するボタンが存在しないこと' do
           visit food_path(food.id)
@@ -125,20 +114,10 @@ RSpec.describe '投稿機能', type: :system do
           expect(page).to have_content('投稿を削除しました')
         }.to change { Food.count }.by(-1)
       end
-
-      it '管理ユーザーであれば投稿を削除できること' do
-        login admin_user
-        visit food_path(food.id)
-        expect {
-          click_link '投稿を削除する'
-          page.driver.browser.switch_to.alert.accept
-          expect(page).to have_content('投稿を削除しました')
-        }.to change { Food.count }.by(-1)
-      end
     end
 
     context '投稿を削除できない' do
-      it '投稿ユーザー及び管理ユーザー以外は削除ボタンが表示されないこと' do
+      it '投稿ユーザー以外は削除ボタンが表示されないこと' do
         login other_user
         visit food_path(food.id)
         expect(page).to_not have_content('削除する')

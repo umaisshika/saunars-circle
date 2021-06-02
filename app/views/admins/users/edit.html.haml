@@ -1,0 +1,57 @@
+.row.bottom-buffer
+  .col-xs-offset-2.col-xs-8.col-md-offset-3.col-md-6
+    .panel.panel-default
+      .panel-heading.text-center プロフィール編集
+      .panel-body
+        = form_with model: @user, url: admins_food_path(@user), class: 'user__form',local: true do |f|
+          = render "layouts/error_messages", model: f.object
+          
+          .form-group
+            = f.label :avatar, 'アイコン'
+            %br/
+            -if @user.avatar.present?
+              = image_tag @user.avatar.url, size: "100x100", class:'img-circle', id: 'img_prev'
+            -else
+              = image_tag 'default_prof.png',  size: "100x100", class:'img-circle', id: 'img_prev'
+            = f.file_field :avatar, class: 'form-control-file' ,style: 'margin-top:10px', id: 'user_img'
+          .form-group
+            = f.label :name, 'ユーザー名'
+            %br/
+            = f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control'
+          .form-group
+            = f.label :email, 'メールアドレス'
+            %br/
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
+          .form-group
+            = f.label :gender, '性別'
+            %br/
+            = f.radio_button :gender, :男性, class: "radio-inline"
+            = f.label "男 性　"
+            = f.radio_button :gender, :女性, class: "radio-inline"
+            = f.label "女 性　"
+            = f.radio_button :gender, :無回答, class: "radio-inline"
+            = f.label "無 回 答"
+          .form-group
+            = f.label :sauna_career, 'サウナ歴'
+            %br/
+            != sprintf(f.date_select(:sauna_career, prompt:"--", discard_day:true, class: 'fa', use_month_numbers: true,start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年 ')+'月頃から'
+          .form-group
+            = f.label :home_sauna, 'ホームサウナ'
+            %br/
+            = f.text_field :home_sauna, placeholder: '例)タイムズスパ・レスタ', class: 'form-control'
+          .form-group
+            = f.label :prefecure_id, 'エリア'
+            %br/
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--", class: "form-control"
+
+          .form-group
+            = f.label :description, '好きなサウナ'
+            %br/
+            = f.text_area :description, placeholder: '例)サウナ室：テレビ無し、暗め。水風呂：15度深め', class: 'form-control'
+          .form-group
+            = f.label :profile, '自己紹介'
+            %br/
+            = f.text_area :profile, placeholder: '例)週末はサウナ施設でゆっくり過ごしてます', class: 'form-control'
+
+          .form-btn
+            = f.submit "更新する", class: 'btn btn-success btn-block'

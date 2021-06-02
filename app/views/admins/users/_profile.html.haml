@@ -4,21 +4,14 @@
       .mypage-header__info
         .mypage-header__info__date.text-left
           #{user.created_at.strftime('%Y年%m月%d日')}登録
-        - if user_signed_in? && current_user == user
-          .mypage-header__info__edit.text-right
-            = link_to edit_user_path(current_user.id) do
-              プロフィール編集
+        .mypage-header__info__edit.text-right
+          = link_to edit_admins_user_path(user) do
+            プロフィール編集
       .mypage-header__contents
         = image_tag user.avatar.url, size: "70x70", class: "img-circle"
         .mypage-header__contents__main  
           %h4.mypage-header__contents__main__name
             = user.name
-          -if user_signed_in?
-            - unless current_user == user
-              .mypage-header__contents__main__friend
-                -# フォローボタン
-                %div{:id => "follow_form_#{user.id}"}
-                  = render "relationships/follow_button", user: user
     .mypage-profile
       %ul.mypage-profile__lists
         %li.mypage-profile__lists__list
@@ -61,6 +54,7 @@
               = user.profile
             - else
               #{"-"}
+    = link_to '削除する', admins_user_path(user),method: :delete, data: { confirm: '削除しますか？' },class: 'btn btn-danger btn-lg edit-btn'
   %nav.mypage-content
     %ul.mypage-content__lists
       %li.mypage-content__lists__list

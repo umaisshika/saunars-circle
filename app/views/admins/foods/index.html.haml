@@ -1,0 +1,7 @@
+.container
+  .section-title.text-center
+    %h2 投稿一覧
+  -# 検索フォーム
+  = render 'search_form', q: @q
+  -# 投稿一覧
+  = render 'food_list'

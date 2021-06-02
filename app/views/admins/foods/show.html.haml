@@ -4,7 +4,7 @@
     %br
     .food-detail.center-block
       .food-detail__user-info.text-left
-        = link_to user_path(@food.user) do
+        = link_to admins_user_path(@food.user) do
           = image_tag @food.user.avatar.url, size: "40x40", class: "img-circle"
           = @food.user.name
           = @food.created_at.strftime("%Y/%m/%d %H:%M")
@@ -31,27 +31,15 @@
             ひと言:
           %span.food-detail__lists__list__value
             = @food.description
-      
-      - if user_signed_in?
-        .ml-10.text-left.mb-10
-          %div{:id => "likes_buttons_#{@food.id}"}
-            = render 'likes/like', food: @food
-      -else
         .ml-10.text-left.mb-10
           %span いいねの数: #{@food.likes.count}
       -# 地図表示
       .food_map
         #map
-      - if user_signed_in?
-        - if current_user.id == @food.user_id
-          = link_to '編集する', edit_food_path(@food), class: 'btn btn-primary btn-lg edit-btn mb-10' 
-          = link_to '投稿を削除する', food_path(@food),method: :delete, data: { confirm: '削除しますか？' },class: 'btn btn-danger btn-lg edit-btn mb-10'
-        -# コメントフォーム
-        = form_with(model:[@food, @comment], class: 'comment-form',remote: true) do |f|
-          = f.text_area :content, rows: 3,placeholder: "コメント欄",class:"comment-box base-textarea", id: "comment-input"
-          = f.hidden_field :food_id, value: @food.id
-          = f.submit 'コメントする',class:"btn btn-success btn-lg edit-btn"
-      
+
+      = link_to '編集する', edit_food_path(@food), class: 'btn btn-primary btn-lg edit-btn mb-10' 
+      = link_to '投稿を削除する', admins_food_path(@food),method: :delete, data: { confirm: '削除しますか？' },class: 'btn btn-danger btn-lg edit-btn mb-10'
+
     -# コメントリスト
     %div{:id => "comment-list"}
       = render partial: 'comments/index', locals: { comments: @comments }

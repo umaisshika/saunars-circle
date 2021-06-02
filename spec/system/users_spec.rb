@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe 'ユーザー登録', type: :system do
   let!(:user) { create(:user, name: '一般ユーザー') }
   let!(:other_user) { create(:user, name: 'その他ユーザー') }
-  let!(:admin_user) { create(:user, name: '管理ユーザー', admin: true) }
 
   describe '編集機能' do
     it 'プロフィールを編集出来ること' do
@@ -24,17 +23,7 @@ RSpec.describe 'ユーザー登録', type: :system do
   end
 
   describe '削除機能', js: true do
-    it '管理者はユーザーを削除できること' do
-      login(admin_user)
-      visit user_path(user)
-      expect {
-        click_on '削除する'
-        page.accept_confirm '削除しますか？'
-        expect(page).to have_content '「一般ユーザー」は正常に削除されました'
-      }.to change { User.count }.by(-1)
-    end
-
-    it '管理者権限のないユーザーはユーザーを削除リンクが表示されないこと' do
+    it '一般ユーザーはユーザーを削除リンクが表示されないこと' do
       login(user)
       visit user_path(user)
       expect(page).not_to have_content '削除する'

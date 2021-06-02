@@ -1,0 +1,7 @@
+.search.text-center.mb-10
+  = search_form_for @q_following, url: following_foods_path do |f|
+    = f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name,
+      { include_blank: 'エリア' },
+      { class: 'search-select' }
+    = f.text_field :name_or_visited_sauna_or_description_cont_any, placeholder: 'キーワード'
+    = f.submit "検索する"
