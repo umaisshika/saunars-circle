@@ -9,6 +9,7 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'vendor/**/*'
+    - 'app/controllers/admins/*'
   DisplayCopNames: true
 
 Layout/LineLength:

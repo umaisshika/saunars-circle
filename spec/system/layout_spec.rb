@@ -18,11 +18,11 @@ RSpec.describe 'レイアウト', type: :system do
 
     it 'ログインしている場合' do
       login user
+      expect(page).to have_selector 'a', text: '投稿一覧'
       expect(page).to have_selector 'a', text: 'ユーザー一覧'
       expect(page).to have_selector '.fa-bell'
       expect(page).to have_selector 'a', text: 'ログアウト'
       expect(page).to have_selector '.img-circle'
-      expect(page).not_to have_selector 'a', text: '投稿一覧'
       expect(page).not_to have_selector 'a', text: 'ログイン'
       expect(page).not_to have_selector 'a', text: '新規登録'
     end

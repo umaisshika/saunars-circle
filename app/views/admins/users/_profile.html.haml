@@ -1,0 +1,75 @@
+.mypage
+  .mypage-wrapper
+    .mypage-header
+      .mypage-header__info
+        .mypage-header__info__date.text-left
+          #{user.created_at.strftime('%Y年%m月%d日')}登録
+        .mypage-header__info__edit.text-right
+          = link_to edit_admins_user_path(user) do
+            プロフィール編集
+      .mypage-header__contents
+        = image_tag user.avatar.url, size: "70x70", class: "img-circle"
+        .mypage-header__contents__main  
+          %h4.mypage-header__contents__main__name
+            = user.name
+    .mypage-profile
+      %ul.mypage-profile__lists
+        %li.mypage-profile__lists__list
+          %span.mypage-profile__lists__list__key
+            サウナ歴
+          %span.mypage-profile__lists__list__value
+            - if user.sauna_career.present?
+              %time(datetime="#{user.sauna_career}")= time_ago_in_words(user.sauna_career)
+            - else
+              #{"-"}
+        %li.mypage-profile__lists__list
+          %span.mypage-profile__lists__list__key
+            ホーム
+          %span.mypage-profile__lists__list__value
+            - if user.home_sauna.present?
+              = user.home_sauna
+            - else
+              #{"-"}
+        %li.mypage-profile__lists__list
+          %span.mypage-profile__lists__list__key
+            エリア
+          %span.mypage-profile__lists__list__value
+            - if user.prefecture.present?
+              = user.prefecture.name
+            - else
+              #{"-"}
+        %li.mypage-profile__lists__list
+          %span.mypage-profile__lists__list__key
+            好きなサウナ
+          %span.mypage-profile__lists__list__value
+            - if user.description.present?
+              = user.description
+            - else
+              #{"-"}
+        %li.mypage-profile__lists__list
+          %span.mypage-profile__lists__list__key
+            プロフィール
+          %span.mypage-profile__lists__list__value
+            - if user.profile.present?
+              = user.profile
+            - else
+              #{"-"}
+    = link_to '削除する', admins_user_path(user),method: :delete, data: { confirm: '削除しますか？' },class: 'btn btn-danger btn-lg edit-btn'
+  %nav.mypage-content
+    %ul.mypage-content__lists
+      %li.mypage-content__lists__list
+        = link_to user_path do
+          サ飯
+          = user.foods.count
+      %li.mypage-content__lists__list
+        = link_to followings_user_path(user) do
+          お気に入り
+          = user.followings.count
+      %li.mypage-content__lists__list
+        = link_to followers_user_path(user),{:id => "followers_#{user.id}"}  do
+          お気に入られ
+          = user.followers.count
+      %li.mypage-content__lists__list
+        = link_to like_foods_user_path(user) do
+          いいね
+          = user.likes.count

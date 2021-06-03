@@ -1,0 +1,50 @@
+.container
+  .section-title.text-center
+    %h2 投稿詳細
+    %br
+    .food-detail.center-block
+      .food-detail__user-info.text-left
+        = link_to admins_user_path(@food.user) do
+          = image_tag @food.user.avatar.url, size: "40x40", class: "img-circle"
+          = @food.user.name
+          = @food.created_at.strftime("%Y/%m/%d %H:%M")
+      .food-detail__food-img
+        = image_tag @food.image.url, size: "400x400", class: "img-rounded food-img"
+      %ul.food-detail__lists.text-left
+        %li.food-detail__lists__list
+          %span.food-detail__lists__list__key
+            品名:
+          %span.food-detail__lists__list__value
+            = @food.name
+        %li.food-detail__lists__list
+          %span.food-detail__lists__list__key
+            サウナ:
+          %span.food-detail__lists__list__value
+            = @food.visited_sauna
+        %li.food-detail__lists__list
+          %span.food-detail__lists__list__key
+            エリア:
+          %span.food-detail__lists__list__value
+            = @food.prefecture.name
+        %li.food-detail__lists__list
+          %span.food-detail__lists__list__key
+            ひと言:
+          %span.food-detail__lists__list__value
+            = @food.description
+        .ml-10.text-left.mb-10
+          %span いいねの数: #{@food.likes.count}
+      -# 地図表示
+      .food_map
+        #map
+
+      = link_to '編集する', edit_admins_food_path(@food), class: 'btn btn-primary btn-lg edit-btn mb-10' 
+      = link_to '投稿を削除する', admins_food_path(@food),method: :delete, data: { confirm: '削除しますか？' },class: 'btn btn-danger btn-lg edit-btn mb-10'
+
+    -# コメントリスト
+    %div{:id => "comment-list"}
+      = render partial: 'admins/comments/index', locals: { comments: @comments }
+=render 'show_map', food: @food
+
+
+
+

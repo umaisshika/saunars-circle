@@ -1,4 +1,4 @@
-- unless user_signed_in?
+- unless user_signed_in? || admin_signed_in?
   .cover
     .cover-inner
       .cover-contents
@@ -6,21 +6,17 @@
         = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary btn-lg cover-button'
         = link_to 'ログイン', new_user_session_path, class: 'btn btn-success btn-lg cover-button'
         = link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'btn btn-warning btn-lg cover-button'
+
 - else
   .container
     .section-title.text-center
       %h2 投稿一覧
-    /投稿ボタン
-    = render "foods/new-btn"
     -# 検索フォーム
     = render 'foods/search_form', q: @q
-    -# 投稿一覧
-    .cards-list
-      .cards-list__tab.flex-box
-        .cards-list__tab__item.ml-50
-          .cards-list__tab__active
-            = link_to 'みんなのサ飯', foods_path
-        .cards-list__tab__item
-          .cards-list__tab__inactive
-            = link_to 'お気に入りのサ飯', following_foods_path
-      = render 'foods/foods', foods: @foods
+    -if user_signed_in?
+      /投稿ボタン
+      = render "foods/new-btn"
+      -# 投稿一覧
+      = render 'foods/food_list'
+    - if admin_signed_in?
+      = render 'admins/foods/food_list'

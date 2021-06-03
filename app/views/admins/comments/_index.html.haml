@@ -1,0 +1,15 @@
+- if comments.present?
+  %h2 コメント一覧(管理）
+  .row
+    .comments.center-block
+      - comments.each do |comment|
+        %ul.comments__lists.text-left
+          %li.comments__lists__content.mb-10
+            = comment.content
+          %li.comments__lists__info
+            = link_to user_path(comment.user) do
+              = image_tag comment.user.avatar.url, size: "25x25", class: "img-circle"
+              = comment.user.name
+            %span.ml-10
+              #{time_ago_in_words(comment.created_at)}前
+            = link_to 'コメント削除', admins_food_comment_path(comment.food.id,comment.id),method: :delete, remote: true, class: 'btn btn-danger btn-sm ml-10'

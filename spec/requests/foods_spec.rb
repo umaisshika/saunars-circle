@@ -148,7 +148,7 @@ RSpec.describe 'Foods', type: :request do
       it 'リクエストが成功すること' do
         sign_in user
         food_params = attributes_for(:food, :invalid)
-        post foods_path, params: { food: food_params }
+        put food_path(food), params: { food: food_params }
         expect(response.status).to eq 200
       end
 

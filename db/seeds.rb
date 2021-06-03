@@ -1,8 +1,7 @@
-User.create!(
-  name: 'タカハシタカシ',
+Admin.create!(
+  name: '管理者',
   email: 'admin@example.com',
-  password: 'admin123',
-  admin: true
+  password: 'admin123'
 )
 
 User.create!(
@@ -11,7 +10,6 @@ User.create!(
   password: SecureRandom.urlsafe_base64,
 )
 
-# User
 User.create!( 
   name: "まみ", 
   email: "sample1@example.com",
@@ -460,7 +458,7 @@ Food.create!(
   user_id: 3
 )
 # like
-1.upto(17) do |n|
+1.upto(16) do |n|
   user = User.find(n)
   food = Food.order("RAND()").limit(20)
   food.each { |food| food.like(user) }
