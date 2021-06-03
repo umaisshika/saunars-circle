@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
   let!(:user) { create(:user) }
-  # let!(:admin_user) { create(:user, admin: true) }
   let!(:guest_user) { create(:user, email: 'guest@example.com') }
 
   describe 'GET #index' do
@@ -196,24 +195,24 @@ RSpec.describe 'Users', type: :request do
   #   end
   # end
 
-  # describe 'GET #followings' do
-  #   it 'リクエストが成功すること' do
-  #     get followings_user_path(user)
-  #     expect(response).to have_http_status 200
-  #   end
-  # end
+  describe 'GET #followings' do
+    it 'リクエストが成功すること' do
+      get followings_user_path(user)
+      expect(response).to have_http_status 200
+    end
+  end
 
-  # describe 'GET #followers' do
-  #   it 'リクエストが成功すること' do
-  #     get followers_user_path(user)
-  #     expect(response).to have_http_status 200
-  #   end
-  # end
+  describe 'GET #followers' do
+    it 'リクエストが成功すること' do
+      get followers_user_path(user)
+      expect(response).to have_http_status 200
+    end
+  end
 
-  # describe 'GET #like_foods' do
-  #   it 'リクエストが成功すること' do
-  #     get like_foods_user_path(user)
-  #     expect(response).to have_http_status 200
-  #   end
-  # end
+  describe 'GET #like_foods' do
+    it 'リクエストが成功すること' do
+      get like_foods_user_path(user)
+      expect(response).to have_http_status 200
+    end
+  end
 end

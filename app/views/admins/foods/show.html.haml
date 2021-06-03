@@ -37,7 +37,7 @@
       .food_map
         #map
 
-      = link_to '編集する', edit_food_path(@food), class: 'btn btn-primary btn-lg edit-btn mb-10' 
+      = link_to '編集する', edit_admins_food_path(@food), class: 'btn btn-primary btn-lg edit-btn mb-10' 
       = link_to '投稿を削除する', admins_food_path(@food),method: :delete, data: { confirm: '削除しますか？' },class: 'btn btn-danger btn-lg edit-btn mb-10'
 
     -# コメントリスト

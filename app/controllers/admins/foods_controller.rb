@@ -23,7 +23,7 @@ class Admins::FoodsController < ApplicationController
   def update
     if @food.update(food_params)
       flash[:success] = '投稿を更新しました'
-      redirect_to food_path(@food.id)
+      redirect_to admins_food_path(@food.id)
     else
       flash.now[:danger] = '編集出来ません。入力必須項目を確認してください'
       render :edit
@@ -33,7 +33,7 @@ class Admins::FoodsController < ApplicationController
   def destroy
     @food.destroy
     flash[:success] = '投稿を削除しました'
-    redirect_to foods_path
+    redirect_to admins_foods_path
   end
 
   private

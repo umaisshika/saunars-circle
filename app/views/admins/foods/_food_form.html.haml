@@ -1,6 +1,6 @@
 .row
   .col-md-offset-4.col-md-4
-    = form_with model: food, url: admin_food_path(food.id), local: true do |f|
+    = form_with model: food, url: admins_food_path(food.id), local: true do |f|
       .form-group
         = f.label :image, '画像 ※必須'
         %br/

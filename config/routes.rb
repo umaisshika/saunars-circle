@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admins do
-    resources :foods, only: [:index, :show, :edit, :update, :delete] do
+    resources :foods, only: [:index, :show, :edit, :update, :destroy] do
       resources :comments, only: :destroy
     end
     resources :users, only: [:index, :show, :edit, :update, :destroy]
-    
+
   end
 
   devise_for :users, skip: :all
