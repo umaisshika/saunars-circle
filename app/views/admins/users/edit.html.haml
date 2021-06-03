@@ -3,7 +3,7 @@
     .panel.panel-default
       .panel-heading.text-center プロフィール編集
       .panel-body
-        = form_with model: @user, url: admins_food_path(@user), class: 'user__form',local: true do |f|
+        = form_with model: @user, url: admins_user_path(@user), class: 'user__form',local: true do |f|
           = render "layouts/error_messages", model: f.object
           
           .form-group
