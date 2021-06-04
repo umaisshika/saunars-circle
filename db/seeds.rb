@@ -527,20 +527,20 @@ end
 # notification
 Notification.create!(
   visitor_id:3, 
-  visited_id:2, 
+  visited_id:1, 
   action: 'follow'
 )
 
 Notification.create!(
   visitor_id:4, 
-  visited_id:2, 
+  visited_id:1, 
   food_id: 1,
   action: 'like'
 )
 
 Notification.create!(
   visitor_id:3, 
-  visited_id:2, 
+  visited_id:1, 
   comment_id: 1,
   food_id: 15,
   action: 'comment'
